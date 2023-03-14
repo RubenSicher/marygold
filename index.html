@@ -21,6 +21,32 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+  .video-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%; 
+  overflow: hidden;
+}
+.video-container video {
+  /* Make video to at least 100% wide and tall */
+  min-width: 100%; 
+  min-height: 100%; 
+
+  /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+  width: auto;
+  height: auto;
+
+  /* Center the video */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+  </style>
 
   <!-- =======================================================
   * Template Name: Maundy - v4.9.0
@@ -32,6 +58,9 @@
 
 <body>
 
+  <div class="video-container video">
+    <iframe src="https://www.youtube.com/watch?v=GpcaJQ40q1Y"></iframe>
+  </div>
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex flex-column align-items-center">
@@ -39,7 +68,7 @@
       <h1><b>Mary Gold</b><small style="font-size:small;"> by Artemis</small></h1>
       <h2>We're working hard to improve our website and we'll ready to launch after</h2>
       <div class="countdown d-flex justify-content-center" data-count="2023/7/1">
-        <div>
+        <!-- <div>
           <h3>%d</h3>
           <h4>Days</h4>
         </div>
@@ -54,7 +83,7 @@
         <div>
           <h3>%s</h3>
           <h4>Seconds</h4>
-        </div>
+        </div> -->
       </div>
 
    
