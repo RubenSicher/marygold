@@ -1,3 +1,5 @@
+<?php include 'scripts/php/conectar.php' ?>
+
 
 
 <!DOCTYPE html>
@@ -27,6 +29,9 @@
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <link rel="stylesheet" href="./plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+
+<link rel="stylesheet" href="./plugins/toastr/toastr.min.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">

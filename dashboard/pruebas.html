@@ -68,8 +68,7 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+
   
          
           <li class="nav-item">
@@ -110,22 +109,58 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
+            <h1 class="m-0">Agregar Usuario</h1>
           </div>
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
+        </div>
+      </div>
     </div>
-    <!-- /.content-header -->
-
-    <!-- Main content -->
+   
     <section class="content">
       <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-       
-        <!-- /.row -->
-        <!-- Main row -->
-  
-        <!-- /.row (main row) -->
+        <div class="row">
+          <!-- left column -->
+          <div class="m-auto col-sm-6">
+           
+            <!-- <div class="alert alert-warning alert-dismissible fade show" role="alert" >
+              <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">x</button>
+            </div> -->
+
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="text-center card-header">
+                <h3 class="text-center card-title">Agregar Usuario</h3>
+              </div>
+              <!-- /.card-header -->
+
+              <!-- form start -->
+              <form type="POST">
+                <div class="card-body">
+                  <div class="form-group">
+                    <label for="usuario">Nombre:</label>
+                    <input type="text" class="form-control" id="txtNombre" name="txtNombre" placeholder="nombre completo">
+                  </div>
+                  <div class="form-group">
+                    <label for="correo">Correo:</label>
+                    <input type="email" class="form-control" id="txtCorreo" name="txtCorreo" placeholder="correo">
+                  </div>
+                  <div class="form-group">
+                    <label for="correo">Password:</label>
+                    <input type="password" class="form-control" id="txtPassword" name="txtPassword" placeholder="password">
+                  </div
+            
+              
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer">
+                  <button class="btn btn-primary" id="btnGuardaUsuario">Submit</button>
+                </div>
+              </form>
+            </div>
+            </div>
+            </div>
+
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
