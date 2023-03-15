@@ -16,10 +16,10 @@
         $nombre = $_POST["nombre"];
         $email = $_POST["email"];
         $clave = $_POST["clave"];
-        // print_r($nombre);
+       
         $sentencia = $bd -> prepare("INSERT INTO admin_usuarios(nombre, email, clave, estado, fecha_alta) VALUES (?,?,?,?,?);");
         $resultado = $sentencia->execute([$nombre, $email, $clave,"1", date("Y-m-d")]);
-        // echo $resultado;
+        
         if($resultado === TRUE){
             $data = array();
             $data['ok'] = 'ok';
@@ -29,6 +29,8 @@
             $data['ok'] = 'noOk';
             echo json_encode($data);
         }
+
+       
     }
     
 ?>

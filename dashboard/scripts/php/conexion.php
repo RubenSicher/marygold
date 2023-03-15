@@ -9,5 +9,17 @@
     } catch (Exception $e){
         echo "Problema con la conexión: ".$e->getMessage();
     }
-   
+
+    // $dbHost     = '127.0.0.1';
+    // $dbUsername = 'u824480383_marygold2023';
+    // $dbPassword = 'Marygold2023';
+    // $dbName     = 'u824480383_marygold';
+    // $port = '3306';
+    
+    // //create connection and select DB
+    // $bd = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName, $port);
+    // if($bd->connect_error){
+    //     die("Unable to connect database: " . $bd->connect_error);
+    // }
+//    echo "conectado"
 ?>
