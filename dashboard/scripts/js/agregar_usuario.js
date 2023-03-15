@@ -1,23 +1,30 @@
-// function agregarUsuario(){
 
-//     $.ajax({
-//        url:"scripts/php/admin_guardaUsuarios.php",
-//        method: "POST",
-//        cache: false,
-//        data: {comm:'agregaClienteCredito', idReg:$("#idventa").text(), idCliente:id },
-//        dataType: "json"
-//     }).done(function(rest){
-      
-//       $.each(rest.data, function (i, item) {
-//         if(item.ok == "ok"){
-//           $("#divClienteCredito, #divTipoVenta").show()
-//           $("#txtNombreClienteCredito").text(item.nombre_cliente)
-//           $("#modCredito").modal("hide")
-//         }else {
-//           alert("Error al agregar al cliente a la venta de crédito, consulte al administrador del sistema")
-//         } 
-//       })
-      
-//     }) 
+$("#btnGuardaUsuario").click(function(e){
+    e.preventDefault()
+    e.stopImmediatePropagation()
+
+    $.ajax({
+        url:"scripts/php/admin_guardaUsuarios.php",
+        method: "POST",
+        cache: false,
+        data: {comm:'agregaUsuario', nombre:$("#txtNombre").val(), email:$("#txtCorreo").val(), clave:$("#txtPassword").val() },
+        dataType: "json"
+    }).done(function(rest){
+        console.log(rest)
+    //    $.each(rest.data, function (i, item) {
+            
+            if(rest.ok == "ok"){
+                alert("Usuario registrado")
+            }else {
+                alert("Error al agregar al cliente a la venta de crédito, consulte al administrador del sistema")
+            } 
+    //    })
+       
+    }).fail(function(jqXHR,estado,error){
+      console.log(estado);
+      console.log(error);
+    })
+})
+
+     
   
-//   }
