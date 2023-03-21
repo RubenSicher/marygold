@@ -7,7 +7,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>dashboard asadsa</title>
+  <title>Dashboard Marygold</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -49,12 +49,27 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="#" class="nav-link">Ver Propiedades</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+        <a href="#" class="nav-link">Nueva Propiedad</a>
       </li>
     </ul>
+<ul class="navbar-nav ml-auto">
+
+
+<li class="nav-item dropdown">
+<a class="nav-link" data-toggle="dropdown" aria-expanded="false">
+<i class="far fa-user"></i>
+</a>
+<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
+<button type="button" class="dropdown-item" id="btnLogOut">
+<i class="fas fa-user"></i>
+<span class="float-right text-muted text-sm">Cerrar Sesión</span>
+</button>
+</div>
+</li>
+</ul>
 
  
   </nav>

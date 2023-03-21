@@ -57,6 +57,20 @@ function alerta(titulo) {
 
 </script>
 
+<script>
+  
+     
+	window.history.pushState(null, "", 'https://marygoldhomes.com/dashboard/');
+  window.onpopstate = function() {
+      window.history.pushState(null, "", 'https://marygoldhomes.com/dashboard/');
+  }
+</script>
 
+<script> 
+document.getElementById("btnLogOut").addEventListener("click", function(){
+  document.cookie = "usermgold="
+    window.location.href="https://marygoldhomes.com/dashboard/login.html"
 
+})
+</script>
 <?php include 'scripts/php/conectar.php' ?>
