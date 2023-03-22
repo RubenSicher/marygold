@@ -11,11 +11,11 @@ if(!empty($_POST['txtDescripcion']) || !empty($_POST['txtUbicacion']) || !empty(
         if((($_FILES["file"]["type"] == "image/png") || ($_FILES["file"]["type"] == "image/jpg") || ($_FILES["file"]["type"] == "image/jpeg")) && in_array($file_extension, $valid_extensions)){
             $sourcePath = $_FILES['file']['tmp_name'];
             $targetPath = "../../imagenes/casas/".$fileName;
-            echo "source: ".$sourcePath;
-            echo "target: ".$targetPath;
+            // echo "source: ".$sourcePath;
+            // echo "target: ".$targetPath;
             if(move_uploaded_file($sourcePath,$targetPath)){
                 $uploadedFile = $fileName;
-                echo "subio archivo: ".$uploadedFile;
+                // echo "subio archivo: ".$uploadedFile;
             }
         }
         // echo $fileName;
@@ -31,4 +31,5 @@ if(!empty($_POST['txtDescripcion']) || !empty($_POST['txtUbicacion']) || !empty(
     // $insert = $db->query("INSERT form_data (descripcion,ubicacion,file_name) VALUES ('".$descripcion."','".$ubicacion."','".$uploadedFile."')");
     
     // echo $insert?'ok':'err';
+    echo "ok";
 }
