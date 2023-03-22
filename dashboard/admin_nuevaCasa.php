@@ -28,13 +28,46 @@
                         <form enctype="multipart/form-data" id="formCasas">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label ">Email address</label>
-                                    <input type="text" class="form-control" id="txtDescripcion" name="txtDescripcion" placeholder="Descripción" wfd-id="id2">
+                                    <label ">Name house</label>
+                                    <input type=" text" class="form-control" id="txtNombreCasa" name="txtNombreCasa" placeholder="Name house" wfd-id="id2">
                                 </div>
                                 <div class="form-group">
-                                    <label >Password</label>
-                                    <input type="text" class="form-control" id="txtUbicacion" name="txtUbicacion" placeholder="Ubicación" wfd-id="id3">
+                                    <label>Address</label>
+                                    <input type="text" class="form-control" id="txtDireccion" name="txtDireccion" placeholder="Address">
                                 </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <input type="text" class="form-control" id="txtDescripcion" name="txtDescripcion" placeholder="Description">
+                                </div>
+                                <div class="form-group">
+                                    <label>Property Size</label>
+                                    <input type="text" class="form-control" id="txtTamanoPropiedad" name="txtTamanoPropiedad" placeholder="Property Size">
+                                </div>
+                                <div class="form-group">
+                                    <label>Price</label>
+                                    <input type="text" class="form-control" id="txtPrecio" name="txtPrecio" placeholder="Price">
+                                </div>
+                                <div class="form-group">
+                                    <label>Type</label>
+                                    <select class="form-control" id="cboTipoCasa" name="cboTipoCasa">
+                                        <option value="1">APARTMENT</option>
+                                        <option value="2">HOUSE 1</option>
+                                        <option value="3">HOUSE 2</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Flat Size</label>
+                                    <input type="text" class="form-control" id="txtTamanoPlano" name="txtTamanoPlano" placeholder="Flat Size">
+                                </div>
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    <select class="form-control" id="cboEstadoCasa" name="cboEstadoCasa">
+                                        <option value="1">UNDER CONSTRUCTION</option>
+                                        <option value="2">option 2</option>
+                                        <option value="3">option 3</option>
+                                    </select>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="exampleInputFile">File input</label>
                                     <div class="input-group">
@@ -47,7 +80,7 @@
                                         </div> -->
                                     </div>
                                 </div>
-                               
+
                             </div>
 
                             <div class="card-footer">

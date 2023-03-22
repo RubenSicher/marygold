@@ -21,15 +21,21 @@ if(!empty($_POST['txtDescripcion']) || !empty($_POST['txtUbicacion']) || !empty(
         // echo $fileName;
     }
     
-    $descripcion = $_POST['txtDescripcion'];
-    $ubicacion = $_POST['txtUbicacion'];
+    $name_house = $_POST['txtNombreCasa'];
+    $address_house = $_POST['txtDireccion'];
+    $description = $_POST['txtDescripcion'];
+    $property_size = $_POST['txtTamanoPropiedad'];
+    $price = $_POST['txtPrecio'];
+    $type_house = $_POST['cboTipoCasa'];
+    $flat_size = $_POST['txtTamanoPlano'];
+    $status_house = $_POST['cboEstadoCasa'];
     
     //include database configuration file
     // include_once 'dbConfig.php';
     
     //insert form data in the database
-    // $insert = $db->query("INSERT form_data (descripcion,ubicacion,file_name) VALUES ('".$descripcion."','".$ubicacion."','".$uploadedFile."')");
+    $insert = $db->query("INSERT admin_casas (name_house, address_house, description_house, property_size, price, type_house, flat_size, status_house, estado, image_house) VALUES ('".$name_house."','".$address_house."','".$description."','".$property_size."','".$price."','".$type_house."','".$flat_size."','".$status_house."','1','".$uploadedFile."')");
     
-    // echo $insert?'ok':'err';
-    echo "ok";
+    echo $insert?'ok':'err';
+    
 }

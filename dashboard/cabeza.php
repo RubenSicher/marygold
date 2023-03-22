@@ -1,4 +1,4 @@
-<?php //include 'scripts/php/conectar.php' ?>
+<?php include 'scripts/php/conectar.php' ?>
 
 
 
