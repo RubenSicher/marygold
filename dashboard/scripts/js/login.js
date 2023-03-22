@@ -107,8 +107,10 @@ if(datos.length ==0){
     contra = $("#inputcontra").val("")
 }
 else {
+    document.cookie = "key="+Math.random().toString(36).slice(2)
     document.cookie = "usermgold="+datos[0].nombre
     window.location.href = "https://marygoldhomes.com/dashboard";
+
    
 }
 
