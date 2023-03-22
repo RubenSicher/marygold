@@ -15,7 +15,7 @@ if(!empty($_POST['txtDescripcion']) || !empty($_POST['txtUbicacion']) || !empty(
             echo "target: ".$targetPath;
             if(move_uploaded_file($sourcePath,$targetPath)){
                 $uploadedFile = $fileName;
-                // echo "subio archivo: ".$uploadedFile;
+                echo "subio archivo: ".$uploadedFile;
             }
         }
         // echo $fileName;

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login Marygold</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="./dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="./plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <link rel="stylesheet" href="./plugins/toastr/toastr.min.css">
+</head>
+<body class="hold-transition lockscreen">
+
+  
+  <!-- Preloader -->
+  <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" src="dist/img/AdminLTELogo.png" alt="AdminLTELogo" height="60" width="60">
+  </div>
+<!-- Automatic element centering -->
+<div class="lockscreen-wrapper">
+  <div class="lockscreen-logo">
+   <b>Mary</b> GoldHomes
+  </div>
+  <!-- User name -->
+  <div class="lockscreen-name">Panel de Administración</div>
+
+  <!-- START LOCK SCREEN ITEM -->
+  <div class="lockscreen-item">
+    <!-- lockscreen image -->
+ 
+    <!-- /.lockscreen-image -->
+
+    <!-- lockscreen credentials (contains the form) -->
+    <div class="lockscreen" id="inputUsuarioDiv">
+      <div class="input-group" >
+        <div class="input-group-prepend">
+          <button  class="btn">
+            <i class="fas fa-user-check text-muted"></i>
+          </button>
+          
+        </div>
+
+        <input type="text" class="form-control" placeholder="Correo/usuario" id="inputUsuario">
+        
+        <div class="input-group-append " id="usuarioInput">
+          <button type="button" class="btn" id="buscaUsuario">
+            <i class="fas fa-arrow-right text-muted"></i>
+          </button>
+          
+        </div>
+        <span id="exampleInputEmail1-error" class="error invalid-feedback">no dejes el campo vacio</span>
+      </div>      
+    </div>
+
+    <div class="lockscreen" id="inputcontraDiv" style="display: none;">
+      <div class="input-group" >
+        <div class="input-group-prepend">
+          <button type="button" class="btn" id="btnregresa">
+            <i class="fas fa-arrow-left text-muted"></i>
+          </button>
+          
+        </div>
+        <input type="password" class="form-control" placeholder="Coloque contraseña" id="inputcontra">
+
+        <div class="input-group-append " id="contrainput">
+          <button type="button" class="btn" id="btnbuscacontra">
+            <i class="fas fa-arrow-right text-muted"></i>
+          </button>
+          
+        </div>
+        <span id="spancontra" class="error invalid-feedback">no dejes el campo vacio</span>
+      </div>
+    </div>
+
+
+  </div>
+
+
+</div>
+<!-- /.center -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="plugins/chart.js/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="plugins/sparklines/sparkline.js"></script>
+<!-- JQVMap -->
+<script src="plugins/jqvmap/jquery.vmap.min.js"></script>
+<script src="plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/daterangepicker/daterangepicker.js"></script>
+
+<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+
+<script src="plugins/summernote/summernote-bs4.min.js"></script>
+
+<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+
+<script src="dist/js/adminlte.js"></script>
+
+<script src="dist/js/pages/dashboard.js"></script>
+
+<script src="./plugins/sweetalert2/sweetalert2.min.js"></script>
+
+<script src="./plugins/toastr/toastr.min.js"></script>
+<script src="./scripts/js/login.js"></script>
+<script >
+  	window.history.pushState(null, "", window.location.href);        
+	window.onpopstate = function() {
+	  window.history.pushState(null, "", window.location.href);
+	};
+
+	function NoBack(){
+		history.go(1)
+	}
+</script>
+</body>
+</html>

@@ -56,7 +56,6 @@ function alerta(titulo) {
 }
 
 </script>
-
-
+<script src="./scripts/js/protect.js"></script>
 
 <?php include 'scripts/php/conectar.php' ?>
