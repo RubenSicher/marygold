@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label >Password</label>
-                                    <input type="password" class="form-control" id="txtUbicacion" name="txtUbicacion" placeholder="Ubicación" wfd-id="id3">
+                                    <input type="text" class="form-control" id="txtUbicacion" name="txtUbicacion" placeholder="Ubicación" wfd-id="id3">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputFile">File input</label>
