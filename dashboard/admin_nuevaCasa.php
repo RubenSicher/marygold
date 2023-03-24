@@ -18,17 +18,17 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-4">
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Quick Example</h3>
                         </div>
 
                         <p class="statusMsg"></p>
-                        <form enctype="multipart/form-data" id="formCasas">
+                        <form class="form-horizontal" enctype="multipart/form-data" id="formCasas">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label ">Name house</label>
+                                    <label>Name house</label>
                                     <input type=" text" class="form-control" id="txtNombreCasa" name="txtNombreCasa" placeholder="Name house" wfd-id="id2">
                                 </div>
                                 <div class="form-group">
@@ -89,6 +89,36 @@
                         </form>
                     </div>
                 </div>
+                <div class="col-md-8">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">House list</h3>
+                        </div>
+                        <div class="card-body">
+                            <table id="tblListadoCasas" class="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
+                                <thead>
+                                    <tr>
+                                        <th >id</th>
+                                        <th >name_house</th>
+                                        <th >address_house</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                                                        
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th >id</th>
+                                        <th >name_house</th>
+                                        <th >address_house</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
             </div>
         </div>
     </section>
@@ -99,6 +129,7 @@
 <?php include 'pie.php' ?>
 
 <!-- </div> -->
+
 
 <?php include 'extension_pagina.php' ?>
 <script src="./scripts/js/admin_nuevaCasa.js"></script>

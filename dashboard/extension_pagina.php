@@ -2,6 +2,10 @@
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
+<script src="./plugins/datatables/jquery.dataTables.js"></script>
+<script src="./plugins/datatables/jquery.dataTables.min.js"></script>
+<!-- <link href="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.13.4/b-2.3.6/datatables.min.css" rel="stylesheet"/>
+<script src="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.13.4/b-2.3.6/datatables.min.js"></script> -->
 <!-- jQuery UI 1.11.4 -->
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -34,6 +38,9 @@
 <!-- <script src="dist/js/demo.js"></script> -->
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard.js"></script>
+
+<script src="./libs/datatables.net-bs4/js/dataTables.bootstrap4.js"></script>
+<script src="./libs/datatables.net-bs4/css/dataTables.bootstrap4.css"></script>
 
 <script src="./plugins/sweetalert2/sweetalert2.min.js"></script>
 
