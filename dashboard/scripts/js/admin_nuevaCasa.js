@@ -54,8 +54,8 @@ function listarCasas(){
       },
         columns: [
           { data: "id"},
-          { data: "name_house"},
-          { data: "address_house"}
+          { data: "data_house"},
+          { data: "image_house"}
         ],
          order:[[0,"asc"]],
       });

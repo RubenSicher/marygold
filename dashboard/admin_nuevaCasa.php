@@ -99,8 +99,8 @@
                                 <thead>
                                     <tr>
                                         <th >id</th>
-                                        <th >name_house</th>
-                                        <th >address_house</th>
+                                        <th >Data</th>
+                                        <th >Image</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -109,8 +109,8 @@
                                 <tfoot>
                                     <tr>
                                         <th >id</th>
-                                        <th >name_house</th>
-                                        <th >address_house</th>
+                                        <th >Data</th>
+                                        <th >Image</th>
                                     </tr>
                                 </tfoot>
                             </table>
