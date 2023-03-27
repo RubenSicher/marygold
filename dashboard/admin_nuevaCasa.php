@@ -18,23 +18,56 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-4">
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Quick Example</h3>
                         </div>
 
                         <p class="statusMsg"></p>
-                        <form enctype="multipart/form-data" id="formCasas">
+                        <form class="form-horizontal" enctype="multipart/form-data" id="formCasas">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label ">Email address</label>
-                                    <input type="text" class="form-control" id="txtDescripcion" name="txtDescripcion" placeholder="Descripción" wfd-id="id2">
+                                    <label>Name house</label>
+                                    <input type=" text" class="form-control" id="txtNombreCasa" name="txtNombreCasa" placeholder="Name house" wfd-id="id2">
                                 </div>
                                 <div class="form-group">
-                                    <label >Password</label>
-                                    <input type="text" class="form-control" id="txtUbicacion" name="txtUbicacion" placeholder="Ubicación" wfd-id="id3">
+                                    <label>Address</label>
+                                    <input type="text" class="form-control" id="txtDireccion" name="txtDireccion" placeholder="Address">
                                 </div>
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <input type="text" class="form-control" id="txtDescripcion" name="txtDescripcion" placeholder="Description">
+                                </div>
+                                <div class="form-group">
+                                    <label>Property Size</label>
+                                    <input type="text" class="form-control" id="txtTamanoPropiedad" name="txtTamanoPropiedad" placeholder="Property Size">
+                                </div>
+                                <div class="form-group">
+                                    <label>Price</label>
+                                    <input type="text" class="form-control" id="txtPrecio" name="txtPrecio" placeholder="Price">
+                                </div>
+                                <div class="form-group">
+                                    <label>Type</label>
+                                    <select class="form-control" id="cboTipoCasa" name="cboTipoCasa">
+                                        <option value="1">APARTMENT</option>
+                                        <option value="2">HOUSE 1</option>
+                                        <option value="3">HOUSE 2</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Flat Size</label>
+                                    <input type="text" class="form-control" id="txtTamanoPlano" name="txtTamanoPlano" placeholder="Flat Size">
+                                </div>
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    <select class="form-control" id="cboEstadoCasa" name="cboEstadoCasa">
+                                        <option value="1">UNDER CONSTRUCTION</option>
+                                        <option value="2">option 2</option>
+                                        <option value="3">option 3</option>
+                                    </select>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="exampleInputFile">File input</label>
                                     <div class="input-group">
@@ -47,7 +80,7 @@
                                         </div> -->
                                     </div>
                                 </div>
-                               
+
                             </div>
 
                             <div class="card-footer">
@@ -55,6 +88,36 @@
                             </div>
                         </form>
                     </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">House list</h3>
+                        </div>
+                        <div class="card-body">
+                            <table id="tblListadoCasas" class="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
+                                <thead>
+                                    <tr>
+                                        <th >id</th>
+                                        <th >Data</th>
+                                        <th >Image</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                                                        
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th >id</th>
+                                        <th >Data</th>
+                                        <th >Image</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    
                 </div>
             </div>
         </div>
@@ -66,6 +129,7 @@
 <?php include 'pie.php' ?>
 
 <!-- </div> -->
+
 
 <?php include 'extension_pagina.php' ?>
 <script src="./scripts/js/admin_nuevaCasa.js"></script>

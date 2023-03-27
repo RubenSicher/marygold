@@ -3,7 +3,7 @@ $(document).ready(function(e){
         e.preventDefault();
         $.ajax({
             type: 'POST',
-            url: 'scripts/php/admin_nueva_casa.php',
+            url: 'scripts/php/admin_nueva_casa.php?com=nueva_casa',
             data: new FormData(this),
             contentType: false,
             cache: false,
@@ -38,3 +38,27 @@ $(document).ready(function(e){
         }
     });
 });
+
+
+function listarCasas(){
+    $('#tblListadoCasas').dataTable({
+        destroy: true,
+        retrieve: true,
+        responsive: true,
+        ajax: 'scripts/php/admin_nueva_casa.php?com=listarCasas',
+        processing: true,
+        type: 'POST',
+      
+          "oLanguage": {
+      "sUrl": "./libs/datatables/tableLanguaje.txt"
+      },
+        columns: [
+          { data: "id"},
+          { data: "data_house"},
+          { data: "image_house"}
+        ],
+         order:[[0,"asc"]],
+      });
+}
+
+listarCasas()
