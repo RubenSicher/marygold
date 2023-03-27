@@ -20,17 +20,17 @@
          
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
+              <i class="nav-icon fas fa-users"></i>
               <p>
-               datos
+               Usuarios
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="ver_datos.php" class="nav-link">
+                <a href="usuarios.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>datos</p>
+                  <p>Nuevo/estatus</p>
                 </a>
               </li>
 

@@ -33,7 +33,7 @@
 
 <link rel="stylesheet" href="./plugins/toastr/toastr.min.css">
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed sidebar-collapse">
 <div class="wrapper">
 
   <!-- Preloader -->
