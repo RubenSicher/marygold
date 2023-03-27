@@ -1,13 +1,50 @@
 
+var state = 1;
+contra = document.getElementById("revelaContra")
+contra.addEventListener("click", function(){
+    if(state ==1) {
+    document.getElementById("inputcontra").type ="text"
+    state = 0;
+    contra.classList.remove("fa-eye")
+    contra.classList.add("fa-eye-slash")
+    } 
+    else if(state ==0){
+        document.getElementById("inputcontra").type ="password"
+        state=1;
+        contra.classList.remove("fa-eye-slash")
+        contra.classList.add("fa-eye")
+    }
+})
+
 document.getElementById("btnregresa").addEventListener("click", function(){
 
-    document.getElementById("inputUsuarioDiv").style.display ="block"
+document.getElementById("inputUsuarioDiv").style.display ="block"
 document.getElementById("inputcontraDiv").style.display ="none"
 id =$("#inputUsuario").val("")
 }) 
 
 pass = $("#inputcontra").val()
 var estado
+
+// agregar evento al clik enter 
+var input = document.getElementById("inputUsuario");
+input.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    buscarUsuario()
+  }
+});
+var input2 = document.getElementById("inputcontra");
+input2.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    buscaContra()
+  }
+});
+// agregar evento al click para buscar contraseña
+
+
+// acciona los botones para buscar 
 document.getElementById("buscaUsuario").addEventListener("click",buscarUsuario)
 document.getElementById("btnbuscacontra").addEventListener("click",buscaContra)
 

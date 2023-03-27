@@ -45,7 +45,7 @@
           
         </div>
 
-        <input type="text" class="form-control" placeholder="Correo/usuario" id="inputUsuario">
+        <input type="text" class="form-control" placeholder="Correo/usuario" id="inputUsuario" autocomplete="off">
         
         <div class="input-group-append " id="usuarioInput">
           <button type="button" class="btn" id="buscaUsuario">
@@ -65,8 +65,10 @@
           </button>
           
         </div>
-        <input type="password" class="form-control" placeholder="Coloque contraseña" id="inputcontra">
-
+        <input type="password" class="form-control" placeholder="Coloque contraseña" id="inputcontra" autocomplete="off" onfocus="this.removeAttribute('readonly');">
+        <div class="input-group-append">
+          <span class="input-group-text" style="cursor: pointer;"><i class="fas fa-eye" id="revelaContra"></i></span>
+          </div>
         <div class="input-group-append " id="contrainput">
           <button type="button" class="btn" id="btnbuscacontra">
             <i class="fas fa-arrow-right text-muted"></i>
