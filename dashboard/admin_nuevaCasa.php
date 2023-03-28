@@ -1,6 +1,19 @@
 <?php include 'cabeza.php' ?>
 <?php include 'menu_admin.php' ?>
 
+
+<style>
+    .tamano_imagen{
+        width: 100%;
+    }
+
+    /* @media screen and (max-width:600px) {
+        .tamano_imagen{
+            width: 100%;
+        } 
+    }*/
+</style>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -70,14 +83,15 @@
 
                                 <div class="form-group">
                                     <label for="exampleInputFile">File input</label>
-                                    <div class="input-group">
+                                    <div class="input-group" id="uploadImage">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="file" name="file" wfd-id="id4">
                                             <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                         </div>
-                                        <!-- <div class="input-group-append">
-                                            <span class="input-group-text">Upload</span>
-                                        </div> -->
+                                    </div>
+                                    <div class="input-group" id="imageHouse">
+                                        <img src="" id="imgUpload">
+                                        <button type="button" class="btn btn-block btn-danger btn-xs" alt="Delete image"><i class="fas fa-trash"></i></button>
                                     </div>
                                 </div>
 
@@ -99,7 +113,7 @@
                                 <thead>
                                     <tr>
                                         <th >id</th>
-                                        <th >Data</th>
+                                        <th style="width: 50%;" >Data</th>
                                         <th >Image</th>
                                     </tr>
                                 </thead>
