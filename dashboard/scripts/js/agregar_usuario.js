@@ -1,3 +1,25 @@
+
+var estadobtn = 1;
+
+var btnEstado = document.getElementById("btnOCultaFormulario")
+btnEstado.addEventListener("click", function(event){
+    event.preventDefault();
+    if(estadobtn===1) {
+        btnEstado.classList.remove("btn-info")
+        btnEstado.classList.add("btn-warning")
+        btnEstado.innerText = "Ocultar"
+        estadobtn = 0;
+    }
+    else if( estadobtn ===0) {
+        btnEstado.classList.remove("btn-warning")
+        btnEstado.classList.add("btn-info")
+        btnEstado.innerText = "Nuevo"
+        estadobtn = 1;
+    }
+
+})
+
+
 var valido = false;
 // crea una clave temporal
 crearClaveTemporal()

@@ -18,8 +18,13 @@
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="m-auto col-md-12 text-center">
+          <div class="m-auto col-6 text-center">
             <h3 class="m-0">Usuarios</h3>
+            
+          </div>
+          <div class="m-auto col-3 text-center">
+           <button class="btn btn-info" data-toggle="collapse" href="#formCollapse" aria-expanded="false" id="btnOCultaFormulario" >Nuevo</button>
+            
           </div>
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
@@ -30,7 +35,7 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <div class="m-auto col-md-6">
+          <div class="m-auto col-md-6 collapse" id="formCollapse">
           <div class="card card-primary">
             <div class="card-header">
             <h3 class="card-title">Agregar Nuevo Usuario</h3>
