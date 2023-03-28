@@ -16,6 +16,8 @@ contra.addEventListener("click", function(){
     }
 })
 
+// cambios al login 
+
 document.getElementById("btnregresa").addEventListener("click", function(){
 
 document.getElementById("inputUsuarioDiv").style.display ="block"

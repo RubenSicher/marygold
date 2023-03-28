@@ -18,7 +18,7 @@ btnEstado.addEventListener("click", function(event){
     }
 
 })
-
+// nuevos campos
 
 var valido = false;
 // crea una clave temporal
