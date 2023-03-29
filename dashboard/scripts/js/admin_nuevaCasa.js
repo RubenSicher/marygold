@@ -11,21 +11,49 @@ $(document).ready(function(e){
                 contentType: false,
                 cache: false,
                 processData:false,
+                dataType: 'json',
                 beforeSend: function(){
                     $('.submitBtn').attr("disabled","disabled");
                     $('#formCasas').css("opacity",".5");
-                },
-                success: function(msg){
+                }
+                // success: function(msg){
+                //     console.log(msg)
+                //     $.each(msg.data, function (i, item) {
+                //         $('.statusMsg').html('');
+
+                //         if(item.ok == 'ok'){
+                //             $('#formCasas')[0].reset();
+                //             $('.statusMsg').html('<span style="font-size:18px;color:#34A853">Form data submitted successfully.</span>');
+                //         }else if(item.ok == 'err'){
+                //             $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred in database, please try again.</span>');
+                //         }else if(item.ok == 'noData'){
+                //             $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, missing data to enter.</span>');
+                //         }
+                //         $('#formCasas').css("opacity","");
+                //         $(".submitBtn").removeAttr("disabled");
+                //     })
+                    
+                // }
+            }).done(function(rest){
+                console.log(rest)
+                $.each(rest.data, function (i, item) {
                     $('.statusMsg').html('');
-                    if(msg == 'ok'){
+                    if(item.ok == 'ok'){
                         $('#formCasas')[0].reset();
                         $('.statusMsg').html('<span style="font-size:18px;color:#34A853">Form data submitted successfully.</span>');
-                    }else{
-                        $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, please try again.</span>');
+                    }else if(item.ok == 'err'){
+                        $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred in database, please try again.</span>');
+                    }else if(item.ok == 'noData'){
+                        $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, missing data to enter.</span>');
                     }
                     $('#formCasas').css("opacity","");
                     $(".submitBtn").removeAttr("disabled");
-                }
+                    $("#uploadImage").show()
+                    $("#imageHouse").hide()
+                    $("#txtImage_house").val("")
+                    $("#idReg").val(0)
+                    $("#tblListadoCasas").DataTable().ajax.reload();
+                })
             });
 
         }else if($("#idReg").val()>0){
@@ -37,21 +65,52 @@ $(document).ready(function(e){
                 contentType: false,
                 cache: false,
                 processData:false,
+                dataType: "json",
                 beforeSend: function(){
                     $('.submitBtn').attr("disabled","disabled");
                     $('#formCasas').css("opacity",".5");
-                },
-                success: function(msg){
+                }
+                // success: function(msg){
+                //     console.log(msg)
+                //     $.each(msg.data, function (i, item) {
+                //         $('.statusMsg').html('');
+                //         if(item.ok == 'ok'){
+                //             $('#formCasas')[0].reset();
+                //             $('.statusMsg').html('<span style="font-size:18px;color:#34A853">Form data submitted successfully.</span>');
+                //         }else if(item.ok == 'err'){
+                //             $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred in database, please try again.</span>');
+                //         }else if(item.ok == 'noData'){
+                //             $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, missing data to enter.</span>');
+                //         }
+                //         $('#formCasas').css("opacity","");
+                //         $(".submitBtn").removeAttr("disabled");
+                //         $("#uploadImage").show()
+                //         $("#imageHouse").hide()
+                //         $("#txtImage_house").val("")
+                //         $("#idReg").val(0)
+                //     })
+                    
+                // }
+            }).done(function(rest){
+                console.log(rest)
+                $.each(rest.data, function (i, item) {
                     $('.statusMsg').html('');
-                    if(msg == 'ok'){
+                    if(item.ok == 'ok'){
                         $('#formCasas')[0].reset();
                         $('.statusMsg').html('<span style="font-size:18px;color:#34A853">Form data submitted successfully.</span>');
-                    }else{
-                        $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, please try again.</span>');
+                    }else if(item.ok == 'err'){
+                        $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred in database, please try again.</span>');
+                    }else if(item.ok == 'noData'){
+                        $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, missing data to enter.</span>');
                     }
                     $('#formCasas').css("opacity","");
                     $(".submitBtn").removeAttr("disabled");
-                }
+                    $("#uploadImage").show()
+                    $("#imageHouse").hide()
+                    $("#txtImage_house").val("")
+                    $("#idReg").val(0)
+                    
+                })
             });
         }
         
@@ -96,12 +155,15 @@ function listarCasas(){
 
 listarCasas()
 
+var idRegistro
+
 $("#tblListadoCasas").on( "click", "#btnEditHouse", function(){
     //Buscamos los datos de la casa a editar
+    idRegistro = $(this).attr("data-id")
     $.ajax({
         url:"scripts/php/admin_nueva_casa.php",
         cache: false,
-        data: {comm:"buscaDataHouse", idReg:1 },
+        data: {comm:"buscaDataHouse", idReg:idRegistro},
         dataType: "json",
         method: "POST"
     }).done(function(rest){
@@ -114,8 +176,9 @@ $("#tblListadoCasas").on( "click", "#btnEditHouse", function(){
             $("#txtPrecio").val(item.price)
             $("#cboTipoCasa").val(item.type_house)
             $("#txtTamanoPlano").val(item.flat_size)
-            $("#cboEstadoCasa").val(item.status)
+            $("#cboEstadoCasa").val(item.status_house)
             $("#imgUpload").attr("src", item.src_image)
+            $("#txtImage_house").val(item.image_house)
             $("#uploadImage").hide()
             $("#imageHouse").show()
          })

@@ -89,15 +89,17 @@
                                             <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                                         </div>
                                     </div>
-                                    <div class="input-group" id="imageHouse">
-                                        <img src="" id="imgUpload">
-                                        <button type="button" class="btn btn-block btn-danger btn-xs" alt="Delete image"><i class="fas fa-trash"></i></button>
+                                    <div class="input-group" id="imageHouse" style="display:none;">
+                                        <img src="" id="imgUpload" style="width: 100%;">
+                                        <input type="hidden" id="txtImage_house" name="txtImage_house" value="">
+                                        <button type="button" class="btn btn-block btn-danger btn-xs" alt="Delete image"><i class="fas fa-trash"></i>Eliminar imagen</button>
                                     </div>
                                 </div>
 
                             </div>
 
                             <div class="card-footer">
+                                <input type="hidden" value="0" id="idReg" name="idReg">
                                 <button type="submit" class="btn btn-primary submitBtn">Guardar</button>
                             </div>
                         </form>
