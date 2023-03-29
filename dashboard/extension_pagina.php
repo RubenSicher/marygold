@@ -62,6 +62,13 @@ function alerta(titulo) {
   })
 }
 
+var Toast2 = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    timer: null,
+
+  });
+
 </script>
 <script src="./scripts/js/protect.js"></script>
 

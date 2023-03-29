@@ -31,14 +31,26 @@ if (cok.usermgold=="" || cok.key.lenght <7) {
   ajax.send();
   ajax.onreadystatechange = function () {
   if(this.readyState ==4 && this.status==200) {
-    var datos = JSON.parse(this.responseText);
-    if (datos.length ==0) {
+    if (this.response==""){
       Toast.fire("La sesión ha cadudado!!!", "","warning");
       setTimeout(function(){
         document.cookie = "usermgold="
         document.cookie = "key="
       window.location.href="https://marygoldhomes.com/dashboard/login.html"
+      },3000) 
+    }
+   else  {
+    var datos = JSON.parse(this.responseText); }
+    if (datos[0].estado ==0) {
+      Toast.fire("La sesión fue inhabilitada!!!", "","warning");
+      setTimeout(function(){
+        document.cookie = "usermgold="
+        document.cookie = "key="
+      window.location.href="https://marygoldhomes.com/dashboard/login.html"
       },3000)
+    } else 
+    {
+      $("#globalUser").text(datos[0].nombre)
     }
   }
 }

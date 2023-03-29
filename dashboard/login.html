@@ -45,7 +45,8 @@
           
         </div>
 
-        <input type="text" class="form-control" placeholder="Correo/usuario" id="inputUsuario" autocomplete="off">
+        <input type="text" class="form-control" placeholder="Correo/usuario" id="inputUsuario" autocomplete="off" readonly 
+        onfocus="this.removeAttribute('readonly');">
         
         <div class="input-group-append " id="usuarioInput">
           <button type="button" class="btn" id="buscaUsuario">
@@ -65,7 +66,8 @@
           </button>
           
         </div>
-        <input type="password" class="form-control" placeholder="Coloque contraseña" id="inputcontra" autocomplete="off" onfocus="this.removeAttribute('readonly');">
+        <input type="password" class="form-control" placeholder="Coloque contraseña" id="inputcontra" autocomplete="off" readonly 
+        onfocus="this.removeAttribute('readonly');">
         <div class="input-group-append">
           <span class="input-group-text" style="cursor: pointer;"><i class="fas fa-eye" id="revelaContra"></i></span>
           </div>
@@ -78,12 +80,53 @@
         <span id="spancontra" class="error invalid-feedback">no dejes el campo vacio</span>
       </div>
     </div>
-
-
   </div>
+  <div class="login-box m-auto" style="display: none;" id="frmNuevacontraseña">
+    <!-- /.login-logo -->
+    <div class="card card-outline card-primary">
+      <div class="card-body">
+        <p class="login-box-msg">coloque una nueva contraseña</p>
+  
+        <form>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" placeholder="Nueva Contraseña" autocomplete="off" id="nuevaClave">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-eye" id="revelacontranueva"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" placeholder="Confirmar Contraseña" autocomplete="off" id="nuevaclaveC" aria-describedby="spanValidaNContra">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-eye" id="revelacontranuevaC"></span>
+                <span id="spanValidaNContra" class="error invalid-feedback">las claves no coinciden!</span>
+              </div>
+            </div>
+          </div>
 
-
+        </form>
+  
+        <div class="social-auth-links text-center mt-2 mb-3">
+          <button type="button" id="btnCambiapass" class="btn btn-block btn-primary">
+          Cambiar Contraseña
+          </button>
+          <button  type="button" id="btnMantienePass"  class="btn btn-block btn-danger">
+            Mantener Contraseña
+          </button>
+        </div>
+        <!-- /.social-auth-links -->
+      </div>
+      <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+  </div>
 </div>
+
+
+
+
 <!-- /.center -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -130,6 +173,20 @@
 	function NoBack(){
 		history.go(1)
 	}
+  var Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+  });
+  var Toast2 = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    timer: null,
+
+  });
+
 </script>
+
 </body>
 </html>

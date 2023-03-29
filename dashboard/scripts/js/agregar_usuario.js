@@ -94,11 +94,11 @@ $("#btnGuardaUsuario").click(function(e){
             ajax.onreadystatechange = function(){
             if(this.readyState ==4 && this.status ==200) {
             var datos = JSON.parse(this.responseText);
-            console.log(datos)
             
             if(datos.ok=='ok'){
           Toast.fire("usuario Agregado Correctamente!","","success")
           $("#formNuevoUsuario")[0].reset();
+          reiniciaTabla()
           crearClaveTemporal()
           inputCorreo.classList.remove("is-valid");
             }
@@ -118,3 +118,154 @@ $("#btnGuardaUsuario").click(function(e){
             }
     }
 })
+
+verUsuarios()
+function verUsuarios(){
+$("#tblUsuarios").dataTable( {
+    "ajax":{
+        "url":"scripts/php/usuarios.php?consulta=verUsuarios",
+        "dataSrc":""
+    },
+    "columns":[
+        {"data":"id", visible:false},
+        {"data":"nombre"},
+        {"data":"email"},
+        {"data":"estado"},
+        {"data":"activo"},
+        {"data":"accion"}
+    ],
+    order:[[0,'asc']]
+
+
+})
+}
+
+function reiniciaTabla(){
+    $("#tblUsuarios").DataTable().destroy();
+    verUsuarios()
+}
+
+
+function BorrarUsuario(id){
+    let estado =0;
+    Toast2.fire({
+   icon:'warning',
+   title:'¿desea dar de baja al usuario?',
+   confirmButtonText: 'Si',
+   showDenyButton: true,
+   denyButtonText: 'Cancelar'
+    }).then((resultado) =>{
+     if(resultado.isConfirmed) 
+     {
+        var ajax = new XMLHttpRequest();
+        var metodo ="GET";
+        var url = 'scripts/php/usuarios.php?consulta=bajaUsuario&id='+id+'&estado='+estado+'&activo=0';
+        var asyn = true;
+        ajax.open(metodo, url, asyn);
+        ajax.send();
+        ajax.onreadystatechange = function(){
+        if(this.readyState ==4 && this.status ==200) {
+        var datos =this.responseText;
+        if(datos =="ok") {
+            Toast.fire("Usuario Dado de Baja", "", "success")
+            reiniciaTabla();
+        }
+        else if(datos=="error"){
+            Toast.fire("Error, consulte con administración","","warning")
+        }
+        }
+    }
+}
+   })
+   }
+
+   function ActivarCuenta(id){
+    let estado =1;
+    Toast2.fire({
+   icon:'warning',
+   title:'¿desea activar nuevamente la cuenta?',
+   confirmButtonText: 'Si',
+   showDenyButton: true,
+   denyButtonText: 'Cancelar'
+    }).then((resultado) =>{
+     if(resultado.isConfirmed) 
+     {
+        var ajax = new XMLHttpRequest();
+        var metodo ="GET";
+        var url = 'scripts/php/usuarios.php?consulta=bajaUsuario&id='+id+'&estado='+estado+'&activo=0';
+        var asyn = true;
+        ajax.open(metodo, url, asyn);
+        ajax.send();
+        ajax.onreadystatechange = function(){
+        if(this.readyState ==4 && this.status ==200) {
+        var datos =this.responseText;
+        if(datos =="ok") {
+            Toast.fire("Usuario en linea nuevamente!", "", "success")
+            reiniciaTabla();
+            setTimeout(function() {
+                enviarCorreo(id)},2000)
+            
+        }
+        else if(datos=="error"){
+            Toast.fire("Error, consulte con administración","","warning")
+        }
+        }
+    }
+}
+   })
+   }
+
+   function enviarCorreo(id){
+ var claveTemp = crearClaveTemporal2()
+ 
+   var ajax = new XMLHttpRequest;
+   var metodo = "GET";
+   var url = 'scripts/php/usuarios.php?consulta=EnviarCorreo&id='+id+'&claveTemp='+claveTemp;
+   var asyn = true;
+   ajax.open(metodo, url, asyn);
+   ajax.send();
+   ajax.onreadystatechange = function(){
+    if(this.readyState == 4 && this.status==200) {
+        if(this.response =='ok')
+        Toast.fire("Se ha envíado un correo al usuario con una contraseña nueva!","","warning")
+        else {
+            Toast.fire("hubo un error al envíar la nueva contraseña!","","error")
+        }
+
+    } else {Toast.fire("hubo un error al envíar el correo!","","")}
+   }
+
+   }
+
+   
+function crearClaveTemporal2(){
+const especiales = "!#$%&/()?¿¡"
+function generateString(length) {
+    let result = '';
+    const largoEspeciales = especiales.length;
+    for ( let i = 0; i < length; i++ ) {
+        result += especiales.charAt(Math.floor(Math.random() * largoEspeciales));
+    }
+    return result;
+}
+let especial = generateString(1);
+   clave = Math.random().toString(36).slice(6)
+     claveTemporal= especial+clave
+    return claveTemporal
+}
+
+function olvidoClave(id){
+    Toast2.fire({
+        icon:'warning',
+        title:'¿desea enviar nueva clave?, si acepta la clave anterior quedará inhabilitada!',
+        confirmButtonText: 'Si',
+        showDenyButton: true,
+        denyButtonText: 'Cancelar'
+         }).then((resultado) =>{
+          if(resultado.isConfirmed) 
+          {
+            enviarCorreo(id)
+            reiniciaTabla()
+          }
+})
+}

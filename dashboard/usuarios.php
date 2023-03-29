@@ -17,15 +17,16 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="m-auto col-6 text-center">
-            <h3 class="m-0">Usuarios</h3>
+        <div class="row">
+          <div class="col-12 text-center">
+            <h3 class="d-sm-inline-block">Control de usuarios</h3>
+           <button class="d-sm-inline-block btn btn-info ml-2" data-toggle="collapse" href="#formCollapse" aria-expanded="false" id="btnOCultaFormulario" >Nuevo</button disabled>
+     
             
           </div>
-          <div class="m-auto col-3 text-center">
-           <button class="btn btn-info" data-toggle="collapse" href="#formCollapse" aria-expanded="false" id="btnOCultaFormulario" >Nuevo</button>
+       
             
-          </div>
+         
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -65,6 +66,36 @@
                 </div>
           </div>
         </div>
+
+        <!-- empieza tabla -->
+
+        <div class="row">
+                        <div class="col-12">
+                        <div class="card">
+                        <div class="card-header bg-info">
+                        <h3 class="card-title">Lista de usuarios</h3>
+                        <div class="card-tools">
+                        </div>
+                        </div>
+                        <div class="card-body table-responsive p-0">
+                        <table class="table table-hover text-nowrap" id="tblUsuarios">
+                        <thead>
+                        <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>correo</th>
+                        <th>Estado</th>
+                        <th>Activo</th>
+                        <th>Acción</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                        </table>
+                                </div>
+                          </div>
+                        </div>
+                     </div>
       </div>
     </section>
 

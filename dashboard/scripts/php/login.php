@@ -4,6 +4,8 @@ $consulta = $_GET['consulta'];
 $id = $_GET['id'];
 $pass = $_GET['pass'];
 $nombre = $_GET['usuario'];
+$nuevaclave= $_GET['nuevaClave'];
+$idClave= $_GET['idClave'];
 
 // buscamos usuario 
 if($consulta =='buscarUsuario'){
@@ -40,5 +42,21 @@ while($row2 = mysqli_fetch_assoc($result2)){
 echo json_encode($datos2);
 
     
+} else if($consulta=='CambiarClave') {
+$sql2 = "UPDATE admin_usuarios SET clave='$nuevaclave' , activo=1 WHERE id=$idClave";
+if($conn->query($sql2)===true){
+echo 'ok';
+} else {
+    echo 'error';
+    print $conn->error;
 }
+} else if($consulta=='mantieneClave') {
+    $sql2 = "UPDATE admin_usuarios SET activo=1 WHERE id=$idClave";
+    if($conn->query($sql2)===true){
+    echo 'ok';
+    } else {
+        echo 'error';
+        print $conn->error;
+    }
+    }
 ?>
