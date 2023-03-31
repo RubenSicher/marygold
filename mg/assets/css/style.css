@@ -1772,7 +1772,7 @@ label {
 
 /* banner-four */
 .banner-area-four.banner-bg-three {
-	background-image: url(/assets/img/marygold/imagenPrincipal.jpg);
+	background-image: url(/mg/assets/img/marygold/imagenPrincipal.jpg);
 	background-size: cover;
 	background-position: center;
 	position: relative;
