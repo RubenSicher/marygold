@@ -11,21 +11,49 @@ $(document).ready(function(e){
                 contentType: false,
                 cache: false,
                 processData:false,
+                dataType: 'json',
                 beforeSend: function(){
                     $('.submitBtn').attr("disabled","disabled");
                     $('#formCasas').css("opacity",".5");
-                },
-                success: function(msg){
+                }
+                // success: function(msg){
+                //     console.log(msg)
+                //     $.each(msg.data, function (i, item) {
+                //         $('.statusMsg').html('');
+
+                //         if(item.ok == 'ok'){
+                //             $('#formCasas')[0].reset();
+                //             $('.statusMsg').html('<span style="font-size:18px;color:#34A853">Form data submitted successfully.</span>');
+                //         }else if(item.ok == 'err'){
+                //             $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred in database, please try again.</span>');
+                //         }else if(item.ok == 'noData'){
+                //             $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, missing data to enter.</span>');
+                //         }
+                //         $('#formCasas').css("opacity","");
+                //         $(".submitBtn").removeAttr("disabled");
+                //     })
+                    
+                // }
+            }).done(function(rest){
+                console.log(rest)
+                $.each(rest.data, function (i, item) {
                     $('.statusMsg').html('');
-                    if(msg == 'ok'){
+                    if(item.ok == 'ok'){
                         $('#formCasas')[0].reset();
                         $('.statusMsg').html('<span style="font-size:18px;color:#34A853">Form data submitted successfully.</span>');
-                    }else{
-                        $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, please try again.</span>');
+                    }else if(item.ok == 'err'){
+                        $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred in database, please try again.</span>');
+                    }else if(item.ok == 'noData'){
+                        $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, missing data to enter.</span>');
                     }
                     $('#formCasas').css("opacity","");
                     $(".submitBtn").removeAttr("disabled");
-                }
+                    $("#uploadImage").show()
+                    $("#imageHouse").hide()
+                    $("#txtImage_house").val("")
+                    $("#idReg").val(0)
+                    $("#tblListadoCasas").DataTable().ajax.reload();
+                })
             });
 
         }else if($("#idReg").val()>0){
@@ -37,21 +65,52 @@ $(document).ready(function(e){
                 contentType: false,
                 cache: false,
                 processData:false,
+                dataType: "json",
                 beforeSend: function(){
                     $('.submitBtn').attr("disabled","disabled");
                     $('#formCasas').css("opacity",".5");
-                },
-                success: function(msg){
+                }
+                // success: function(msg){
+                //     console.log(msg)
+                //     $.each(msg.data, function (i, item) {
+                //         $('.statusMsg').html('');
+                //         if(item.ok == 'ok'){
+                //             $('#formCasas')[0].reset();
+                //             $('.statusMsg').html('<span style="font-size:18px;color:#34A853">Form data submitted successfully.</span>');
+                //         }else if(item.ok == 'err'){
+                //             $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred in database, please try again.</span>');
+                //         }else if(item.ok == 'noData'){
+                //             $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, missing data to enter.</span>');
+                //         }
+                //         $('#formCasas').css("opacity","");
+                //         $(".submitBtn").removeAttr("disabled");
+                //         $("#uploadImage").show()
+                //         $("#imageHouse").hide()
+                //         $("#txtImage_house").val("")
+                //         $("#idReg").val(0)
+                //     })
+                    
+                // }
+            }).done(function(rest){
+                console.log(rest)
+                $.each(rest.data, function (i, item) {
                     $('.statusMsg').html('');
-                    if(msg == 'ok'){
-                        $('#formCasas')[0].reset();
+                    if(item.ok == 'ok'){
                         $('.statusMsg').html('<span style="font-size:18px;color:#34A853">Form data submitted successfully.</span>');
-                    }else{
-                        $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, please try again.</span>');
+                    }else if(item.ok == 'err'){
+                        $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred in database, please try again.</span>');
+                    }else if(item.ok == 'noData'){
+                        $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, missing data to enter.</span>');
                     }
+                    $('#formCasas')[0].reset();
                     $('#formCasas').css("opacity","");
                     $(".submitBtn").removeAttr("disabled");
-                }
+                    $("#uploadImage").show()
+                    $("#imageHouse").hide()
+                    $("#txtImage_house").val("")
+                    $("#idReg").val(0)
+                    $("#tblListadoCasas").DataTable().ajax.reload();                    
+                })
             });
         }
         
@@ -94,14 +153,42 @@ function listarCasas(){
       });
 }
 
-listarCasas()
+$("#btnDeleteImage").click(function(){
+    name_image = $("#txtImage_house").val()
+    idRegistro = $("#idReg").val()
 
-$("#tblListadoCasas").on( "click", "#btnEditHouse", function(){
-    //Buscamos los datos de la casa a editar
     $.ajax({
         url:"scripts/php/admin_nueva_casa.php",
         cache: false,
-        data: {comm:"buscaDataHouse", idReg:1 },
+        data: {comm:"DeleteImage", name_image:name_image, idReg:idRegistro},
+        dataType: "json",
+        method: "POST"
+    }).done(function(rest){
+         $.each(rest.data, function (i, item) {
+            if (item.ok == "ok"){
+                alert("Delete image correctly")
+                $("#txtImage_house").val("")
+                $("#imgUpload").attr('src', '')
+                $("#uploadImage").show()
+                $("#imageHouse").hide()
+            }else if (item.ok == "noOk"){
+                alert("Error, the image was not removed")
+            }
+         })
+    })
+})
+
+listarCasas()
+
+var idRegistro
+
+$("#tblListadoCasas").on( "click", "#btnEditHouse", function(){
+    //Buscamos los datos de la casa a editar
+    idRegistro = $(this).attr("data-id")
+    $.ajax({
+        url:"scripts/php/admin_nueva_casa.php",
+        cache: false,
+        data: {comm:"buscaDataHouse", idReg:idRegistro},
         dataType: "json",
         method: "POST"
     }).done(function(rest){
@@ -114,10 +201,54 @@ $("#tblListadoCasas").on( "click", "#btnEditHouse", function(){
             $("#txtPrecio").val(item.price)
             $("#cboTipoCasa").val(item.type_house)
             $("#txtTamanoPlano").val(item.flat_size)
-            $("#cboEstadoCasa").val(item.status)
-            $("#imgUpload").attr("src", item.src_image)
-            $("#uploadImage").hide()
-            $("#imageHouse").show()
+            $("#cboEstadoCasa").val(item.status_house)
+            
+            if(item.src_image != ""){
+                $("#imgUpload").attr("src", item.src_image)
+                $("#txtImage_house").val(item.image_house)
+                $("#uploadImage").hide()
+                $("#imageHouse").show()
+            }else{
+                $("#imgUpload").attr("src", "")
+                $("#txtImage_house").val("")
+                $("#uploadImage").show()
+                $("#imageHouse").hide()
+            }
+            
+            
          })
     })
+})
+
+var src_imagen
+
+$("#tblListadoCasas").on( "click", "#btnDeleteHouse", function(){
+    if (confirm("This action will delete the record, are you sure?")) {
+        idRegistro = $(this).attr("data-id")
+        // obtenemos el src de la imagen para buscarla en el server y eliminarla
+        src_imagen = $("#img"+idRegistro).attr("src")
+        name_image_array = src_imagen.split('/')
+        name_imagen = name_image_array[2]
+        console.log(name_imagen)
+        $.ajax({
+            url:"scripts/php/admin_nueva_casa.php",
+            cache: false,
+            data: {comm:"eliminaDataHouse", idReg:idRegistro, src_imagen:name_imagen},
+            dataType: "json",
+            method: "POST"
+        }).done(function(rest){
+             $.each(rest.data, function (i, item) {
+                             
+                if (item.ok=='ok') {
+                    alert("se elimino el registro")
+
+                }else if (item.ok = 'noOk') {
+                    alert("No se elimino el registro")
+                }
+                $("#tblListadoCasas").DataTable().ajax.reload();  
+             })
+        })
+    }else{
+        console.log("no borrar")
+    }
 })
