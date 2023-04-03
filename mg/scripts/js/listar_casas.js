@@ -6,9 +6,9 @@ function listarCasas(){
     //Buscamos los datos de la casa a editar
     idRegistro = $(this).attr("data-id")
     $.ajax({
-        url:"scripts/php/admin_nueva_casa.php",
+        url:"scripts/php/listar_casas.php",
         cache: false,
-        data: {comm:"listarCasas", idReg:idRegistro},
+        data: {comm:"listarCasas"},
         dataType: "json",
         method: "POST"
     }).done(function(rest){
