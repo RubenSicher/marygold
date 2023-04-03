@@ -281,12 +281,14 @@ if ($comm == 'buscaDataHouse'){
                 'property_size' => $fila['property_size'], 'price' => $fila['price'], 'type_house' => $fila['type_house'], 'flat_size' => $fila['flat_size'],
                 'status_house' => $fila['status_house'],'src_image'=>$src_image, 'image_house'=>$fila['image_house']);
             }
-            echo '{"data": '.(json_encode($data)).'}';
-            mysqli_free_result($datos);
-            mysqli_close($conn);
+           
         }else{
             $data[] = array('ok'=>'noOk');
         }
+
+        echo '{"data": '.(json_encode($data)).'}';
+        mysqli_free_result($datos);
+        mysqli_close($conn);
 
 }
 
