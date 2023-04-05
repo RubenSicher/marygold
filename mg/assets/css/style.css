@@ -3838,7 +3838,7 @@ label {
 	background-position: center;
 }
 .footer-top {
-	padding: 80px 0 50px;
+	padding: 60px 0 0px;
 }
 .footer-widget {
 	margin-bottom: 40px;
@@ -3907,7 +3907,7 @@ label {
 	border-radius: 0 8px 8px 0;
 }
 .footer-bottom {
-	padding: 20px 0 10px;
+	padding: 20px 0 20px;
 }
 .copyright-text p {
 	margin-bottom: 25px;
@@ -4158,4 +4158,8 @@ label {
 }
 .casita.ver {
 	background-color:green ;
+}
+.mti:hover {
+	font-weight: bolder;
+	transition: ease-in-out;
 }
