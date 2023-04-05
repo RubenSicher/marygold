@@ -86,9 +86,9 @@
             <div class="sidebar-logo mb-1">
                 <h3 style="color:#BD9A68" class="title" data-wow-delay=".2s">Mary Gold</h3>
             </div>
-            <div class="navbar-wrap main-menu tgCanvas-menu active">
+            <div class="navbar-wrap main-menu">
                 <ul class="navigation">
-                    <li id="txtInicio" class="menu-item-has-children"><a href="#" class="text-btn" data-target="begin">Inicio</a>
+                    <li id="txtInicio" class="menu-item active"><a href="#" class="text-btn" data-target="begin">Inicio</a>
                         <!-- <ul class="sub-menu">
                             <li><a href="index.html">Home One</a></li>
                             <li><a href="index-2.html">Home Two</a></li>
@@ -100,7 +100,7 @@
                             <li><a href="index-8.html">Home Eight</a></li>
                         </ul> -->
                     </li>
-                    <li id="txtAcerca" class="menu-item-has-children"><a href="">Conroe, Texas</a>
+                    <li id="txtAcerca" class="menu-item"><a href="">Conroe, Texas</a>
                         <!-- <ul class="sub-menu">
                             <li><a href="overview.html">Overview</a></li>
                             <li><a href="mission.html">Mission</a></li>
@@ -108,7 +108,7 @@
                             <li><a href="team-details.html">Team Profile</a></li>
                         </ul> -->
                     </li>
-                    <li id="txtEconomia" class="menu-item-has-children"><a href="">Economía</a>
+                    <li id="txtEconomia" class="menu-item"><a href="">Economía</a>
                         <!-- <ul class="sub-menu">
                             <li><a href="project.html">Projects Two Col</a></li>
                             <li><a href="project-two.html">Projects Three Col</a></li>
@@ -116,7 +116,7 @@
                             <li><a href="project-details.html">Projects Single</a></li>
                         </ul> -->
                     </li>
-                    <li id="txtMercado" class="menu-item-has-children"><a href="" class="">Mercado Inmobiliario</a>
+                    <li id="txtMercado" class="menu-item"><a href="" class="">Mercado Inmobiliario</a>
                         <!-- <ul class="sub-menu">
                             <li><a href="blog.html">Blog Grid</a></li>
                             <li><a href="blog-sidebar.html">Blog Grid Sidebar</a></li>
@@ -124,7 +124,7 @@
                             <li><a href="blog-details.html">Blog Single</a></li>
                         </ul> -->
                     </li>
-                    <li id="txtArrenda" class="menu-item-has-children"><a href="#">Arrendamientos</a>
+                    <li id="txtArrenda" class="menu-item"><a href="#">Arrendamientos</a>
                         <!-- <ul class="sub-menu">
                             <li><a href="sirvices.html">Services</a></li>
                             <li><a href="testimonial.html">Testimonials</a></li>
@@ -132,7 +132,7 @@
                             <li><a href="error.html">404 Error</a></li>
                         </ul> -->
                     </li>
-                    <li id="txtPresu" class="menu-item-has-children"><a href="#">Presupuesto e inversión</a>
+                    <li id="txtPresu" class="menu-item"><a href="#">Presupuesto e inversión</a>
                         <!-- <ul class="sub-menu">
                             <li><a href="sirvices.html">Services</a></li>
                             <li><a href="testimonial.html">Testimonials</a></li>
@@ -168,7 +168,8 @@
             <main>
 
                 <!-- banner-area -->
-                <section  id="begin" class="banner-area-four banner-bg-three">
+                <section  id="begin" class="banner-area-four banner-bg-three" style="background-image: url(./assets/img/marygold/imagenPrincipal.jpg);"> 
+                    
                     <div class="container" id="inicio">
                         <div class="row justify-content-center">
                             <div class="col-xl-8">
@@ -406,42 +407,56 @@
                                 <div class="section-title text-center mb-55">
             
                                     <h2 id="tituloVision" class="title">Visión General</h2>
-                                    <h4 id="tituloVision" class="sub-title">Rentas</h4>
+                                    <h3 id="subtituloVision" class="sub-title">Rentas (Casas de 2 habitaciones)</h3>
                                 </div>
                             </div>
                         </div>
                         <div class="row justify-content-center">
-                            <div class="col-lg-4 col-md-6 col-sm-10">
+                            <div class="col-lg-3 col-md-6 col-sm-10">
                                 <div class="features-item">
                                     <div class="feature-icon">
                                         
                                         <i class="fa-solid fa-house-chimney-user"></i>
                                     </div>
                                     <div class="feature-content">
+                                        <p id="txtprom">Promedio Mensual de rentas</p>
                                         <h2 id="txtPromedio" class="title">$1,500</h2>
-                                        <p>Promedio Mensual de rentas</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6 col-sm-10">
+                            <div class="col-lg-3 col-md-6 col-sm-10">
                                 <div class="features-item">
                                     <div class="feature-icon">
-                                        <i class="flaticon-002-plants"></i>
+                                        <i class="fa-solid fa-house-circle-exclamation"></i>
                                     </div>
                                     <div class="feature-content">
-                                        <h2 class="title">Green Environment</h2>
-                                        <p>Magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet sed quia</p>
+                                        <p id="txtRango">Rango de precios</p>
+                                        <h2 id="txtRangoP" class="title">$1,000 - $2,100</h2>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-6 col-sm-10">
+                            <div class="col-lg-3 col-md-6 col-sm-10">
                                 <div class="features-item">
                                     <div class="feature-icon">
-                                        <i class="flaticon-003-chandelier"></i>
+                                        <i class="fa-solid fa-dollar-sign"></i>
                                     </div>
                                     <div class="feature-content">
-                                        <h2 class="title">Comprehensive Amenities</h2>
-                                        <p>Magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet sed quia</p>
+                                        <p id="txtcomp">Comparación Anual 2021-2022</p>
+                                    
+                                        <h2 id="txtCompaB" class="title"><i class="fa-solid fa-arrow-up"></i> $400</h2>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6 col-sm-10">
+                                <div class="features-item">
+                                    <div class="feature-icon">
+                                        <i class="fa-solid fa-house-lock"></i>
+                                    </div>
+                                    <div class="feature-content">
+                                        <p>The Woodlands</p>
+                                        <h2 class="title"><i class="fa-solid fa-arrow-down"></i> $850</h2>
                                     </div>
                                 </div>
                             </div>
@@ -450,8 +465,267 @@
                 </section>
                 <!-- features-area-end -->
 
+
+                <section class="features-area section-pt-140 features-pb-80"> 
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-xl-7 col-lg-8">
+                         <div class="blog-details-wrap">
+                             <div class="blog-item blog-item-two">
+                                <div class="section-title text-center mb-55">
+                                    <h2 id="MercadoInmo" class="title">Mercado Inmobiliario</h2>
+                                    <!-- <h3 id="subMercadoInmo" class="sub-title">Rentas (Casas de 2 habitaciones)</h3> -->
+                                </div>
+                            <div class="blog-thumb">
+                                <img src="/mg/assets/img/marygold/mercado.png" alt="">
+                            </div>
+                            <p style="text-align: justify;" id="txtMercado">Las tendencias del mercado en el área de Conroe y Montgomery, como el aumento de las tasas de interés, los alquileres fluctuantes y las ventas rápidas de viviendas, convirtieron al área en un objetivo para los compradores institucionales; ya que en 2019-2022 las tasas hipotecarias estaban por debajo del 3% y de repente en 2022 están por encima del 6%, duplicando las tasas de interés, por lo que las personas difícilmente califican para la casa que querían comprar, y se ven orilladas a alquilar.
+                            </p>
+                            <!-- <p>Denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences</p> -->
+                            <blockquote>
+                                <p>Buid-to-Rent </p>
+                            </blockquote>
+                            <p style="text-align: justify;" id="txtBtr">Hoy en día la construcción para alquilar <b>[Buid-to-Rent] </b> puede considerarse como una “ganancia inesperada” para el retorno de la inversión; ya que permite a los inversores controlar el costo y la tasa de absorción, por lo que se prevé será el segmento de más rápido crecimiento durante los próximos cinco años.
+                            </p>
+                            <p style="text-align: justify;" id="txtbtr2">La ciudad de Conroe votó el 26 de mayo para aumentar el ancho mínimo del lote para una subdivisión de 40 pies de ancho a 50 pies.
+                            </p>
+                            <!-- <div class="blog-details-social">
+                                <ul class="list-wrap">
+                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                </ul>
+                            </div> -->
+                        </div>
+                    </div>
+              </div>
+           </div>
+        </div>
+    </section>
+    <section class="features-area section-pt-140 features-pb-80"> 
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-7 col-lg-8">
+                    <div class="section-title text-center mb-55">
+
+                        <h2 id="tltDueños" class="title">Dueños vs Alquileres</h2>
+                        <h2 id="subDueños" class="subtitulo"><b>Dueños</b></h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 col-6">
+                        <div class="counter-item">
+                            <span class="count odometer odometer-auto-theme" data-count="39"><div class="odometer-inside"><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">5</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value"></span></span></span></span></span></div></span>
+                            <p id="spanhom">% Hombres</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-6">
+                        <div class="counter-item">
+                            <span class="count odometer odometer-auto-theme" data-count="40"><div class="odometer-inside"><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">3</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">0</span></span></span></span></span></div></span>
+                            <p id="spnMuj">% Mujeres</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-6">
+                        <div class="counter-item">
+                           <span class="count odometer odometer-auto-theme" data-count="74"><div class="odometer-inside"><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">1</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">7</span></span></span></span></span></div></span>
+                           <p id="spanCas">% Casados</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-6">
+                        <div class="counter-item">
+                           <span class="count odometer odometer-auto-theme" data-count="34"><div class="odometer-inside"><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">4</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">6</span></span></span></span></span></div></span>
+                           <p id="spanNocas">% No Casados</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-xl-7 col-lg-8">
+                        <div class="section-title text-center mb-55">
+                            <h2 id="subrenter" class="subtitulo"><b>Arrendatarios</b></h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 col-6">
+                        <div class="counter-item">
+                            <span class="count odometer odometer-auto-theme" data-count="61"><div class="odometer-inside"><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">5</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value"></span></span></span></span></span></div></span>
+                            <p id="spanhom2">% Hombres</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-6">
+                        <div class="counter-item">
+                            <span class="count odometer odometer-auto-theme" data-count="60"><div class="odometer-inside"><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">3</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">0</span></span></span></span></span></div></span>
+                            <p id="spnMuj">% Mujeres</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-6">
+                        <div class="counter-item">
+                           <span class="count odometer odometer-auto-theme" data-count="26"><div class="odometer-inside"><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">1</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">7</span></span></span></span></span></div></span>
+                           <p id="spanCas">% Casados</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-6">
+                        <div class="counter-item">
+                           <span class="count odometer odometer-auto-theme" data-count="66"><div class="odometer-inside"><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">4</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">6</span></span></span></span></span></div></span>
+                           <p id="spanNocas">% No Casados</p>
+                        </div>
+                    </div>
+                </div>
+       
+            </div>
+        </div>
+    </section>
+    <section class="project project-style-three section-pt-140">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5">
+                    <div class="section-title mb-50">
+                        <h2 class="title">Marygold Homes</h2>
+                     <p id="pMaryGold" style="text-align: justify;">La propiedad consta de 19 acres ubicados en la parte Este de Loop 336, que rodea a Conroe. El circuito tiene un tráfico diario promedio de 20 a 30 mil automóviles. La propiedad cuenta con 872 pies de frente en Loop 336, por lo que la visibilidad de la vialidad es excepcional. 
+                    </p>
+
+                    </div>
+                </div>
+                <div class="col-xl-7">
+                    <div class="swiper-container project-active swiper-initialized swiper-horizontal swiper-pointer-events">
+                        <div class="swiper-wrapper" id="swiper-wrapper-5e3769f63aab9856" aria-live="polite" style="transform: translate3d(-3477.5px, 0px, 0px); transition-duration: 0ms;"><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" data-swiper-slide-index="2" role="group" aria-label="3 / 4" style="width: 671.5px; margin-right: 24px;">
+                                <div class="project-item">
+                                    <div class="project-thumb">
+                                        <a ><img src="assets/img/project/project_img03.jpg" alt=""></a>
+                                    </div>
+                                    <div class="project-content">
+                                        <h3 class="title"><a >Modern Residential Park</a></h3>
+                                        <span>New York, NY</span>
+                                    </div>
+                                </div>
+                            </div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="3" role="group" aria-label="4 / 4" style="width: 671.5px; margin-right: 24px;">
+                                <div class="project-item">
+                                    <div class="project-thumb">
+                                        <a ><img src="assets/img/project/project_img04.jpg" alt=""></a>
+                                    </div>
+                                    <div class="project-content">
+                                        <h3 class="title"><a >Proyecto Marygold</a></h3>
+                                        <span>Conroe, Texas.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide swiper-slide-duplicate-next" data-swiper-slide-index="0" role="group" aria-label="1 / 4" style="width: 671.5px; margin-right: 24px;">
+                                <div class="project-item">
+                                    <div class="project-thumb">
+                                        <a ><img src="assets/img/marygold/mapamarygold.png" alt=""></a>
+                                    </div>
+                                    <div class="project-content">
+                                        <h3 class="title"><a >Proyecto Marygold</a></h3>
+                                        <span>Conroe, Texas.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide" data-swiper-slide-index="1" role="group" aria-label="0 / 4" style="width: 671.5px; margin-right: 24px;">
+                                <div class="project-item">
+                                    <div class="project-thumb">
+                                        <a ><img src="assets/img/marygold/marygoldhomes2.png" alt=""></a>
+                                    </div>
+                                    <div class="project-content">
+                                        <h3 class="title"><a >Proyecto Marygold</a></h3>
+                                        <span>Conroe, Texas.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="2" role="group" aria-label="3 / 4" style="width: 671.5px; margin-right: 24px;">
+                                <div class="project-item">
+                                    <div class="project-thumb">
+                                        <a ><img src="assets/img/marygold/mapamarygold.png" alt=""></a>
+                                    </div>
+                                    <div class="project-content">
+                                        <h3 class="title"><a >Proyecto Marygold</a></h3>
+                                        <span>Conroe, Texas.</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide swiper-slide-active" data-swiper-slide-index="3" role="group" aria-label="4 / 4" style="width: 671.5px; margin-right: 24px;">
+                                <div class="project-item">
+                                    <div class="project-thumb">
+                                        <a ><img src="assets/img/marygold/marygoldhomes2.png" alt=""></a>
+                                    </div>
+                                    <div class="project-content">
+                                        <h3 class="title"><a >Proyecto Marygold</a></h3>
+                                        <span>Conroe, Texas.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="swiper-slide swiper-slide-duplicate swiper-slide-next" data-swiper-slide-index="0" role="group" aria-label="1 / 4" style="width: 671.5px; margin-right: 24px;">
+                                <div class="project-item">
+                                    <div class="project-thumb">
+                                        <a ><img src="assets/img/marygold/mapamarygold.png" alt=""></a>
+                                    </div>
+                                    <div class="project-content">
+                                        <h3 class="title"><a >Proyecto Marygold</a></h3>
+                                        <span>Conroe, Texas.</span>
+                                    </div>
+                                </div>
+                            </div><div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="1" role="group" aria-label="2 / 4" style="width: 671.5px; margin-right: 24px;">
+                                <div class="project-item">
+                                    <div class="project-thumb">
+                                        <a ><img src="assets/img/marygold/marygoldhomes2.png" alt=""></a>
+                                    </div>
+                                    <div class="project-content">
+                                        <h3 class="title"><a >Proyecto Marygold</a></h3>
+                                        <span>Conroe, Texas.</span>
+                                    </div>
+                                </div>
+                            </div></div>
+                    <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                </div>
+            </div>
+            <div class="row align-items-center pt-100">
+                <div class="col-lg-6">
+                    <div class="services-img-two text-center">
+                        <img src="assets/img/marygold/mapamarygold3.png " width="60%" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="services-content-two">
+                        <div class="section-title mb-50">
+                          <h2 id="titleDis" class="title">Distribución</h2>
+                        </div>
+                        <div class="services-list">
+                            <ul class="list-wrap">
+                                <li  class="active">
+                                    <div class="cuadrado bcAma"></div>
+                                    <div class="separa"></div>
+                                    <a id="1h">1 cuarto</a>
+                                </li>
+                         
+                            </ul>
+                            <ul class="list-wrap mt-4">
+                                <li  class="active">
+                                    <div class="cuadrado bcAz"></div>
+                                    <div class="separa"></div>
+                                    <a id="2h">2 cuartos</a>
+                                </li>
+                         
+                            </ul>
+                            <ul class="list-wrap mt-4">
+                                <li  class="active">
+                                    <div class="cuadrado bcver"></div>
+                                    <div class="separa"></div>
+                                    <a id="2h">3 cuartos</a>
+                                </li>
+                         
+                            </ul>
+                            <h2 class="mt-4">Unidades Totales: 206</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
                 <!-- video-area -->
-                <div class="video-area-three">
+                <!-- <div class="video-area-three">
                     <div class="container">
                         <div class="row">
                             <div class="col-12">
@@ -461,7 +735,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- video-area-end -->
 
                 <!-- testimonial-area -->
@@ -470,8 +744,9 @@
                         <div class="row justify-content-center">
                             <div class="col-xl-8 col-lg-9">
                                 <div class="section-title text-center mb-60">
-                                    <span class="sub-title">Testimonials</span>
-                                    <h2 class="title">Trusted by thousands of our happy customers</h2>
+                                    <h2 id="txtResumenPro" class="title">RESUMEN DE LA PROPIEDAD</h2>
+                                    <p id="prRes" style="text-align: justify;">El complejo consta de 19 hectáreas en las que se construirán 185 unidades distribuídas en inmuebles de 1, 2 y 3 recámaras. Cada unidad será independiente y tendrán un tamaño de entre 750 y 1,200 f2. Contará con diferentes amenidades para gustos de toda la familia.
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -479,35 +754,32 @@
                             <div class="col-xxl-8 col-xl-10">
                                 <div class="testimonial-item">
                                     <div class="testimonial-thumb">
-                                        <img src="assets/img/images/testimonial_avatar01.png" alt="">
-                                        <div class="icon"><i class="fas fa-quote-right"></i></div>
+                                        <i class="casita am fa-solid fa-person-shelter"></i>
+                                        <!-- <div class="icon"><i class="fas fa-quote-right"></i></div> -->
                                     </div>
                                     <div class="testimonial-content">
-                                        <p>“Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                                            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt”</p>
-                                        <span>Jeffrey Kreshek <br> New York</span>
+                                        <p id="1rec">1 Recámara (Duplex)</p>
+                                        <span id="1recD">74 Unidades - 36%</span>
                                     </div>
                                 </div>
                                 <div class="testimonial-item">
                                     <div class="testimonial-thumb">
-                                        <img src="assets/img/images/testimonial_avatar02.png" alt="">
-                                        <div class="icon"><i class="fas fa-quote-right"></i></div>
+                                        <i class="casita az fa-solid fa-house-lock"></i>
+                                    
                                     </div>
                                     <div class="testimonial-content">
-                                        <p>“Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                                            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt”</p>
-                                        <span>Mike Stevenson <br> Florida</span>
+                                        <p id="2rec">2 Recámaras</p>
+                                        <span id="2recd">108 unidades - 52%</span>
                                     </div>
                                 </div>
                                 <div class="testimonial-item">
                                     <div class="testimonial-thumb">
-                                        <img src="assets/img/images/testimonial_avatar03.png" alt="">
-                                        <div class="icon"><i class="fas fa-quote-right"></i></div>
+                                        <i class="casita ver fa-solid fa-house-chimney-user"></i>
+                                        
                                     </div>
                                     <div class="testimonial-content">
-                                        <p>“Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                                            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt”</p>
-                                        <span>Merrin Dardenne <br> Charlotte</span>
+                                        <p id="3rec">3 Recámaras</p>
+                                        <span id="3recd">24 unidades - 12%</span>
                                     </div>
                                 </div>
                             </div>
@@ -515,7 +787,75 @@
                     </div>
                 </section>
                 <!-- testimonial-area-end -->
-
+                <section class="roadmap-area section-py-140">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-xl-6">
+                                <div class="section-title text-center mb-50">
+                                    <h2 class="title" id="ttLinet">Linea del tiempo del proyecto</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row g-0">
+                        <div class="col-lg-12">
+                            <div class="roadmap-wrap">
+                                <div class="swiper-container roadmap-active swiper-initialized swiper-horizontal swiper-pointer-events">
+                                    <div class="swiper-wrapper" id="swiper-wrapper-4f5bec7c11060a310" aria-live="polite" style="transition-duration: 0ms; transform: translate3d(-1480.71px, 0px, 0px);"><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="4" role="group" aria-label="1 / 4" style="width: 370.857px; margin-right: 24px;">
+                                                              </div>
+                                        <div class="swiper-slide" data-swiper-slide-index="4" role="group" aria-label="4/4" style="width: 370.857px; margin-right: 24px;">
+                                            <div class="roadmap-item">
+                                                <h4 class="title">2022</h4>
+                                                <div class="roadmap-content">
+                                                    <span class="dot"></span>
+                                                    <span id="plan1" class="sub-title">INICIO</span>
+                                                    <p id="plan1d">Planeación, Renders, Planos, Permisos</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="1" role="group" aria-label="1 / 4" style="width: 370.857px; margin-right: 24px;">
+                                            <div class="roadmap-item">
+                                                <h4 class="title">2023</h4>
+                                                <div class="roadmap-content">
+                                                    <span class="dot"></span>
+                                                    <span id="plan3" class="sub-title">Captación</span>
+                                                    <p id="plan3d">del Capital Preferente</p>
+                                                    <span id="plan3t" class="title">Enero</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide swiper-slide-active" data-swiper-slide-index="2" role="group" aria-label="2 / 4" style="width: 370.857px; margin-right: 24px;">
+                                            <div class="roadmap-item">
+                                                <h4 class="title">2023</h4>
+                                                <div class="roadmap-content">
+                                                    <span class="dot"></span>
+                                                    <span id="plan4t" class="title">Julio</span>
+                                                    <span id="plan4" class="sub-title">construcción</span>
+                                                    <p id="plan4d">Inicio del primer bloque de casas</p>
+                                                </div>
+                                            </div>
+                                        </div>                         
+                                
+                                        <div class="swiper-slide swiper-slide-prev" data-swiper-slide-index="3" role="group" aria-label="3 / 4" style="width: 370.857px; margin-right: 24px;">
+                                            <div class="roadmap-item">
+                                                <h4 class="title">2028</h4>
+                                                <div class="roadmap-content">
+                                                    <span class="dot"></span>
+                                                    <span id="plan4" class="sub-title">Finalización</span>
+                                                    <p id="plan4d">del Proyecto</p>
+                                                    <span id="plan4t" class="title">Proximanente</span>
+                                                </div>
+                                            </div>
+                                        </div>
+              
+                              
+                                    </div>
+                                <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
     
 
                 <!-- newsletter-area -->
@@ -528,18 +868,18 @@
                                         <div class="col-xxl-8 col-xl-10">
                                             <div class="newsletter-content">
                                                 <div class="section-title mb-50">
-                                                    <span class="sub-title">Quick Inquiry</span>
-                                                    <h2 class="title">If you have any question? we are glad to consult you as soon as possible</h2>
+                                                    <h2 id="contTxt" class="title">Dejanos saber si deseas más información</h2>
+                                            
                                                 </div>
-                                                <form action="#" class="newsletter-form">
+                                                <form  class="newsletter-form">
                                                     <ul class="list-wrap">
-                                                        <li><input type="text" placeholder="Your name" required="required"></li>
-                                                        <li><input type="text" placeholder="Phone number" required="required"></li>
-                                                        <li class="submit-btn"><input type="submit" value="submit"></li>
+                                                        <li><input type="text" placeholder="Tu nombre" required="required" id="inputname"></li>
+                                                        <li><input type="text" placeholder="Telefono celular" required="required"></li>
+                                                        <li class="submit-btn"> <button type="button" id="btnSolicita" class="btn">solicitar</button></li>
                                                     </ul>
                                                     <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input" id="checkbox">
-                                                        <label for="checkbox">I accept <span>Terms & Conditions</span> for processing personal data</label>
+                                                        <!-- <input type="checkbox" class="form-check-input" id="checkbox"> -->
+                                                        <!-- <label for="checkbox">I accept <span>Terms & Conditions</span> for processing personal data</label> -->
                                                     </div>
                                                 </form>
                                             </div>
@@ -558,18 +898,18 @@
 
             <!-- footer-area -->
             <footer>
-                <div class="footer-area footer-bg">
+                <div class="footer-area" style="background-color:#2C363F;">
                     <div class="container">
                         <div class="footer-top">
                             <div class="row">
-                                <div class="col-xl-3 col-md-4 col-sm-5">
+                                <div class="col-sm-6 text-center">
                                     <div class="footer-widget">
-                                        <div class="footer-logo">
-                                            <a href="index.html"><img src="assets/img/logo/logo02.png" alt=""></a>
+                                        <div  class="footer-logo">
+                                            <a><img src="assets/img/marygold/MARYGOLD_2.png" width="40%" alt=""></a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-3 col-md-4 col-sm-7">
+                                <div class="col-sm-6 text-center">
                                     <div class="footer-widget">
                                         <h2 class="fw-title">Contact</h2>
                                         <div class="footer-contact">
@@ -581,7 +921,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xl-3 col-md-4 col-sm-5">
+                                <!-- <div class="col-xl-3 col-md-4 col-sm-5">
                                     <div class="footer-widget">
                                         <h2 class="fw-title">Useful links</h2>
                                         <div class="footer-link">
@@ -594,8 +934,8 @@
                                             </ul>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-xl-3 col-md-5 col-sm-7">
+                                </div> -->
+                                <!-- <div class="col-xl-3 col-md-5 col-sm-7">
                                     <div class="footer-widget">
                                         <h2 class="fw-title">newsletter</h2>
                                         <div class="footer-newsletter">
@@ -605,10 +945,10 @@
                                             </form>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
-                        <div class="footer-bottom">
+                        <div  class="footer-bottom">
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="copyright-text text-center">

@@ -1772,7 +1772,7 @@ label {
 
 /* banner-four */
 .banner-area-four.banner-bg-three {
-	background-image: url(/mg/assets/img/marygold/imagenPrincipal.jpg);
+	/* background-image: url('/mg/assets/img/marygold/imagenPrincipal.jpg'); */
 	background-size: cover;
 	background-position: center;
 	position: relative;
@@ -3838,7 +3838,7 @@ label {
 	background-position: center;
 }
 .footer-top {
-	padding: 135px 0 70px;
+	padding: 80px 0 50px;
 }
 .footer-widget {
 	margin-bottom: 40px;
@@ -3907,7 +3907,7 @@ label {
 	border-radius: 0 8px 8px 0;
 }
 .footer-bottom {
-	padding: 30px 0 55px;
+	padding: 20px 0 10px;
 }
 .copyright-text p {
 	margin-bottom: 25px;
@@ -4103,4 +4103,59 @@ label {
         transform: scale(1,0);
     }
 }
+/* 
+.menu-item:hover {
 
+	background-color: var(--tg-primary-color);
+	
+} */
+
+.subtitulo {
+	color: var(--tg-primary-color)
+}
+
+.cuadrado {
+	height: 20px;
+	width: 20px;
+	display: inline-block;
+	justify-content: center;
+	margin: auto;	
+
+}
+.separa {
+	display: inline-block;
+	justify-content: center;
+	margin: auto;
+	padding: 0.5rem;
+	align-items: center;
+	justify-items: center;
+}
+
+.bcAma {
+	background-color:var(--tg-yellow) ;
+}
+.bcAz {
+	background-color:blue ;
+}
+.bcver {
+	background-color:green ;
+}
+.casita {
+	width: 100px;
+	height: 70px;
+	font-size: 40px;
+	color:white;
+	display: flex;
+   justify-content: center;
+   align-items: center;
+   
+}
+.casita.am {
+	background-color:#f0bf0d;
+}
+.casita.az {
+	background-color: blue;
+}
+.casita.ver {
+	background-color:green ;
+}
