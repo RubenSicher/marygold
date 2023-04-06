@@ -201,20 +201,9 @@ if (estado ==0) {
 Toast.fire("Es tu primera vez Ingresando, por favor Cambia tu contraseña!","","warning")
 }
 else if (estado==1){
-
-  Swal.fire({
-    icon: 'success',
-    title: 'Bienvenido',
-    showConfirmButton: false,
-    timer: 1500
-  })
-  
     document.cookie = "key="+Math.random().toString(36).slice(2)
     document.cookie = "usermgold="+logUsuario
-    setTimeout(function(){
-      window.location.href = "https://marygoldhomes.com/dashboard";
-    },1500)
-   
+    window.location.href = "https://marygoldhomes.com/dashboard";
 }
 } else {
   Toast.fire("contraseña Invalida","","error")
@@ -259,7 +248,6 @@ document.getElementById("btnCambiapass").addEventListener("click", function(){
    setTimeout(function(){
     document.cookie = "key="+Math.random().toString(36).slice(2)
     document.cookie = "usermgold="+logUsuario
-
     window.location.href = "https://marygoldhomes.com/dashboard";
    },2000)
   } else Toast.fire("hubo un error Intentelo nuevamente o comuniquese con Administración","","error")

@@ -9,7 +9,7 @@ $idClave= $_GET['idClave'];
 
 // buscamos usuario 
 if($consulta =='buscarUsuario'){
-$sql = "SELECT activo, estado FROM admin_usuarios WHERE email = '$id'";
+$sql = "SELECT * FROM admin_usuarios WHERE email = '$id'";
 $result = mysqli_query($conn, $sql);
 $datos = array();
 while ($row = mysqli_fetch_assoc($result))
@@ -22,7 +22,7 @@ echo json_encode($datos);
 // buscamos contraseña
 elseif($consulta =='buscarpass')
 {
-$sql2 = "SELECT id,nombre,activo FROM `admin_usuarios` WHERE email ='$id' and clave ='$pass'";
+$sql2 = "SELECT * FROM `admin_usuarios` WHERE email ='$id' and clave ='$pass'";
 $result2 = mysqli_query($conn, $sql2);
 $datos2 = array();
 while($row2 = mysqli_fetch_assoc($result2)){
@@ -33,7 +33,7 @@ echo json_encode($datos2);
 // >
 // ver si el usuario existe
 elseif($consulta=="verUsuario"){
-$sql = "SELECT id,nombre,estado,activo FROM admin_usuarios where nombre ='$nombre'";
+$sql = "SELECT * FROM admin_usuarios where nombre ='$nombre'";
 $result2 = mysqli_query($conn, $sql);
 $datos2 = array();
 while($row2 = mysqli_fetch_assoc($result2)){
