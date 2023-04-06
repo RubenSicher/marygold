@@ -4163,3 +4163,15 @@ label {
 	font-weight: bolder;
 	transition: ease-in-out;
 }
+
+.campo {
+
+	animation-name: campo2 !important;
+	animation-duration:3s !important;
+
+}
+
+@keyframes campo2 {
+	from {	background-color: rgb(166, 202, 204)}
+	to { background-color: transparent};
+}

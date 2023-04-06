@@ -3,11 +3,11 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>MaryGold</title>
+        <title>MaryGold homes</title>
         <meta name="description" content="Reland - Real Estate Group HTML Template">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+		<link rel="shortcut icon" type="image/x-icon" href="assets/img/iconmg.svg">
         <script src="https://kit.fontawesome.com/e82751842d.js" crossorigin="anonymous"></script>
         <!-- Place favicon.ico in the root directory -->
 
@@ -23,6 +23,9 @@
         <link rel="stylesheet" href="assets/css/flaticon.css">
         <link rel="stylesheet" href="assets/css/style.css">
         <link rel="stylesheet" href="assets/css/responsive.css">
+        <link rel="stylesheet" href="/dashboard/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+        <link rel="stylesheet" href="/dashboard//plugins/toastr/toastr.min.css"> 
+
     </head>
     <body>
 
@@ -394,7 +397,7 @@
                         </section>
 
                 <!-- features-area -->
-                <section class="features-area section-pt-140 features-pb-80"> 
+                <!-- <section class="features-area section-pt-140 features-pb-80"> 
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-xl-7 col-lg-8">
@@ -456,7 +459,7 @@
                             </div>
                         </div>
                     </div>
-                </section>
+                </section> -->
                 <!-- features-area-end -->
 
 
@@ -476,9 +479,9 @@
                             <p style="text-align: justify;" id="txtMercado">Las tendencias del mercado en el área de Conroe y Montgomery, como el aumento de las tasas de interés, los alquileres fluctuantes y las ventas rápidas de viviendas, convirtieron al área en un objetivo para los compradores institucionales; ya que en 2019-2022 las tasas hipotecarias estaban por debajo del 3% y de repente en 2022 están por encima del 6%, duplicando las tasas de interés, por lo que las personas difícilmente califican para la casa que querían comprar, y se ven orilladas a alquilar.
                             </p>
                             <!-- <p>Denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences</p> -->
-                            <blockquote>
-                                <p>Buid-to-Rent </p>
-                            </blockquote>
+                            <div class="section-title text-center mb-55">    
+                                <h2 id="btr" class="title">Build to Rent</h2>
+                            </div>
                             <p style="text-align: justify;" id="txtBtr">Hoy en día la construcción para alquilar <b>[Buid-to-Rent] </b> puede considerarse como una “ganancia inesperada” para el retorno de la inversión; ya que permite a los inversores controlar el costo y la tasa de absorción, por lo que se prevé será el segmento de más rápido crecimiento durante los próximos cinco años.
                             </p>
                             <p style="text-align: justify;" id="txtbtr2">La ciudad de Conroe votó el 26 de mayo para aumentar el ancho mínimo del lote para una subdivisión de 40 pies de ancho a 50 pies.
@@ -863,31 +866,34 @@
                 <!-- newsletter-area -->
                 <section id="secCont" class="newsletter-area section-pb-140">
                     <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="newsletter-inner">
-                                    <div class="row justify-content-center">
-                                        <div class="col-xxl-8 col-xl-10">
-                                            <div class="newsletter-content">
-                                                <div class="section-title mb-50">
-                                                   <p>Contactanos</p>
-                                                    <h2 id="contTxt" class="title">Dejanos saber si deseas más información</h2>
-                                            
+                        <div class="row justify-content-center">
+                            <div class="col-xl-6 col-lg-8">
+                                <div class="section-title text-center mb-55">
+                                    <span class="sub-title" id="txtMensaje">Mandanos un Mensaje</span>
+                                    <h2 class="title" id="ttMensaje">Hagamos algo juntos!</h2>
+                                </div>
+                                <div class="contact-form-wrap">
+                                    <form >
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-grp">
+                                                    <input type="text" placeholder="Tu nombre" id="inputname" autocomplete="off">
                                                 </div>
-                                                <form  class="newsletter-form">
-                                                    <ul class="list-wrap">
-                                                        <li><input type="text" placeholder="Tu nombre" required="required" id="inputname"></li>
-                                                        <li><input type="text" placeholder="Telefono celular" required="required"></li>
-                                                        <li class="submit-btn"> <button type="button" id="btnSolicita" class="btn">solicitar</button></li>
-                                                    </ul>
-                                                    <div class="form-check">
-                                                        <!-- <input type="checkbox" class="form-check-input" id="checkbox"> -->
-                                                        <!-- <label for="checkbox">I accept <span>Terms & Conditions</span> for processing personal data</label> -->
-                                                    </div>
-                                                </form>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-grp">
+                                                    <input type="text" placeholder="tu telefono" id="inputNum" autocomplete="off">
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                        <div class="form-grp">
+                                            <textarea class=""  placeholder="Escribenos un mensaje" style="height: 111px;" id="mensaje" autocomplete="off"></textarea>
+                                        </div>
+                                    
+                                        <div class="form-submit">
+                                            <button class="btn" type="button" id="btnSolicita">Envíar</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -996,5 +1002,8 @@
         <script src="assets/js/ajax-form.js"></script>
         <script src="assets/js/wow.min.js"></script>
         <script src="assets/js/main.js"></script>
+        <script src="/dashboard//plugins/sweetalert2/sweetalert2.min.js"></script>
+        <script src="/dashboard//plugins/toastr/toastr.min.js"></script>
+        <script src="./scripts/js/enviarMensaje.js"></script>
     </body>
 </html>
