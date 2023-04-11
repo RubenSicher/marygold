@@ -50,10 +50,10 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Ver Propiedades</a>
+        <a href="admin_nuevaCasa.php" class="nav-link">Ver Propiedades</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Nueva Propiedad</a>
+        <a href="admin_nuevaCasa.php" class="nav-link">Nueva Propiedad</a>
       </li>
     </ul>
         

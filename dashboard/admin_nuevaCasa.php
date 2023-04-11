@@ -34,7 +34,7 @@
                 <div class="col-md-4">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Quick Example</h3>
+                            <h3 class="card-title">House details</h3>
                         </div>
 
                         <p class="statusMsg"></p>

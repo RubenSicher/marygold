@@ -36,6 +36,15 @@
 
             </ul>
           </li>
+          <li class="nav-item">
+            <a href="admin_listaInteresados.php" class="nav-link">
+              <i class="nav-icon fas fa-house-user"></i>
+              <p>
+               Solicitudes
+                <!-- <i class="right fas fa-angle-left"></i> -->
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
