@@ -213,23 +213,28 @@ function listarCasas(){
 	// script14.src = 'assets/js/main.js';
 	// document.body.appendChild(script14);
         
-        $("#script0").attr("src","assets/js/bootstrap.min.js")
-        $("#script1").attr("src", "assets/js/jquery.magnific-popup.min.js")
-        $("#script2").attr("src", "assets/js/jquery.odometer.min.js")
-        $("#script3").attr("src", "assets/js/jquery.parallaxScroll.min.js")
-        $("#script4").attr("src", "assets/js/simpleParallax.min.js")
-        $("#script5").attr("src", "assets/js/slick-animation.min.js")
-        $("#script6").attr("src", "assets/js/swiper-bundle.min.js")
-        $("#script7").attr("src", "assets/js/jarallax.min.js")
-        $("#script8").attr("src", "assets/js/jarallax-video.min.js")
-        $("#script9").attr("src", "assets/js/jquery.appear.js")
-        $("#script10").attr("src", "assets/js/jquery.easing.js")
-        $("#script11").attr("src", "assets/js/slick.min.js")
-        $("#script12").attr("src", "assets/js/ajax-form.js")
-        $("#script13").attr("src", "assets/js/wow.min.js")
-        $("#script14").attr("src", "assets/js/main.js")
+        // $("#script0").attr("src","assets/js/bootstrap.min.js")
+        // $("#script1").attr("src", "assets/js/jquery.magnific-popup.min.js")
+        // $("#script2").attr("src", "assets/js/jquery.odometer.min.js")
+        // $("#script3").attr("src", "assets/js/jquery.parallaxScroll.min.js")
+        // $("#script4").attr("src", "assets/js/simpleParallax.min.js")
+        // $("#script5").attr("src", "assets/js/slick-animation.min.js")
+        // $("#script6").attr("src", "assets/js/swiper-bundle.min.js")
+        // $("#script7").attr("src", "assets/js/jarallax.min.js")
+        // $("#script8").attr("src", "assets/js/jarallax-video.min.js")
+        // $("#script9").attr("src", "assets/js/jquery.appear.js")
+        // $("#script10").attr("src", "assets/js/jquery.easing.js")
+        // $("#script11").attr("src", "assets/js/slick.min.js")
+        // $("#script12").attr("src", "assets/js/ajax-form.js")
+        // $("#script13").attr("src", "assets/js/wow.min.js")
+        // $("#script14").attr("src", "assets/js/main.js")
         
     })
 }
 
-listarCasas()
+setTimeout(function(){
+    document.getElementById("casasFalsas").style.display ="none"
+    document.getElementById("casasreal").style.display ="block"
+    listarCasas()
+},1000)
+
