@@ -4175,3 +4175,23 @@ label {
 	from {	background-color: rgb(166, 202, 204)}
 	to { background-color: transparent};
 }
+
+.bandera {
+ display: flex !important;
+
+}
+
+.efect:hover  {
+	background-color: var(--tg-primary-color) !important;
+
+}
+
+.imag {
+	width: 30%;
+	background-color: transparent;
+}
+
+.imag:hover {
+width: 35%;
+	
+}
