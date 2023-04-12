@@ -91,9 +91,9 @@
                 <h3 style="color:#BD9A68" class="title" data-wow-delay=".2s">Mary Gold</h3>
             </div>
             <div class="navbar-wrap main-menu">
-                <ul class="navigation menu-item-has-children">
-                    <li id="txtInicio" class="menu-item">
-                        <a href="#" data-target="#begin" class="section-link-two">Inicio</a>
+                <ul class="navigation menu-item-has-children" id="sidbar">
+                    <li  class="menu-item">
+                        <a href="#" data-target="#begin" class="section-link-two" id="txtInicio">Inicio</a>
                         <!-- <ul class="sub-menu">
                             <li><a href="index.html">Home One</a></li>
                             <li><a href="index-2.html">Home Two</a></li>
@@ -105,7 +105,7 @@
                             <li><a href="index-8.html">Home Eight</a></li>
                         </ul> -->
                     </li>
-                    <li id="txtAcerca" class="menu-item"><a href="#" data-target="#ConroeTexas" class="section-link-two">Conroe, Texas</a>
+                    <li  class="menu-item"><a href="#" data-target="#ConroeTexas" class="section-link-two" id="txtAcerca">Conroe, Texas</a>
                         <!-- <ul class="sub-menu">
                             <li><a href="overview.html">Overview</a></li>
                             <li><a href="mission.html">Mission</a></li>
@@ -113,7 +113,7 @@
                             <li><a href="team-details.html">Team Profile</a></li>
                         </ul> -->
                     </li>
-                    <li id="txtEconomia" class="menu-item"><a href="#" data-target="#Economia" class="section-link-two">Economía</a>
+                    <li  class="menu-item"><a href="#" data-target="#Economia" class="section-link-two" id="txtEconomia">Economía</a>
                         <!-- <ul class="sub-menu">
                             <li><a href="project.html">Projects Two Col</a></li>
                             <li><a href="project-two.html">Projects Three Col</a></li>
@@ -121,7 +121,7 @@
                             <li><a href="project-details.html">Projects Single</a></li>
                         </ul> -->
                     </li>
-                    <li id="txtMercado" class="menu-item"><a href="#" data-target="#inmobi" class="section-link-two">Mercado Inmobiliario</a>
+                    <li class="menu-item"><a href="#" data-target="#inmobi" class="section-link-two"  id="txtMercado">Mercado Inmobiliario</a>
                         <!-- <ul class="sub-menu">
                             <li><a href="blog.html">Blog Grid</a></li>
                             <li><a href="blog-sidebar.html">Blog Grid Sidebar</a></li>
@@ -129,7 +129,7 @@
                             <li><a href="blog-details.html">Blog Single</a></li>
                         </ul> -->
                     </li>
-                    <li id="txtArrenda" class="menu-item"><a href="#" data-target="#promary" class="section-link-two mti" style="color:goldenrod">Proyecto Marygold</a>
+                    <li  class="menu-item"><a href="#" data-target="#promary" class="section-link-two mti" style="color:goldenrod" id="txtArrenda">Proyecto Marygold</a>
                         <!-- <ul class="sub-menu">
                             <li><a href="sirvices.html">Services</a></li>
                             <li><a href="testimonial.html">Testimonials</a></li>
@@ -145,7 +145,12 @@
                             <li><a href="error.html">404 Error</a></li>
                         </ul> -->
                     <!-- </li> -->
-                    <li id="txtContactoM"><a href="#" data-target="#secCont" class="section-link-two">Contacto</a></li>
+                    <li class="bandera">
+                        <a class="efect" id="espa"><img class="imag" src="./assets/img/mexico.png" alt=""></a> 
+                        <a class="efect" id="ing"><img class="imag" src="./assets/img/usa.png" alt=""></a> 
+                    </li>
+
+                    <li><a href="#" data-target="#secCont" class="section-link-two" id="txtContactoM">Contacto</a></li>
                 </ul>
             </div>
             <div class="sidebar-contact">
@@ -212,7 +217,7 @@
                                         <!-- <span class="sub-title">Our Mission</span> -->
                                         <h2 id="txrTitulo" class="title">Conroe, Texas</h2>
                                     </div>
-                                    <p id="txtInicio" style="text-align: justify;"><b> Conroe está creciendo actualmente</b> a una tasa del 3.62% anual y su población ha aumentado un 7.50% desde el censo más reciente. Con una extensión de más de 73 millas, Conroe tiene una densidad de población de 1,344 personas por milla cuadrada. <br>
+                                    <p id="txtConroe" style="text-align: justify;">Conroe está creciendo actualmente a una tasa del 3.62% anual y su población ha aumentado un 7.50% desde el censo más reciente. Con una extensión de más de 73 millas, Conroe tiene una densidad de población de 1,344 personas por milla cuadrada. <br>
                                         La Oficina de Administración y Presupuesto clasifica a Conroe como una ciudad principal dentro del área metropolitana de Houston–The Woodlands–SugarLand.</p><button class="scroll-top scroll-to-target open" data-target="html"><i class="fa-solid fa-arrow-up"></i></button>
                                     <!-- <a  class="btn transparent-btn">
                                         <div class="btn_m">
@@ -386,8 +391,8 @@
                                                 <a href="#"><img src="assets/img/marygold/inversion.jpg" alt=""></a>
                                             </div>
                                             <div class="services-content">
-                                                <h2 id="txtCompraTit" class="title"><a href="#"></a>Compras</h2>
-                                                <p id="txtDatos">A nivel local, los datos de NAR mostraron que el 29 % de las propiedades adquiridas en el condado de Montgomery en 2021 fueron adquiridas por compradores institucionales.
+                                                <h2 id="txtCompra2" class="title"><a href="#"></a>Compras</h2>
+                                                <p id="pCompra2">A nivel local, los datos de NAR mostraron que el 29 % de las propiedades adquiridas en el condado de Montgomery en 2021 fueron adquiridas por compradores institucionales.
                                                 </p>
                                                 <!-- <a href="#" class="text-btn">Learn more</a> -->
                                             </div>
@@ -477,13 +482,13 @@
                             <div class="blog-thumb">
                                 <img src="/mg/assets/img/marygold/mercado.png" alt="">
                             </div>
-                            <p style="text-align: justify;" id="txtMercado">Las tendencias del mercado en el área de Conroe y Montgomery, como el aumento de las tasas de interés, los alquileres fluctuantes y las ventas rápidas de viviendas, convirtieron al área en un objetivo para los compradores institucionales; ya que en 2019-2022 las tasas hipotecarias estaban por debajo del 3% y de repente en 2022 están por encima del 6%, duplicando las tasas de interés, por lo que las personas difícilmente califican para la casa que querían comprar, y se ven orilladas a alquilar.
+                            <p style="text-align: justify;" id="pMercadoInmo">Las tendencias del mercado en el área de Conroe y Montgomery, como el aumento de las tasas de interés, los alquileres fluctuantes y las ventas rápidas de viviendas, convirtieron al área en un objetivo para los compradores institucionales; ya que en 2019-2022 las tasas hipotecarias estaban por debajo del 3% y de repente en 2022 están por encima del 6%, duplicando las tasas de interés, por lo que las personas difícilmente califican para la casa que querían comprar, y se ven orilladas a alquilar.
                             </p>
                             <!-- <p>Denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences</p> -->
                             <div class="section-title text-center mb-55">    
                                 <h2 id="btr" class="title">Build to Rent</h2>
                             </div>
-                            <p style="text-align: justify;" id="txtBtr">Hoy en día la construcción para alquilar <b>[Buid-to-Rent] </b> puede considerarse como una “ganancia inesperada” para el retorno de la inversión; ya que permite a los inversores controlar el costo y la tasa de absorción, por lo que se prevé será el segmento de más rápido crecimiento durante los próximos cinco años.
+                            <p style="text-align: justify;" id="txtBtr">Hoy en día la construcción para alquilar <b>[Build to Rent] </b> puede considerarse como una “ganancia inesperada” para el retorno de la inversión; ya que permite a los inversores controlar el costo y la tasa de absorción, por lo que se prevé será el segmento de más rápido crecimiento durante los próximos cinco años.
                             </p>
                             <p style="text-align: justify;" id="txtbtr2">La ciudad de Conroe votó el 26 de mayo para aumentar el ancho mínimo del lote para una subdivisión de 40 pies de ancho a 50 pies.
                             </p>
@@ -556,19 +561,19 @@
                     <div class="col-md-3 col-sm-6 col-6">
                         <div class="counter-item">
                             <span class="count odometer odometer-auto-theme" data-count="60"><div class="odometer-inside"><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">3</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">0</span></span></span></span></span></div></span>
-                            <p id="spnMuj">% Mujeres</p>
+                            <p id="spnMuj2">% Mujeres</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-6">
                         <div class="counter-item">
                            <span class="count odometer odometer-auto-theme" data-count="26"><div class="odometer-inside"><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">1</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">7</span></span></span></span></span></div></span>
-                           <p id="spanCas">% Casados</p>
+                           <p id="spanCas2">% Casados</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-6">
                         <div class="counter-item">
                            <span class="count odometer odometer-auto-theme" data-count="66"><div class="odometer-inside"><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">4</span></span></span></span></span><span class="odometer-digit"><span class="odometer-digit-spacer">8</span><span class="odometer-digit-inner"><span class="odometer-ribbon"><span class="odometer-ribbon-inner"><span class="odometer-value">6</span></span></span></span></span></div></span>
-                           <p id="spanNocas">% No Casados</p>
+                           <p id="spanNocas2">% No Casados</p>
                         </div>
                     </div>
                 </div>
@@ -586,11 +591,11 @@
                     </p>
 
                     </div>
-                    <a href="mgprox.html" class="btn wow fadeInUp" data-wow-delay=".4s">
+                    <a href="#" class="btn wow fadeInUp" data-wow-delay=".4s">
                         <div class="btn_m">
                             <div class="btn_c">
-                                <div class="btn_t1 textobtn"> Conocer Más</div>
-                                <div class="btn_t2 textobtn"> Conocer Más</div>
+                                <div class="btn_t1 textobtn" id="conmas"> Conocer Más</div>
+                                <div class="btn_t2 textobtn" id="conmas2" > Conocer Más</div>
                             </div>
                         </div>
                     </a>
@@ -613,7 +618,7 @@
                                         <a ><img src="assets/img/project/project_img04.jpg" alt=""></a>
                                     </div>
                                     <div class="project-content">
-                                        <h3 class="title"><a >Proyecto Marygold</a></h3>
+                                        <h3 class="title"><a >Marygold Homes</a></h3>
                                         <span>Conroe, Texas.</span>
                                     </div>
                                 </div>
@@ -624,7 +629,7 @@
                                         <a ><img src="assets/img/marygold/mapamarygold.png" alt=""></a>
                                     </div>
                                     <div class="project-content">
-                                        <h3 class="title"><a >Proyecto Marygold</a></h3>
+                                        <h3 class="title"><a >Marygold Homes</a></h3>
                                         <span>Conroe, Texas.</span>
                                     </div>
                                 </div>
@@ -635,7 +640,7 @@
                                         <a ><img src="assets/img/marygold/marygoldhomes2.png" alt=""></a>
                                     </div>
                                     <div class="project-content">
-                                        <h3 class="title"><a >Proyecto Marygold</a></h3>
+                                        <h3 class="title"><a >Marygold Homes</a></h3>
                                         <span>Conroe, Texas.</span>
                                     </div>
                                 </div>
@@ -646,7 +651,7 @@
                                         <a ><img src="assets/img/marygold/mapamarygold.png" alt=""></a>
                                     </div>
                                     <div class="project-content">
-                                        <h3 class="title"><a >Proyecto Marygold</a></h3>
+                                        <h3 class="title"><a >Marygold Homes</a></h3>
                                         <span>Conroe, Texas.</span>
                                     </div>
                                 </div>
@@ -657,7 +662,7 @@
                                         <a ><img src="assets/img/marygold/marygoldhomes2.png" alt=""></a>
                                     </div>
                                     <div class="project-content">
-                                        <h3 class="title"><a >Proyecto Marygold</a></h3>
+                                        <h3 class="title"><a >Marygold Homes</a></h3>
                                         <span>Conroe, Texas.</span>
                                     </div>
                                 </div>
@@ -668,7 +673,7 @@
                                         <a ><img src="assets/img/marygold/mapamarygold.png" alt=""></a>
                                     </div>
                                     <div class="project-content">
-                                        <h3 class="title"><a >Proyecto Marygold</a></h3>
+                                        <h3 class="title"><a >Marygold Homes</a></h3>
                                         <span>Conroe, Texas.</span>
                                     </div>
                                 </div>
@@ -678,7 +683,7 @@
                                         <a ><img src="assets/img/marygold/marygoldhomes2.png" alt=""></a>
                                     </div>
                                     <div class="project-content">
-                                        <h3 class="title"><a >Proyecto Marygold</a></h3>
+                                        <h3 class="title"><a >Marygold Homes</a></h3>
                                         <span>Conroe, Texas.</span>
                                     </div>
                                 </div>
@@ -718,11 +723,11 @@
                                 <li  class="active">
                                     <div class="cuadrado bcver"></div>
                                     <div class="separa"></div>
-                                    <a id="2h">3 cuartos</a>
+                                    <a id="3h">3 cuartos</a>
                                 </li>
                          
                             </ul>
-                            <h2 class="mt-4">Unidades Totales: 206</h2>
+                            <h2 class="mt-4" id="tc">Unidades Totales: 206</h2>
                         </div>
                     </div>
                 </div>
@@ -765,7 +770,7 @@
                                     </div>
                                     <div class="testimonial-content">
                                         <p id="1rec">1 Recámara (Duplex)</p>
-                                        <span id="1recD">74 Unidades - 36%</span>
+                                        <span id="1recd">74 Unidades - 36%</span>
                                     </div>
                                 </div>
                                 <div class="testimonial-item">
@@ -814,8 +819,8 @@
                                                 <h4 class="title">2022</h4>
                                                 <div class="roadmap-content">
                                                     <span class="dot"></span>
-                                                    <span id="plan1" class="sub-title">INICIO</span>
-                                                    <p id="plan1d">Planeación, Renders, Planos, Permisos</p>
+                                                    <span id="plana1" class="sub-title">START</span>
+                                                    <p id="plana2">Planning, Renders, Blue Prints, Permits</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -825,9 +830,9 @@
                                                 <h4 class="title">2023</h4>
                                                 <div class="roadmap-content">
                                                     <span class="dot"></span>
-                                                    <span id="plan3" class="sub-title">Captación</span>
-                                                    <p id="plan3d">del Capital Preferente</p>
-                                                    <span id="plan3t" class="title">Enero</span>
+                                                    <span id="plan3" class="sub-title">Capital</span>
+                                                    <p id="plan3d">Captation</p>
+                                                    <span id="plan3t" class="title">January</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -836,9 +841,9 @@
                                                 <h4 class="title">2023</h4>
                                                 <div class="roadmap-content">
                                                     <span class="dot"></span>
-                                                    <span id="plan4t" class="title">Julio</span>
-                                                    <span id="plan4" class="sub-title">construcción</span>
-                                                    <p id="plan4d">Inicio del primer bloque de casas</p>
+                                                    <span id="plan4t" class="title">July</span>
+                                                    <span id="plan4" class="sub-title">Construction</span>
+                                                    <p id="plan4d">first House Block startup</p>
                                                 </div>
                                             </div>
                                         </div>                         
@@ -848,9 +853,9 @@
                                                 <h4 class="title">2028</h4>
                                                 <div class="roadmap-content">
                                                     <span class="dot"></span>
-                                                    <span id="plan4" class="sub-title">Finalización</span>
-                                                    <p id="plan4d">del Proyecto</p>
-                                                    <span id="plan4t" class="title">Proximanente</span>
+                                                    <span id="planf2" class="sub-title">Project</span>
+                                                    <p id="planf1">End</p>
+                                                    <span id="planf" class="title">Comming soon</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -921,7 +926,7 @@
                                 </div>
                                 <div class="col-sm-6 text-center">
                                     <div class="footer-widget">
-                                        <h2 class="fw-title">Contacto</h2>
+                                        <h2 class="fw-title" id="ftContact">Contacto</h2>
                                         <div class="footer-contact">
                                             <p id="dirCont">Conroe, Texas</p>
                                             <ul class="list-wrap">
@@ -1006,5 +1011,6 @@
         <script src="/dashboard//plugins/sweetalert2/sweetalert2.min.js"></script>
         <script src="/dashboard//plugins/toastr/toastr.min.js"></script>
         <script src="./scripts/js/enviarMensaje.js"></script>
+        <script src="./scripts/js/lenguaje.js"></script>
     </body>
 </html>
