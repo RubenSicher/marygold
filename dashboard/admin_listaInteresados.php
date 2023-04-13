@@ -46,8 +46,8 @@
                         <div class="card-header">
                             <h3 class="card-title">Interest list</h3>
                         </div>
-                        <div class="card-body">
-                            <table id="tblListadoSolicitudes" class="table table-bordered table-hover dataTable dtr-inline" aria-describedby="example2_info">
+                        <div class="card-body table-responsive p-0">
+                            <table id="tblListadoSolicitudes" class="table table-hover text-nowrap" aria-describedby="example2_info">
                                 <thead>
                                     <tr>
                                         <th>id</th>

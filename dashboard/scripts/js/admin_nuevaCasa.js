@@ -202,6 +202,7 @@ $("#tblListadoCasas").on( "click", "#btnEditHouse", function(){
             $("#cboTipoCasa").val(item.type_house)
             $("#txtTamanoPlano").val(item.flat_size)
             $("#cboEstadoCasa").val(item.status_house)
+            $("#cboModeloCasa").val(item.modelo)
             
             if(item.src_image != ""){
                 $("#imgUpload").attr("src", item.src_image)

@@ -4,7 +4,8 @@
 
 <style>
     .tamano_imagen{
-        width: 100%;
+        width: 400px;
+        height: 300px;
     }
 
     /* @media screen and (max-width:600px) {
@@ -40,6 +41,15 @@
                         <p class="statusMsg"></p>
                         <form class="form-horizontal" enctype="multipart/form-data" id="formCasas">
                             <div class="card-body">
+                                <div class="form-group">
+                                    <label>Model</label>
+                                    <select class="form-control" id="cboModeloCasa" name="cboModeloCasa">
+                                        <option value="0">Select option</option>    
+                                        <!-- <option value="1">APARTMENT</option>
+                                        <option value="2">HOUSE 1</option>
+                                        <option value="3">HOUSE 2</option> -->
+                                    </select>
+                                </div>
                                 <div class="form-group">
                                     <label>Name house</label>
                                     <input type=" text" class="form-control" id="txtNombreCasa" name="txtNombreCasa" placeholder="Name house" wfd-id="id2">
@@ -151,6 +161,7 @@
 
 <?php include 'extension_pagina.php' ?>
 <script src="./scripts/js/admin_nuevaCasa.js"></script>
+<script src="./scripts/js/admin_nuevoModelo.js"></script>
 </body>
 
 </html>
