@@ -33,6 +33,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="/mg/assets/img/iconmg.svg">
 
 <link rel="stylesheet" href="./plugins/toastr/toastr.min.css">
+<script src="https://kit.fontawesome.com/e82751842d.js" crossorigin="anonymous"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed sidebar-collapse">
 <div class="wrapper">
