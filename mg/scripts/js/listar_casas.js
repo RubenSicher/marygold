@@ -50,7 +50,7 @@ function listarCasas(idMod){
             lista_casas += '<div class="col-xl-3 col-lg-4 col-md-6 bloque'+bloque+'" '+display+'>\
                                     <div class="project-item">\
                                         <div class="project-thumb">\
-                                            <a href="project-details.html"><img src="'+item.src_image+'" style="width:100%; height:175px"></a>\
+                                            <a href="#"><img src="'+item.src_image+'" style="width:100%; height:175px"></a>\
                                         </div>\
                                         <div class="project-content">\
                                             <h3 class="title"><a href="project-details.html">New Central Garden</a></h3>\
