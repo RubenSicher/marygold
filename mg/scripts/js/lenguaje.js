@@ -4,6 +4,7 @@ var economia = document.getElementById("txtEconomia");
 var mercado = document.getElementById("txtMercado");
 var proj = document.getElementById("txtArrenda");
 var cont = document.getElementById("txtContactoM");
+var projects = document.getElementById("projects");
 var txtConroeB = document.getElementById("conroeT");
 var txtConroe = document.getElementById("txtConroe");
 var txtActualidad = document.getElementById("txtActualidad");
@@ -150,6 +151,7 @@ mensaje.placeholder = "your message"
 
 btnSolicita.innerText = "Send Message"
 ftContact.innerText = "Contact"
+projects.innerText = "see Projects"
 
 
 
@@ -221,6 +223,8 @@ inputNum.placeholder = "Tu telefono"
 mensaje.placeholder = "Tu mensaje"
 btnSolicita.innerText = "Envíar Mensaje"
 ftContact.innerText = "Contacto"
+projects.innerText = "Ver Proyectos"
+
 
     }
 }
