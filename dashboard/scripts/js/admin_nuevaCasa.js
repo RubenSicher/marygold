@@ -40,11 +40,14 @@ $(document).ready(function(e){
                     $('.statusMsg').html('');
                     if(item.ok == 'ok'){
                         $('#formCasas')[0].reset();
-                        $('.statusMsg').html('<span style="font-size:18px;color:#34A853">Form data submitted successfully.</span>');
+                        // $('.statusMsg').html('<span style="font-size:18px;color:#34A853">Form data submitted successfully.</span>');
+                        Toast.fire("Se guardo correctamente", "","success")
                     }else if(item.ok == 'err'){
-                        $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred in database, please try again.</span>');
+                        // $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred in database, please try again.</span>');
+                        Toast.fire("Ocurrio un problema en la base de datos", "","warning")
                     }else if(item.ok == 'noData'){
-                        $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, missing data to enter.</span>');
+                        // $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, missing data to enter.</span>');
+                        Toast.fire("Ocurrio un problema, datos perdidos", "","warning")
                     }
                     $('#formCasas').css("opacity","");
                     $(".submitBtn").removeAttr("disabled");
@@ -96,11 +99,14 @@ $(document).ready(function(e){
                 $.each(rest.data, function (i, item) {
                     $('.statusMsg').html('');
                     if(item.ok == 'ok'){
-                        $('.statusMsg').html('<span style="font-size:18px;color:#34A853">Form data submitted successfully.</span>');
+                        Toast.fire("Actualizado correctamente", "","success")
+                        // $('.statusMsg').html('<span style="font-size:18px;color:#34A853">Form data submitted successfully.</span>');
                     }else if(item.ok == 'err'){
-                        $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred in database, please try again.</span>');
+                        Toast.fire("Ocurrio un problema en la base de datos", "","warning")
+                        // $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred in database, please try again.</span>');
                     }else if(item.ok == 'noData'){
-                        $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, missing data to enter.</span>');
+                        Toast.fire("Ocurrio un problema, datos perdidos", "","warning")
+                        // $('.statusMsg').html('<span style="font-size:18px;color:#EA4335">Some problem occurred, missing data to enter.</span>');
                     }
                     $('#formCasas')[0].reset();
                     $('#formCasas').css("opacity","");
@@ -122,7 +128,8 @@ $(document).ready(function(e){
         var imagefile = file.type;
         var match= ["image/jpeg","image/png","image/jpg"];
         if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2]))){
-            alert('Please select a valid image file (JPEG/JPG/PNG).');
+            // alert('Please select a valid image file (JPEG/JPG/PNG).');
+            Toast.fire("Selecciona una imagen valida (JPEG/JPG/PNG)", "","warning")
             $("#file").val('');
             return false;
         }
@@ -166,13 +173,15 @@ $("#btnDeleteImage").click(function(){
     }).done(function(rest){
          $.each(rest.data, function (i, item) {
             if (item.ok == "ok"){
-                alert("Delete image correctly")
+                // alert("Delete image correctly")
+                Toast.fire("Se borró imagen", "","success")
                 $("#txtImage_house").val("")
                 $("#imgUpload").attr('src', '')
                 $("#uploadImage").show()
                 $("#imageHouse").hide()
             }else if (item.ok == "noOk"){
-                alert("Error, the image was not removed")
+                Toast.fire("Error, la imagen no fue eliminada", "","error")
+                // alert("Error, the image was not removed")
             }
          })
     })
@@ -241,10 +250,12 @@ $("#tblListadoCasas").on( "click", "#btnDeleteHouse", function(){
              $.each(rest.data, function (i, item) {
                              
                 if (item.ok=='ok') {
-                    alert("se elimino el registro")
+                    // alert("se elimino el registro")
+                    Toast.fire("Se eliminón el registro", "","success")
 
                 }else if (item.ok = 'noOk') {
-                    alert("No se elimino el registro")
+                    // alert("No se elimino el registro")
+                    Toast.fire("Ocurrio un error, no se elimino el registro", "","error")
                 }
                 $("#tblListadoCasas").DataTable().ajax.reload();  
              })
@@ -252,4 +263,18 @@ $("#tblListadoCasas").on( "click", "#btnDeleteHouse", function(){
     }else{
         console.log("no borrar")
     }
+})
+
+
+$.ajax({
+    method: "POST",
+    url:"scripts/php/admin_nuevoModelo.php",
+    cache: false,
+    dataType: "json",
+    data: {comm:"getModelos"}
+}).done(function(rest){
+    //rest.tipo
+  $.each(rest.data, function (i, item) {
+    $('#cboModeloCasa').append(new Option(item.nombre, item.id));
+  });
 })

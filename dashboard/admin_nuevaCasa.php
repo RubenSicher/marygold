@@ -161,7 +161,21 @@
 
 <?php include 'extension_pagina.php' ?>
 <script src="./scripts/js/admin_nuevaCasa.js"></script>
-<script src="./scripts/js/admin_nuevoModelo.js"></script>
+<!-- <script src="./scripts/js/admin_nuevoModelo.js"></script> -->
+<script>
+var Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+  });
+  var Toast2 = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    timer: null,
+
+  });
+</script>
 </body>
 
 </html>
