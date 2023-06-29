@@ -179,6 +179,9 @@ function bloquearDias(fechasNoDisp){
         format: "dd/mm/yyyy",
         language: "en",
         datesDisabled: fechasNoDisp,
+        // beforeShowDay: function(d){
+        //     if ($.inArray())
+        // }
     });
 
     $("#fecha_salida").datepicker({
