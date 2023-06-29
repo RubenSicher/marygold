@@ -53,8 +53,9 @@ function listarCasas(idMod){
                                             <a href="#"><img src="'+item.src_image+'" style="width:100%; height:175px"></a>\
                                         </div>\
                                         <div class="project-content">\
-                                            <h3 class="title"><a href="project-details.html">New Central Garden</a></h3>\
-                                            <span>Baltimore, MD</span>\
+                                            <h3 class="title">New Central Garden</h3>\
+                                            <span><a href="javascript:openDate('+item.id+')">view date</a></span>\
+                                            <h5>'+item.price+' USD <p> night</p></h5>\
                                         </div>\
                                     </div>\
                                 </div>'
@@ -104,3 +105,116 @@ $("#backModelos").click(function(){
     $("#divCasas, #divTituloModelo").hide()
 
 })
+
+
+var fechasNOdisponibles = []
+
+function openDate(idCasa){
+    $.ajax({
+        url:"scripts/php/listar_casas.php",
+        cache: false,
+        data: {comm:"fechasNOdisponibles", idCasa:idCasa},
+        dataType: "json",
+        method: "POST"
+    }).done(function(rest){
+        $.each(rest.data, function (i, item) {
+            fecha_salida = new Date(item.fecha_salida)
+            fecha_llegada = new Date(item.fecha_llegada)
+            
+            while(fecha_salida.getTime() >= fecha_llegada.getTime()){
+                fecha_llegada.setDate(fecha_llegada.getDate() + 1);
+                console.log(fecha_llegada.getDate() + '/' + (fecha_llegada.getMonth() + 1) + '/' + fecha_llegada.getFullYear());
+
+                if (fecha_llegada.getMonth() + 1 <= 9 ){
+                    mes = ("0"+String(fecha_llegada.getMonth()+1))
+                }else{
+                    mes = String(fecha_llegada.getMonth()+1)
+                }
+
+                if ( fecha_llegada.getDate() <= 9){
+                    dia = ('0'+String(fecha_llegada.getDate()))
+                }else{
+                    dia = String(fecha_llegada.getDate())
+                }
+                fechas = dia + '/' + mes + '/' + fecha_llegada.getFullYear()
+                fechasNOdisponibles.push(fechas)
+            }
+
+        })
+        console.log(fechasNOdisponibles)
+        bloquearDias(fechasNOdisponibles)
+        $("#modal_fechasDisponibles").modal("show")
+    })
+}
+
+function bloquearDias(fechasNoDisp){
+    hoy = new Date()
+    if (hoy.getMonth() + 1 <= 9 ){
+        mes = ("0"+String(hoy.getMonth()+1))
+    }else{
+        mes = String(hoy.getMonth()+1)
+    }
+
+    if ( hoy.getDate() <= 9){
+        dia = ('0'+String(hoy.getDate()))
+    }else{
+        dia = String(hoy.getDate())
+    }
+    fechaSol = mes+'/'+dia+'/'+hoy.getFullYear()
+    console.log(fechaSol)
+
+    // jQuery('#fecha_llegada, #fecha_salida').datepicker({
+    //     minDate: new Date(),
+    //   });
+
+    $("#fecha_llegada").datepicker({
+        changeMonth : true,
+        changeYear : true,
+        autoclose: true,
+        firstDay : 1,
+        startDate: '-1d',
+        todayHighlight: true,
+        // minDate : -1,
+        // yearRange : '2022:' + String((new Date()).getFullYear() + 1),
+        format: "dd/mm/yyyy",
+        language: "en",
+        datesDisabled: fechasNoDisp,
+    });
+
+    $("#fecha_salida").datepicker({
+        changeMonth : true,
+        changeYear : true,
+        autoclose: true,
+        firstDay : 1,
+        todayHighlight: true,
+        // minDate : new Date(2005, 0, 1),
+        // startDate: '24/07/2023',
+        // yearRange : '2022:' + String((new Date()).getFullYear() + 1),
+        format: "dd/mm/yyyy",
+        language: "en",
+        datesDisabled: fechasNoDisp,
+    });
+    
+}
+
+jQuery(document).on('change', '#fecha_llegada', () => {
+    // var element = event.target;
+    // console.log(element.value);
+    f = $("#fecha_llegada").val()
+    cadena = f.split("/")
+    console.log(cadena)
+    ff = cadena[0]+"/"+cadena[1]+"/"+cadena[2]
+    console.log(ff)
+    jQuery('#fecha_salida').datepicker('setStartDate', ff);
+});
+
+jQuery(document).on('change', '#fecha_salida', () => {
+    fs = $("#fecha_salida").val()
+    cadena_salida = fs.split("/")
+    console.log(cadena_salida)
+    ffs = cadena_salida[0]+"/"+cadena_salida[1]+"/"+cadena_salida[2]
+    console.log(ffs)
+    jQuery('#fecha_llegada').datepicker('setEndDate', ffs);
+})
+
+

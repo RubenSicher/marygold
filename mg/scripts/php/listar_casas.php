@@ -2,6 +2,7 @@
 
 $comm = $_POST["comm"];
 $modelo = $_POST["modelo"];
+$idCasa = $_POST["idCasa"];
 
 if ($comm == 'listarCasas'){
 
@@ -35,9 +36,37 @@ if ($comm == 'listarCasas'){
     }catch(Exception $e){
         echo $e->getMessage();
     }
+}
 
-    
+
+if ($comm == 'fechasNOdisponibles'){
+
+    try{
+
+        include_once "../../../dashboard/scripts/php/conectar.php";
+        $datos = $conn->query("SET time_zone = '-06:00'");
+        $datos = $conn->query("SELECT id, id_casa, fecha_llegada, fecha_salida, now() FROM admin_rentaCasas WHERE estado='1' and fecha_llegada >= DATE(NOW()) and id_casa='$idCasa' ");
+        
+        if($datos->num_rows >= 0){
+            $data = array();
+            while ($fila = mysqli_fetch_array($datos)){
+                                
+                $data[] = array('ok'=>'ok', 'id' => $fila['id'], 'id_casa' => $fila['id_casa'], 'fecha_llegada' => $fila['fecha_llegada'], 'fecha_salida' => $fila['fecha_salida'], 'date_system' => $fila[4]);
+            }
+           
+        }else{
+            $data[] = array('ok'=>'noOk');
+        }
+
+        echo '{"data": '.(json_encode($data)).'}';
+        mysqli_free_result($datos);
+        mysqli_close($conn);
+
+    }catch(Exception $e){
+        echo $e->getMessage();
+    }
 
 }
+
 
 ?>

@@ -7,6 +7,12 @@
         <meta name="description" content="Reland - Real Estate Group HTML Template">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css"> -->
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+        <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"/> -->
+
 		<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
         <!-- Place favicon.ico in the root directory -->
         <!-- CSS here -->
@@ -23,6 +29,29 @@
         <link rel="stylesheet" href="assets/css/responsive.css">
     </head>
     <body>
+
+        <div class="modal" tabindex="-1" role="dialog" id="modal_fechasDisponibles">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <label>Arrival time</label>
+                    <input class="form-control" id="fecha_llegada" type="text" data-provide="datepicker"/>
+                    <label>Departure time</label>
+                    <input class="form-control" id="fecha_salida" type="text" data-provide="datepicker"/>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
         <!-- Preloader-start -->
         <div id="preloader">
@@ -552,7 +581,19 @@
         <script id="script12" src="assets/js/ajax-form.js"></script>
         <script id="script13" src="assets/js/wow.min.js"></script>
         <script id="script14" src="assets/js/main.js"></script>
-        <script src="./scripts/js/listar_casas.js"></script>
         
+
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.es.min.js"></script>
+
+        <!-- <link href="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css" rel="stylesheet"/>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+        <!-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> -->
+
+        <script src="./scripts/js/listar_casas.js"></script>
     </body>
 </html>
