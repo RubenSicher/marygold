@@ -1,3 +1,10 @@
+<style>
+    
+    .datepicker td.disabled{
+        text-decoration: line-through;
+    }
+    
+</style>
 <!doctype html>
 <html class="no-js" lang="en">
     <head>
@@ -10,7 +17,8 @@
         <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="/resources/demos/style.css"> -->
 
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+        <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" rel="stylesheet"/> -->
+        <link rel="stylesheet" href="./assets/datepicker-bootstrap/bootstrap-datepicker.min.css">
         <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"/> -->
 
 		<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
@@ -35,19 +43,46 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title">Modal title</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
-                  </button>
+                  </button> -->
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" id="bodymodal_fechas">
                     <label>Arrival time</label>
-                    <input class="form-control" id="fecha_llegada" type="text" data-provide="datepicker"/>
+                    <input class="form-control" id="fecha_llegada" type="text" data-provide="datepicker" autocomplete="off"/>
                     <label>Departure time</label>
-                    <input class="form-control" id="fecha_salida" type="text" data-provide="datepicker"/>
+                    <input class="form-control" id="fecha_salida" type="text" data-provide="datepicker" autocomplete="off"/>
+                </div>
+                <div class="modal-body" id="div_registronuevousuario">
+                    <form action="javascript:registrarCliente()">
+                        <label style="font-size: 12px; text-align: justify;">Muchas gracias por contactarnos, con gusto le ayudaremos a reservar la residencia que seleccione</label>
+                        <label style="font-size: 12px; text-align: justify;">Por favor, ingresa los datos que solicitamos para activar tu cuenta en 3 pasos</label>
+                        <div class="form-group mb-3">
+                            <label for="txtNombre">Nombre</label>
+                            <input type="text" class="form-control" id="txtNombre" placeholder="Nombre" maxlength="50" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="txtTelefono">Teléfono</label>
+                            <input type="text" class="form-control" id="txtTelefono" placeholder="Celular (10 dígitos)" maxlength="10">
+                        </div>
+                        <div class="form-group mb-3">
+                        <label for="txtEmail">Email</label>
+                        <input type="email" class="form-control mb-2" id="txtEmail" placeholder="Email" maxlength="50" required>
+                        <label style="color: red; display: none; font-size: 12px; text-align: justify;" id="spanEmail">¡ERROR!, Este correo ya se ha registrado anteriormente, agrega otro correo o da clic en la opción YA SOY CLIENTE y posterior da clic a ENVIAR CLAVE DE ACCESO</label>
+                        </div>
+                        
+                        <button class="btn btn-primary mb-5" id="btnRegistrarCliente">Enviar clave de activación al correo</button>
+                        <div style="text-align: center;">
+                            <a id="btnYaSoyCliente" style="font-size: 12px; cursor: pointer;">¡Ya soy cliente!</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-body" id="div_yasoycliente">
+
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-primary">Save changes</button>
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-secondary" id="btnCerrarModalFechas">Close</button>
                 </div>
               </div>
             </div>

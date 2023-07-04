@@ -107,9 +107,32 @@ $("#backModelos").click(function(){
 })
 
 
+function crear_inputFechas(idC){
+    txtfechas = ""
+
+    txtfechas = '<label>Arrival time</label>\
+                <input class="form-control" id="fecha_llegada'+idC+'" type="text" data-provide="datepicker" autocomplete="off"/>\
+                <label>Departure time</label>\
+                <input class="form-control" id="fecha_salida'+idC+'" type="text" data-provide="datepicker" autocomplete="off"/>'
+
+    $("#bodymodal_fechas").html(txtfechas)       
+}
+
 var fechasNOdisponibles = []
+var idCasaGlobal
 
 function openDate(idCasa){
+    crear_inputFechas(idCasa)
+    fechasNOdisponibles = []
+    idCasaGlobal = idCasa
+    // $('#fecha_llegada').val('').datepicker('update')
+    // $("#fecha_llegada").datepicker("clearDates");
+    // $('#fecha_llegada').datepicker('update','');
+    // $('#fecha_llegada').val('').datepicker('destroy').datepicker();
+    // $('#fecha_llegada').datepicker('setDate', null);
+    // $('#fecha_llegada').datepicker('setDate', "01/06/2023");
+    // $('#fecha_llegada').datepicker("setDate", new Date());
+
     $.ajax({
         url:"scripts/php/listar_casas.php",
         cache: false,
@@ -143,9 +166,12 @@ function openDate(idCasa){
         })
         console.log(fechasNOdisponibles)
         bloquearDias(fechasNOdisponibles)
+        $('#modal_fechasDisponibles').modal({backdrop: 'static',keyboard: false})
         $("#modal_fechasDisponibles").modal("show")
     })
 }
+
+var f_llegada, f_salida
 
 function bloquearDias(fechasNoDisp){
     hoy = new Date()
@@ -162,62 +188,99 @@ function bloquearDias(fechasNoDisp){
     }
     fechaSol = mes+'/'+dia+'/'+hoy.getFullYear()
     console.log(fechaSol)
+    console.log(fechasNoDisp)
 
-    // jQuery('#fecha_llegada, #fecha_salida').datepicker({
-    //     minDate: new Date(),
-    //   });
+    f_llegada = "#fecha_llegada"+idCasaGlobal
+    f_salida = "#fecha_salida"+idCasaGlobal
 
-    $("#fecha_llegada").datepicker({
+    
+    $("#fecha_llegada"+idCasaGlobal).datepicker({
         changeMonth : true,
         changeYear : true,
         autoclose: true,
         firstDay : 1,
-        startDate: '-1d',
+        startDate: '+0d',
         todayHighlight: true,
         // minDate : -1,
         // yearRange : '2022:' + String((new Date()).getFullYear() + 1),
         format: "dd/mm/yyyy",
         language: "en",
-        datesDisabled: fechasNoDisp,
+        datesDisabled: fechasNoDisp
         // beforeShowDay: function(d){
-        //     if ($.inArray())
+            // console.log("Entro datepicker")
+        //     console.log(d)
+        //     var dia =  d.getDate()
+        //     var mes = (d.getMonth()+1)
+        //     var anio = d.getFullYear()
+
+        //     if (mes<= 9 ){
+        //         mes = ("0"+String(mes))
+        //     }
+        
+        //     if ( dia <= 9){
+        //         dia = ('0'+String(dia))
+        //     }
+
+        //     var fecha = dia+'/'+mes+'/'+anio;
+        //     console.log(fecha)
+            
+        //     if ( $.inArray(fecha, fechasNoDisp) != -1 ){
+        //         console.log("1")
+        //         return [true, "miclase","Available"]
+        //     }else{
+        //         console.log("2")
+        //         return [false, "","Unavailable"]
+        //     }
         // }
     });
 
-    $("#fecha_salida").datepicker({
+    $("#fecha_salida"+idCasaGlobal).datepicker({
         changeMonth : true,
         changeYear : true,
         autoclose: true,
         firstDay : 1,
         todayHighlight: true,
+        
         // minDate : new Date(2005, 0, 1),
         // startDate: '24/07/2023',
         // yearRange : '2022:' + String((new Date()).getFullYear() + 1),
         format: "dd/mm/yyyy",
         language: "en",
-        datesDisabled: fechasNoDisp,
+        datesDisabled: fechasNoDisp
     });
     
 }
 
-jQuery(document).on('change', '#fecha_llegada', () => {
+var f , ff
+
+jQuery(document).on('change', f_llegada, () => {
     // var element = event.target;
     // console.log(element.value);
-    f = $("#fecha_llegada").val()
+
+    f = $("#fecha_llegada"+idCasaGlobal).val()
     cadena = f.split("/")
     console.log(cadena)
     ff = cadena[0]+"/"+cadena[1]+"/"+cadena[2]
     console.log(ff)
-    jQuery('#fecha_salida').datepicker('setStartDate', ff);
+    jQuery('#fecha_salida'+idCasaGlobal).datepicker('setStartDate', ff);
 });
 
-jQuery(document).on('change', '#fecha_salida', () => {
-    fs = $("#fecha_salida").val()
+jQuery(document).on('change', f_salida, () => {
+    $("#fecha_llegada"+idCasaGlobal).val(f)
+    if( $("#fecha_salida"+idCasaGlobal).val() == ""){
+        fs = ff
+    }else{
+        fs = $("#fecha_salida"+idCasaGlobal).val()
+    }
+    
     cadena_salida = fs.split("/")
     console.log(cadena_salida)
     ffs = cadena_salida[0]+"/"+cadena_salida[1]+"/"+cadena_salida[2]
     console.log(ffs)
-    jQuery('#fecha_llegada').datepicker('setEndDate', ffs);
+    jQuery('#fecha_llegada'+idCasaGlobal).datepicker('setEndDate', ffs);
 })
 
+$("#btnCerrarModalFechas").click(function(){
+    $('#modal_fechasDisponibles').modal('hide');
+})
 
