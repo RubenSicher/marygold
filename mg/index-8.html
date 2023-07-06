@@ -47,6 +47,11 @@
                     <span aria-hidden="true">&times;</span>
                   </button> -->
                 </div>
+                <div class="modal-body" id="div_datosCliente">
+                    <label>WELCOME!</label>
+                    <input type="hidden" id="idTempCliente">
+                    <label id="nombreTempCliente"></label>
+                </div>
                 <div class="modal-body" id="bodymodal_fechas">
                     <label>Arrival time</label>
                     <input class="form-control" id="fecha_llegada" type="text" data-provide="datepicker" autocomplete="off"/>
@@ -58,11 +63,11 @@
                         <label style="font-size: 12px; text-align: justify;">Muchas gracias por contactarnos, con gusto le ayudaremos a reservar la residencia que seleccione</label>
                         <label style="font-size: 12px; text-align: justify;">Por favor, ingresa los datos que solicitamos para activar tu cuenta en 3 pasos</label>
                         <div class="form-group mb-3">
-                            <label for="txtNombre">Nombre</label>
+                            <label for="txtNombre">Name</label>
                             <input type="text" class="form-control" id="txtNombre" placeholder="Nombre" maxlength="50" required>
                         </div>
                         <div class="form-group mb-3">
-                            <label for="txtTelefono">Teléfono</label>
+                            <label for="txtTelefono">Phone (Whatsapp)</label>
                             <input type="text" class="form-control" id="txtTelefono" placeholder="Celular (10 dígitos)" maxlength="10">
                         </div>
                         <div class="form-group mb-3">

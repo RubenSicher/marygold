@@ -240,7 +240,7 @@ function bloquearDias(fechasNoDisp){
         autoclose: true,
         firstDay : 1,
         todayHighlight: true,
-        
+        startDate: '+0d',
         // minDate : new Date(2005, 0, 1),
         // startDate: '24/07/2023',
         // yearRange : '2022:' + String((new Date()).getFullYear() + 1),
@@ -283,4 +283,63 @@ jQuery(document).on('change', f_salida, () => {
 $("#btnCerrarModalFechas").click(function(){
     $('#modal_fechasDisponibles').modal('hide');
 })
+
+
+
+// ************************************************************
+// ******************** nuevo cliente *************************
+
+function registrarCliente(){
+    generar_clave()
+}
+
+const rango = Object.freeze({
+    min: 10000,
+    max: 99999
+})
+
+var clave
+function generar_clave(){
+   
+    clave = Math.floor(Math.random()*(rango.max-rango.min+1)+rango.min);
+    console.log(clave);
+
+    setTimeout(function(){
+        guardarCliente()
+    }, 2000)
+    
+}
+
+function guardarCliente(){
+    $.ajax({
+        url:"scripts/php/listar_casas.php",
+        cache: false,
+        data: { comm:"guardarCliente", 
+                nombre_cliente: $("#txtNombre").val(),
+                telefono: $("#txtTelefono").val(),
+                email: $("#txtEmail").val(),
+                clave: clave
+            },
+        dataType: "json",
+        method: "POST"
+    }).done(function(rest){
+        $.each(rest.data, function (i, item) {
+            console.log(item.ok)
+            if(item.ok == "ok"){
+                console.log("guardo cliente")
+                $("#idTempCliente").val(item.id)
+                $("#nombreTempCliente").text(item.nombre)
+                enviarCorreoCliente()
+            }else if(item.ok == "noOk"){
+                console.log("no guardo cliente, ya existe email")
+                $("#spanEmail").show()
+                setTimeout( function(){
+                    $("#spanEmail").hide()
+                }, 20000)
+            }else if (item.ok == "err"){
+                alert("Ocurrio un problema, vuelva a intentarlo")
+            }
+        })
+    })
+}
 
