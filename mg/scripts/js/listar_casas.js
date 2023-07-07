@@ -113,7 +113,10 @@ function crear_inputFechas(idC){
     txtfechas = '<label>Arrival time</label>\
                 <input class="form-control" id="fecha_llegada'+idC+'" type="text" data-provide="datepicker" autocomplete="off"/>\
                 <label>Departure time</label>\
-                <input class="form-control" id="fecha_salida'+idC+'" type="text" data-provide="datepicker" autocomplete="off"/>'
+                <input class="form-control" id="fecha_salida'+idC+'" type="text" data-provide="datepicker" autocomplete="off"/>\
+                <div style="text-align: center;" class="mb-5 mt-5">\
+                    <button class="btn btn-primary" id="btnEnviarReservacion">Save changes</button>\
+                </div>'
 
     $("#bodymodal_fechas").html(txtfechas)       
 }
@@ -315,8 +318,8 @@ function guardarCliente(){
         url:"scripts/php/listar_casas.php",
         cache: false,
         data: { comm:"guardarCliente", 
-                nombre_cliente: $("#txtNombre").val(),
-                telefono: $("#txtTelefono").val(),
+                nombre: $("#txtNombre").val(),
+                celular: $("#txtTelefono").val(),
                 email: $("#txtEmail").val(),
                 clave: clave
             },
@@ -325,10 +328,11 @@ function guardarCliente(){
     }).done(function(rest){
         $.each(rest.data, function (i, item) {
             console.log(item.ok)
+            console.log(item.num_rows)
             if(item.ok == "ok"){
                 console.log("guardo cliente")
                 $("#idTempCliente").val(item.id)
-                $("#nombreTempCliente").text(item.nombre)
+                $("#nombreTempCliente").val(item.nombre)
                 enviarCorreoCliente()
             }else if(item.ok == "noOk"){
                 console.log("no guardo cliente, ya existe email")
@@ -343,3 +347,120 @@ function guardarCliente(){
     })
 }
 
+function enviarCorreoCliente(){
+    $.ajax({
+		url: "scripts/php/listar_casas.php",
+		cache:false,
+		// dataType:"json",
+        method: "POST",
+		data: {
+            comm: "enviarCorreo",
+            nombre: $("#txtNombre").val(),
+            email: $("#txtEmail").val(),
+            celular: $("#txtTelefono").val(),
+            clave: clave
+		}
+	}).done(function(rest){
+		console.log(rest)
+        if(rest == "ok"){
+            // $("#txtNombre, #txtEmail, #txtTelefono").val("")
+            alert("Correo enviado correctamente!")
+            $("#div_registronuevousuario").hide()
+            $("#div_clave_activacion").show()
+        }
+	}).fail(function(jqXHR,estado,error){
+		console.log(estado);
+		console.log(error);
+	})
+}
+
+
+$("#btnActivarCuenta").click(function(e){
+    e.preventDefault()
+    e.stopPropagation()
+    if( $("#txtClave").val() == "" ){
+        $("#spanClave").show()
+        setTimeout( function(){
+            $("#spanClave").hide()
+        }, 20000)
+    }else{
+        activarCuentaCliente()
+    }
+})
+
+function activarCuentaCliente(){
+    $.ajax({
+        url:"scripts/php/listar_casas.php",
+        cache: false,
+        data: { comm:"activaCliente", 
+                idReg: $("#idTempCliente").val()
+            },
+        dataType: "json",
+        method: "POST"
+    }).done(function(rest){
+        $.each(rest.data, function (i, item) {
+            if(item.ok == "ok"){
+                // alert("La cuenta se activó correctamente!")
+                // $("#modal_registro").modal("hide")
+                $("#idCliente").val( $("#idTempCliente").val() )
+                $("#nombreCliente").text( $("#nombreTempCliente").val() )
+                $("#div_clave_activacion").hide()
+                $("#bodymodal_fechas").show()
+                $("#div_datosCliente").show()
+            }else {
+                alert("Ocurrio un problema vuelva a intentarlo")
+            }
+        })
+    })
+}
+
+$("#btnReenviarCorreo").click(function(){
+    console.log("reenviar correo")
+    enviarCorreoCliente()
+})
+
+$("#bodymodal_fechas").on("click", "#btnEnviarReservacion", function(){
+    if ( $("#idCliente").val() == "" ){
+        $("#bodymodal_fechas").hide()
+        $("#div_registronuevousuario").show()
+    }else{
+        console.log("enviar reserva por correo")
+    }
+})
+
+$("#btnYaSoyCliente").click(function(){
+    $("#div_registronuevousuario").hide()
+    $("#div_yasoycliente").show()
+})
+
+function iniciarSesion(){
+    if( $("#txtEmailLogeo").val() == "" || $("#txtClaveLogeo").val() == "" ){
+        console.log("No ingreso correo")
+    }else{
+
+        $.ajax({
+            url:"scripts/php/listar_casas.php",
+            cache: false,
+            data: { comm:"buscarCliente", 
+                    email: $("#txtEmailLogeo").val(),
+                    clave: $("#txtClaveLogeo").val()
+                },
+            dataType: "json",
+            method: "POST"
+        }).done(function(rest){
+            $.each(rest.data, function (i, item) {
+                if(item.ok == "ok"){
+                   
+                    $("#idCliente").val( item.id )
+                    $("#nombreCliente").text( item.nombre)
+                    
+                    $("#div_yasoycliente").hide()
+                    $("#bodymodal_fechas").show()
+
+                }else if(item.ok == "noOk") {
+                    alert("Datos incorrectos, vuelve a intentarlo")
+                }
+            })
+        })
+    }
+}
