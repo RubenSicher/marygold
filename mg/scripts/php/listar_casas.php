@@ -129,7 +129,7 @@ if($comm =="enviarCorreo") {
     $to = "$email";
     $subject = "Clave Activación MaryGold";
     
-    $message = "<h4>¡Esta es tu clave de acceso!:</h4>";
+    $message = "<h4>¡Esta es tu clave de acceso!</h4>";
     $message .= "<h1>$clave</h1>";
     $message .= "<h4>Captura la clave para activar tu cuenta y reservar una residencia</h4>";
     
@@ -177,7 +177,7 @@ if ($comm == "buscarCliente"){
         include_once "../../../dashboard/scripts/php/conectar.php";
 
         // primero revisamos que no exista ese correo 
-        $datos = $conn->query("SELECT id, nombre, email, FROM admin_clientes WHERE email='$email' and clave='$clave' ");
+        $datos = $conn->query("SELECT id, nombre, email, celular FROM admin_clientes WHERE email='$email' and clave='$clave' ");
         
         $data = array();
         if($datos->num_rows > 0){          
@@ -188,7 +188,7 @@ if ($comm == "buscarCliente"){
                 $mail = $fila['email'];
                 $cel = $fila['celular'];
                                 
-                $insert = $conn->query("UPDATE admin_clientes SET activo='1' WHERE id='$idReg' ");
+                $insert = $conn->query("UPDATE admin_clientes SET activo='1' WHERE id='$id' ");
                 if ($insert){
                     $activo = 1;
                 }else{
@@ -212,6 +212,45 @@ if ($comm == "buscarCliente"){
         echo $e->getMessage();
     }
 }
+
+
+if ($comm == "buscarCorreo"){
+    try{
+        //insert form data in the database
+        include_once "../../../dashboard/scripts/php/conectar.php";
+
+        // primero revisamos que no exista ese correo 
+        $datos = $conn->query("SELECT id, nombre, email, celular, clave FROM admin_clientes WHERE email='$email' ");
+        
+        $data = array();
+        if($datos->num_rows > 0){          
+            while ($fila = mysqli_fetch_array($datos)){
+                        
+                $id = $fila['id'];
+                $name = $fila['nombre'];
+                $mail = $fila['email'];
+                $cel = $fila['celular'];
+                $clavee  =$fila['clave']; 
+
+                $data[] = array('ok'=>'ok','id'=>$id,'nombre'=>$name,'email'=>$mail,'cel'=>$cel, 'clave'=>$clavee);
+                
+            }
+            
+        }else{
+            $data[] = array('ok'=>'noOk', 'num_rows'=>$datos->num_rows);           
+        }
+
+        echo '{"data": '.(json_encode($data)).'}';
+
+        mysqli_free_result($datos);
+        mysqli_close($conn);
+        
+    } catch(Exception $e){
+        echo $e->getMessage();
+    }
+}
+
+
 
 
 ?>

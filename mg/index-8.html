@@ -42,7 +42,7 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Modal title</h5>
+                  <h5 class="modal-title" style="color: #bd9a68;">Reservation</h5>
                   <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button> -->
@@ -50,15 +50,39 @@
                 <div class="modal-body" id="div_datosCliente" style="display: none; text-align: center;">
                     <h4>WELCOME!</h4>
                     <input type="hidden" id="idCliente">
-                    <label id="nombreCliente"></label>
+                    <label id="nombreCliente"></label><br>
+                    <span style="font-size: 12px;">click the button "Send reservation by mail"</span>
+                </div>
+                <div class="modal-body" id="div_reservacionExistosa" style="display: none;">
+                    <span>mail sent successfully.!</span>
+                    <span>Thank you very much for the reservation, in a moment one of our advisors will contact you.!</span>
                 </div>
                 <div class="modal-body" id="bodymodal_fechas">
-                    <label>Arrival time</label>
-                    <input class="form-control" id="fecha_llegada" type="text" data-provide="datepicker" autocomplete="off"/>
-                    <label>Departure time</label>
-                    <input class="form-control" id="fecha_salida" type="text" data-provide="datepicker" autocomplete="off"/>
-                    <div style="text-align: center;" class="mb-5">
-                        <button class="btn btn-primary" id="btnEnviarReservacion">Send reservation by mail</button>
+                    <div style="display: flex;">
+                        <label style="position: absolute;">Arrival time</label>
+                        <input class="form-control" id="fecha_llegada" type="text" data-provide="datepicker" autocomplete="off"/>
+                    </div>
+                    <div>
+                        <label>Departure time</label>
+                        <input class="form-control" id="fecha_salida" type="text" data-provide="datepicker" autocomplete="off"/>
+                    </div>
+                    
+                    <div style="text-align: center;" class="mb-5 mt-4">
+                        <button class="btn btn-primary" id="btnEnviarReservacion" style="width: 100%; justify-content: center;">Send reservation by mail</button>
+                    </div>
+                </div>
+                <div class="modal-body" id="div_costorenta" style="display: grid; justify-content: center;">
+                    <div style="display: flex; background-color: #fff7eb; margin-bottom: 5px;">
+                        <p style="padding: 10px; width: 130px; margin: 0px; color: #bd9a68;">Nights</p>
+                        <b style="padding: 10px; width: 130px; margin: 0px; text-align: right; color: #bd9a68;" id="txt_dias_renta">0</b>
+                    </div>
+                    <div style="display: flex; background-color: #fff7eb; margin-bottom: 5px;">
+                        <p style="padding: 10px; width: 130px; margin: 0px; color: #bd9a68;">Rent per night</p>
+                        <b style="padding: 10px; width: 130px; margin: 0px; text-align: right; color: #bd9a68;" id="txt_precio_renta">0 USD</b> 
+                    </div>
+                    <div style="display: flex; background-color: #fff7eb; border-top: 1px solid #bd9a68; margin-bottom: 10px;">
+                        <p style="padding: 10px; width: 130px; margin: 0px; color: #bd9a68;">Total</p>
+                        <b style="padding: 10px; width: 130px; margin: 0px; text-align: right; color: #bd9a68;" id="txt_total_renta">0 USD</b> 
                     </div>
                 </div>
                 

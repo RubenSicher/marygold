@@ -55,7 +55,7 @@ function listarCasas(idMod){
                                         <div class="project-content">\
                                             <h3 class="title">New Central Garden</h3>\
                                             <span><a href="javascript:openDate('+item.id+')">view date</a></span>\
-                                            <h5>'+item.price+' USD <p> night</p></h5>\
+                                            <h5 id="price'+item.id+'" data-price='+item.price+'>'+item.price+' USD <p>night</p></h5>\
                                         </div>\
                                     </div>\
                                 </div>'
@@ -110,12 +110,18 @@ $("#backModelos").click(function(){
 function crear_inputFechas(idC){
     txtfechas = ""
 
-    txtfechas = '<label>Arrival time</label>\
-                <input class="form-control" id="fecha_llegada'+idC+'" type="text" data-provide="datepicker" autocomplete="off"/>\
-                <label>Departure time</label>\
-                <input class="form-control" id="fecha_salida'+idC+'" type="text" data-provide="datepicker" autocomplete="off"/>\
-                <div style="text-align: center;" class="mb-5 mt-5">\
-                    <button class="btn btn-primary" id="btnEnviarReservacion">Save changes</button>\
+    txtfechas = '<div style="display:flex; justify-content: space-between;">\
+                    <div style="padding: 10px 20px 10px; border: 1px solid #bd9a68; border-radius: 10px; width: 49%">\
+                        <label style="position:absolut; top:20px; left:25px; font-size:13px; cursor:auto; color:#bd9a68 ">Arrival time</label>\
+                        <input class="form-control" style="border:0px; background: #fff7eb; text-align:center;"  type="text" id="fecha_llegada'+idC+'" data-provide="datepicker" autocomplete="off"/>\
+                    </div>\
+                    <div style="padding: 10px 20px 10px; border: 1px solid #bd9a68; border-radius: 10px; width: 49%">\
+                        <label style="position:absolut; top:20px; left:25px; font-size:13px; cursor:auto; color:#bd9a68 ">Departure time</label>\
+                        <input class="form-control" style="border:0px; background: #fff7eb; text-align:center;" id="fecha_salida'+idC+'" type="text" data-provide="datepicker" autocomplete="off"/>\
+                    </div>\
+                </div>\
+                <div style="text-align: center;" class="mb-3 mt-4">\
+                    <button class="btn btn-primary" id="btnEnviarReservacion" style="width: 100%; justify-content: center;">Send reservation by mail</button>\
                 </div>'
 
     $("#bodymodal_fechas").html(txtfechas)       
@@ -128,6 +134,10 @@ function openDate(idCasa){
     crear_inputFechas(idCasa)
     fechasNOdisponibles = []
     idCasaGlobal = idCasa
+
+    $("#txt_dias_renta").text(0)
+    $("#txt_precio_renta").text("0 USD")
+    $("#txt_total_renta").text("0 USD")
     // $('#fecha_llegada').val('').datepicker('update')
     // $("#fecha_llegada").datepicker("clearDates");
     // $('#fecha_llegada').datepicker('update','');
@@ -146,10 +156,10 @@ function openDate(idCasa){
         $.each(rest.data, function (i, item) {
             fecha_salida = new Date(item.fecha_salida)
             fecha_llegada = new Date(item.fecha_llegada)
-            
+            // console.log("fecha_item: "+fecha_llegada)
             while(fecha_salida.getTime() >= fecha_llegada.getTime()){
                 fecha_llegada.setDate(fecha_llegada.getDate() + 1);
-                console.log(fecha_llegada.getDate() + '/' + (fecha_llegada.getMonth() + 1) + '/' + fecha_llegada.getFullYear());
+                // console.log(fecha_llegada.getDate() + '/' + (fecha_llegada.getMonth() + 1) + '/' + fecha_llegada.getFullYear());
 
                 if (fecha_llegada.getMonth() + 1 <= 9 ){
                     mes = ("0"+String(fecha_llegada.getMonth()+1))
@@ -167,7 +177,7 @@ function openDate(idCasa){
             }
 
         })
-        console.log(fechasNOdisponibles)
+        // console.log(fechasNOdisponibles)
         bloquearDias(fechasNOdisponibles)
         $('#modal_fechasDisponibles').modal({backdrop: 'static',keyboard: false})
         $("#modal_fechasDisponibles").modal("show")
@@ -190,8 +200,8 @@ function bloquearDias(fechasNoDisp){
         dia = String(hoy.getDate())
     }
     fechaSol = mes+'/'+dia+'/'+hoy.getFullYear()
-    console.log(fechaSol)
-    console.log(fechasNoDisp)
+    // console.log(fechaSol)
+    // console.log(fechasNoDisp)
 
     f_llegada = "#fecha_llegada"+idCasaGlobal
     f_salida = "#fecha_salida"+idCasaGlobal
@@ -256,19 +266,20 @@ function bloquearDias(fechasNoDisp){
 
 var f , ff
 
-jQuery(document).on('change', f_llegada, () => {
+$("#bodymodal_fechas").on('change', f_llegada, () => {
     // var element = event.target;
     // console.log(element.value);
 
     f = $("#fecha_llegada"+idCasaGlobal).val()
     cadena = f.split("/")
-    console.log(cadena)
+    // console.log(cadena)
     ff = cadena[0]+"/"+cadena[1]+"/"+cadena[2]
-    console.log(ff)
+    // console.log(ff)
     jQuery('#fecha_salida'+idCasaGlobal).datepicker('setStartDate', ff);
+    calcular_renta()
 });
 
-jQuery(document).on('change', f_salida, () => {
+$("#bodymodal_fechas").on('change', f_salida, () => {
     $("#fecha_llegada"+idCasaGlobal).val(f)
     if( $("#fecha_salida"+idCasaGlobal).val() == ""){
         fs = ff
@@ -277,13 +288,54 @@ jQuery(document).on('change', f_salida, () => {
     }
     
     cadena_salida = fs.split("/")
-    console.log(cadena_salida)
+    // console.log(cadena_salida)
     ffs = cadena_salida[0]+"/"+cadena_salida[1]+"/"+cadena_salida[2]
-    console.log(ffs)
+    // console.log(ffs)
     jQuery('#fecha_llegada'+idCasaGlobal).datepicker('setEndDate', ffs);
+    calcular_renta()
 })
 
+function calcular_renta(){
+    if( $("#fecha_llegada"+idCasaGlobal).val() == "" || $("#fecha_salida"+idCasaGlobal).val() == "" ){
+        console.log("Falta una fecha")
+    }else{
+       
+        f1 = $("#fecha_llegada"+idCasaGlobal).val().split("/")
+        f2 = $("#fecha_salida"+idCasaGlobal).val().split("/")
+        f11 = f1[2]+"/"+f1[1]+"/"+f1[0]
+        f22 = f2[2]+"/"+f2[1]+"/"+f2[0]
+
+        fecha_llegada_seleccionada = new Date( f11 ).getTime()
+        fecha_salida_seleccionada  = new Date( f22 ).getTime()
+      
+        var dias_enMinutos = fecha_salida_seleccionada - fecha_llegada_seleccionada
+        dias_seleccionados =  dias_enMinutos/(1000*60*60*24)
+
+        precio = $("#price"+idCasaGlobal).attr("data-price")
+        // console.log(precio)
+
+        precio_total = parseFloat(precio) * parseFloat(dias_seleccionados)
+
+        $("#txt_dias_renta").text(dias_seleccionados)
+        $("#txt_precio_renta").text(precio+" USD")
+        $("#txt_total_renta").text(precio_total+" USD")
+       
+
+    }
+}
+
 $("#btnCerrarModalFechas").click(function(){
+    if ( $("#idCliente").val() != "" ){
+        $("#div_datosCliente").show()
+    }else{
+        $("#div_datosCliente").hide()
+    }
+    
+    $("#bodymodal_fechas").show()
+    $("#div_costorenta").show()
+    $("#div_registronuevousuario").hide()
+    $("#div_clave_activacion").hide()
+    $("#div_yasoycliente").hide()
     $('#modal_fechasDisponibles').modal('hide');
 })
 
@@ -341,7 +393,7 @@ function guardarCliente(){
                     $("#spanEmail").hide()
                 }, 20000)
             }else if (item.ok == "err"){
-                alert("Ocurrio un problema, vuelva a intentarlo")
+                alert("There was a problem, please try again")
             }
         })
     })
@@ -364,7 +416,7 @@ function enviarCorreoCliente(){
 		console.log(rest)
         if(rest == "ok"){
             // $("#txtNombre, #txtEmail, #txtTelefono").val("")
-            alert("Correo enviado correctamente!")
+            alert("Mail sent successfully!")
             $("#div_registronuevousuario").hide()
             $("#div_clave_activacion").show()
         }
@@ -408,7 +460,7 @@ function activarCuentaCliente(){
                 $("#bodymodal_fechas").show()
                 $("#div_datosCliente").show()
             }else {
-                alert("Ocurrio un problema vuelva a intentarlo")
+                alert("There was a problem, please try again")
             }
         })
     })
@@ -422,6 +474,7 @@ $("#btnReenviarCorreo").click(function(){
 $("#bodymodal_fechas").on("click", "#btnEnviarReservacion", function(){
     if ( $("#idCliente").val() == "" ){
         $("#bodymodal_fechas").hide()
+        $("#div_costorenta").hide()
         $("#div_registronuevousuario").show()
     }else{
         console.log("enviar reserva por correo")
@@ -456,11 +509,67 @@ function iniciarSesion(){
                     
                     $("#div_yasoycliente").hide()
                     $("#bodymodal_fechas").show()
+                    $("#div_datosCliente").show()
+                    $("#div_costorenta").show()
 
                 }else if(item.ok == "noOk") {
-                    alert("Datos incorrectos, vuelve a intentarlo")
+                    alert("Incorrect data, try again")
                 }
             })
         })
     }
+}
+
+
+$("#btnNoRecuerdoclave").click(function(){
+    if( $("#txtEmailLogeo").val() == "" ){
+        alert("You must add an email account.!")      
+    }else{
+        
+        $.ajax({
+            url:"scripts/php/listar_casas.php",
+            cache: false,
+            data: { comm:"buscarCorreo", 
+                    email: $("#txtEmailLogeo").val()
+                },
+            dataType: "json",
+            method: "POST"
+        }).done(function(rest){
+            $.each(rest.data, function (i, item) {
+                if(item.ok == "ok"){
+                    clave = item.clave
+                    enviarCorreoCliente_otravez(clave)
+
+                }else if(item.ok == "noOK") {
+                    alert("Wrong email, try again")
+                }
+            })
+        })
+    }  
+    
+})
+
+function enviarCorreoCliente_otravez(cla){
+    $.ajax({
+		url: "scripts/php/listar_casas.php",
+		cache:false,
+		// dataType:"json",
+        method: "POST",
+		data: {
+            comm: "enviarCorreo",
+            email: $("#txtEmailLogeo").val(),
+            clave: cla
+		}
+	}).done(function(rest){
+		console.log(rest)
+        if(rest == "ok"){
+            // $("#txtNombre, #txtEmail, #txtTelefono").val("")
+            alert("Mail sent successfully!")
+            // $("#div_registronuevousuario").hide()
+            // $("#div_clave_activacion").show()
+        }
+	}).fail(function(jqXHR,estado,error){
+		console.log(estado);
+		console.log(error);
+	})
 }
