@@ -282,17 +282,19 @@ $("#bodymodal_fechas").on('change', f_llegada, () => {
 $("#bodymodal_fechas").on('change', f_salida, () => {
     $("#fecha_llegada"+idCasaGlobal).val(f)
     if( $("#fecha_salida"+idCasaGlobal).val() == ""){
-        fs = ff
+        fs = ""
     }else{
         fs = $("#fecha_salida"+idCasaGlobal).val()
+        
+        cadena_salida = fs.split("/")
+        // console.log(cadena_salida)
+        ffs = cadena_salida[0]+"/"+cadena_salida[1]+"/"+cadena_salida[2]
+        // console.log(ffs)
+        jQuery('#fecha_llegada'+idCasaGlobal).datepicker('setEndDate', ffs);
+        calcular_renta()
     }
     
-    cadena_salida = fs.split("/")
-    // console.log(cadena_salida)
-    ffs = cadena_salida[0]+"/"+cadena_salida[1]+"/"+cadena_salida[2]
-    // console.log(ffs)
-    jQuery('#fecha_llegada'+idCasaGlobal).datepicker('setEndDate', ffs);
-    calcular_renta()
+    
 })
 
 function calcular_renta(){
@@ -336,6 +338,7 @@ $("#btnCerrarModalFechas").click(function(){
     $("#div_registronuevousuario").hide()
     $("#div_clave_activacion").hide()
     $("#div_yasoycliente").hide()
+    $("#div_reservacionExistosa").hide()
     $('#modal_fechasDisponibles').modal('hide');
 })
 
@@ -478,8 +481,70 @@ $("#bodymodal_fechas").on("click", "#btnEnviarReservacion", function(){
         $("#div_registronuevousuario").show()
     }else{
         console.log("enviar reserva por correo")
+        enviarCorreoReservacion()
     }
 })
+
+function enviarCorreoReservacion(){
+    $.ajax({
+		url: "scripts/php/listar_casas.php",
+		cache:false,
+		// dataType:"json",
+        method: "POST",
+		data: {
+            comm: "enviarCorreoReservacion",
+            nombre: $("#nombreCliente").text(),
+            email: $("#emailCliente").val(),
+            celular: $("#celCliente").val(),
+            fi: $("#fecha_llegada"+idCasaGlobal).val(),
+            ff: $("#fecha_salida"+idCasaGlobal).val()
+		}
+	}).done(function(rest){
+		console.log(rest)
+        if(rest == "ok"){
+            $("#div_reservacionExistosa").show()
+            $("#div_registronuevousuario").hide()
+            $("#div_costorenta").hide()
+            $("#bodymodal_fechas").hide()
+            guardarReservacion()
+        }
+	}).fail(function(jqXHR,estado,error){
+		console.log(estado);
+		console.log(error);
+	})
+}
+
+function guardarReservacion(){
+    f1 = $("#fecha_llegada"+idCasaGlobal).val()
+    cadena_i = f1.split("/")
+    fi = cadena_i[2]+"/"+cadena_i[1]+"/"+cadena_i[0]
+    
+    f2 = $("#fecha_salida"+idCasaGlobal).val()
+    cadena_f = f2.split("/")
+    ff = cadena_f[2]+"/"+cadena_f[1]+"/"+cadena_f[0]
+    
+    $.ajax({
+        url:"scripts/php/listar_casas.php",
+        cache: false,
+        data: { comm:"guardaReservacion", 
+                idCliente: $("#idCliente").val(),
+                idCasa: idCasaGlobal,
+                fi: fi,
+                ff: ff
+            },
+        dataType: "json",
+        method: "POST"
+    }).done(function(rest){
+        $.each(rest.data, function (i, item) {
+            if(item.ok == "ok"){
+               console.log("se guardo reservacion en BD")
+            }else {
+                console.log("There was a problem, please try again")
+            }
+        })
+    }) 
+}
+
 
 $("#btnYaSoyCliente").click(function(){
     $("#div_registronuevousuario").hide()
@@ -506,6 +571,8 @@ function iniciarSesion(){
                    
                     $("#idCliente").val( item.id )
                     $("#nombreCliente").text( item.nombre)
+                    $("#emailCliente").val(item.email)
+                    $("#celCliente").val(item.cel)
                     
                     $("#div_yasoycliente").hide()
                     $("#bodymodal_fechas").show()

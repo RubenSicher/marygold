@@ -9,6 +9,10 @@ $nombre = $_POST["nombre"];
 $celular = $_POST["celular"];
 $clave = $_POST["clave"];
 
+$fi = $_POST["fi"];
+$ff = $_POST["ff"];
+$idCliente = $_POST["idCliente"];
+
 $idReg = $_POST["idReg"];
 
 if ($comm == 'listarCasas'){
@@ -250,7 +254,55 @@ if ($comm == "buscarCorreo"){
     }
 }
 
+if($comm == "enviarCorreoReservacion") {
+    
+    $to = "$email";
+    $subject = "Reservación MaryGold";
+    
+    $message = "<h4>¡Nueva reservación!</h4>";
+    $message .= "<p>El cliente $nombre quiere reservar una residencia para los dias del $fi al $ff</p>";
+    $message .= "<p>Email cliente: $email</p>";
+    $message .= "<p>Celular cliente: $celular</p><br>";
+    $message .= "<p>Favor de revisar el modulo administrador para confirmar la reservación del cliente</p>";
+    
+    $header = "From:admin@marygoldhomes.com\r\n";
+    // $header .= "Cc:afgh@somedomain.com \r\n";
+    $header .= "MIME-Version: 1.0\r\n";
+    $header .= "Content-type: text/html\r\n";
+    
+    $retval = mail ($to,$subject,$message,$header);
+    
+    if( $retval == true ) {
+       echo "ok";
+    }else {
+       echo "error.";
+    }
+} 
 
+if ($comm == 'guardaReservacion'){
+    try{
+        //insert form data in the database
+        include_once "../../../dashboard/scripts/php/conectar.php";
 
+        $insert = $conn->query("INSERT INTO admin_rentaCasas(id_casa, fecha_llegada, fecha_salida, id_cliente, estado, fecha_captura) VALUES ('".$idCasa."', '".$fi."', '".$ff."', '".$idCliente."', 0, now() )");
+        
+        if ($insert){
+            $data[]= array('ok'=>'ok');
+        }else{
+            $data[]= array('ok'=>'err');
+        }
+           
+    
+
+        echo '{"data": '.(json_encode($data)).'}';
+
+        // mysqli_free_result($datos);
+        mysqli_close($conn);
+        
+    } catch(Exception $e){
+        echo $e->getMessage();
+    }
+    
+}
 
 ?>
