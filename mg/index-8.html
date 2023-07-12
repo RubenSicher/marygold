@@ -90,8 +90,8 @@
                 
                 <div class="modal-body" id="div_registronuevousuario" style="display: none;">
                     <form action="javascript:registrarCliente()">
-                        <label style="font-size: 12px; text-align: justify;">Muchas gracias por contactarnos, con gusto le ayudaremos a reservar la residencia que seleccione</label>
-                        <label style="font-size: 12px; text-align: justify;">Por favor, ingresa los datos que solicitamos para activar tu cuenta en 3 pasos</label>
+                        <label style="font-size: 12px; text-align: justify;">Thank you very much for contacting us, we will be happy to help you reserve the residence of your choice</label>
+                        <label style="font-size: 12px; text-align: justify;">Please enter the information we request to activate your account</label>
                         <div class="form-group mb-3">
                             <label for="txtNombre">Name</label>
                             <input type="text" class="form-control" id="txtNombre" placeholder="Nombre" maxlength="50" required>
@@ -103,50 +103,50 @@
                         <div class="form-group mb-3">
                         <label for="txtEmail">Email</label>
                         <input type="email" class="form-control mb-2" id="txtEmail" placeholder="Email" maxlength="50" required>
-                        <label style="color: red; display: none; font-size: 12px; text-align: justify;" id="spanEmail">¡ERROR!, Este correo ya se ha registrado anteriormente, agrega otro correo o da clic en la opción YA SOY CLIENTE y posterior da clic a ENVIAR CLAVE DE ACCESO</label>
+                        <label style="color: red; display: none; font-size: 12px; text-align: justify;" id="spanEmail">ERROR! This email has already been registered before, add another email or click on the option I AM ALREADY A CUSTOMER and then click on SEND ACCESS CODE</label>
                         </div>
                         
                         <div style="text-align: center;">
-                            <button class="btn btn-primary mb-5" id="btnRegistrarCliente">Enviar clave de activación por correo</button>
-                            <br><a id="btnYaSoyCliente" style="font-size: 12px; cursor: pointer;">¡Ya soy cliente!</a>
+                            <button class="btn btn-primary mb-5" id="btnRegistrarCliente">Send activation key by mail</button>
+                            <br><a id="btnYaSoyCliente" style="font-size: 12px; cursor: pointer;">I'm already a customer!</a>
                         </div>
                     </form>
                 </div>
 
                 <div class="modal-body" id="div_clave_activacion" style="display: none;">
                     <div class="form-group mb-3">
-                        <label for="txtClave" style="font-size: 12px;"">Ingresa la clave enviada a tu cuenta de correo</label>
-                        <input type="text" class="form-control" id="txtClave" placeholder="Clave" maxlength="10">
-                        <label style="color: red; display: none; font-size: 12px; text-align: justify;" id="spanClave">¡Debe capturar la clave enviada a su correo!,</label>
+                        <label for="txtClave" style="font-size: 12px;"">Enter the key sent to your email</label>
+                        <input type="password" class="form-control" id="txtClave" placeholder="Clave" maxlength="10">
+                        <label style="color: red; display: none; font-size: 12px; text-align: justify;" id="spanClave">You must capture the key sent to your mail!</label>
                     </div>
                     <input type="hidden" id="idTempCliente" value="0">
                     <input type="hidden" id="nombreTempCliente" value="">
                     <div style="text-align: center;">
-                        <button class="btn btn-primary mb-5" id="btnActivarCuenta">Activar cuenta</button>
+                        <button class="btn btn-primary mb-5" id="btnActivarCuenta">Activate account</button>
                     </div>
                     
                     <div style="text-align: center;">
-                        <a id="btnReenviarCorreo" style="font-size: 12px; cursor: pointer;">No me llego la clave, volver a enviar correo</a>
+                        <a id="btnReenviarCorreo" style="font-size: 12px; cursor: pointer;">I did not receive the key, resend mail</a>
                     </div>
                 </div>
 
                 <div class="modal-body" id="div_yasoycliente" style="display: none;">
                     <form action="javascript:iniciarSesion()">
-                        <label style="font-size: 12px; text-align: justify;">Por favor ingresa tu correo y clave de activación</label>
+                        <label style="font-size: 12px; text-align: justify;">Please enter your email and activation key</label>
                         <div class="form-group mb-3">
                           <label for="txtEmailLogeo">Email</label>
-                          <input type="email" class="form-control" id="txtEmailLogeo" placeholder="Email" maxlength="50" required>
+                          <input type="email" class="form-control" id="txtEmailLogeo" placeholder="Email" maxlength="50" required autocomplete="off">
                         </div>
                         <div class="form-group mb-3">
                             <label for="txtClaveLogeo">Clave</label>
-                            <input type="text" class="form-control" id="txtClaveLogeo" placeholder="Clave" maxlength="10" required>
+                            <input type="password" class="form-control" id="txtClaveLogeo" placeholder="Clave" maxlength="10" required>
                         </div>
                         <div style="text-align: center;" class="mb-5">
-                            <button class="btn btn-primary" id="btnIniciarSesion">Iniciar sesión</button>
+                            <button class="btn btn-primary" id="btnIniciarSesion">LOG IN</button>
                         </div>
                         
                         <div style="text-align: center;">
-                            <a id="btnNoRecuerdoclave" style="font-size: 12px; cursor: pointer;">¿No recuerdas la clave?, Enviar clave de acceso por correo</a>
+                            <a id="btnNoRecuerdoclave" style="font-size: 12px; cursor: pointer;">Don't remember the password?, Send access key by mail</a>
                         </div>
                     </form>
                 </div>
