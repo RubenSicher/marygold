@@ -46,6 +46,15 @@
             </a>
           </li>
           <li class="nav-item">
+            <a href="admin_reservaciones.php" class="nav-link">
+              <i class="nav-icon fas fa-calendar"></i>
+              <p>
+               Reservaciones
+                <!-- <i class="right fas fa-angle-left"></i> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-house-laptop"></i>
               <p>
