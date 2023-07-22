@@ -46,13 +46,33 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="admin_reservaciones.php" class="nav-link">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-calendar"></i>
               <p>
                Reservaciones
-                <!-- <i class="right fas fa-angle-left"></i> -->
+              <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="admin_reservaciones.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Lista Reservaciones</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="admin_calendario_reservas.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Calendario</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Indicadores</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
