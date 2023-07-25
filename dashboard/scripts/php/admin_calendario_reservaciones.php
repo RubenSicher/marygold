@@ -25,7 +25,7 @@ if ($comm=='listarReservaciones'){
             while ($fila = mysqli_fetch_array($datos)){
                 
                 $id = $fila['id'];
-                $background = "#22b638";
+                $background = "#d5b583";
                                
                 $data[] = array('ok'=>'ok','id'=>$id,'casa'=>$fila['name_house'],'fecha_llegada'=>$fila['fecha_llegada'],'fecha_salida'=>$fila['fecha_salida'],'background'=>$background);
                 
