@@ -11,7 +11,10 @@ var bandera_pendiente=0
 var bandera_autorizado =0
 var bandera_noautorizado=0
 var j = 0 
-$.ajax({
+
+function graficasBarraporReservaciones(){
+
+  $.ajax({
     url:"scripts/php/admin_indicadores_reservaciones.php",
     method: "POST",
     cache: false,
@@ -98,10 +101,10 @@ $.ajax({
         
    })
 
-   console.log(mes)
-   console.log(pendientes)
-   console.log(autorizados)
-   console.log(noAutorizados)
+  //  console.log(mes)
+  //  console.log(pendientes)
+  //  console.log(autorizados)
+  //  console.log(noAutorizados)
 
     var areaChartData = {
         labels  : mes, //['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -167,7 +170,10 @@ $.ajax({
       })
 
 
-})
+  })
+}
+
+
 
 
 var pendientes_ingresos = []
@@ -337,8 +343,21 @@ function graficaBarrasEnIngresos(){
 
 }
 
+
+graficasBarraporReservaciones()
 graficaBarrasEnIngresos()
 
+
+$("#cboTipoGrafica").change(function(){
+  if ( $(this).val() == 1 ){
+    $("#barChart").show()
+    $("#barChartIngresos").hide()
+  }else if ( $(this).val() == 2 ){
+    $("#barChart").hide()
+    $("#barChartIngresos").show()
+  }
+  
+})
 
 var casas = []
 var num_topten = []
@@ -351,23 +370,25 @@ function topTen(){
         data: {comm:'masrentadas', anio:$("#cboAnio").val() },
         dataType: "json"
      }).done(function(rest){
-        console.log(rest)
+        // console.log(rest)
         casas = []
         num_topten = []
        $.each(rest.data, function (i, item) {
             // mes = mes + '{"title":"'+item.casa+'","start":"'+item.fecha_llegada+'","end":"'+item.fecha_salida+'","backgroundColor":"'+item.background+'"},'        
             if (item.ok == "ok"){
+              $("#divSinDatos").hide()
               $("#donutChartTopTen").show()
               casas.push(item.nombre_casa)
               num_topten.push(item.num_reservas)
             }else{
               $("#donutChartTopTen").hide()
+              $("#divSinDatos").show()
             }
             
        })
        
-       console.log(casas)
-       console.log(num_topten)
+      //  console.log(casas)
+      //  console.log(num_topten)
        //-------------
         //- DONUT CHART -
         //-------------
@@ -422,9 +443,18 @@ var mesAnual = []
 var estadosAnual = []
 var tituloEstado
 var grafica
+
+var mesAnualIngresos = []
+var ingresoAnual = []
+
+var ingreso_o_reserva
+
+
+
 function graficaAnualporEstados(){
-  console.log($("#cboAnioTipoEstado").val())
-  console.log($("#cboEstado").val())
+  
+  ingreso_o_reserva = $("#cboReservacionIngresos").val()
+
   $.ajax({
     url:"scripts/php/admin_indicadores_reservaciones.php",
     method: "POST",
@@ -432,62 +462,137 @@ function graficaAnualporEstados(){
     data: {comm:'listarReservacionesPorTipoAnual', anio_autorizadas:$("#cboAnioTipoEstado").val(), tipo_reserva:$("#cboEstado").val()},
     dataType: "json"
   }).done(function(rest){
-    mesAnual = []
-    estadosAnual = []
-    console.log(rest)
+      mesAnual = []
+      estadosAnual = []
+      mesAnualIngresos = []
+      ingresoAnual =[]
+   
     $.each(rest.data, function (i, item) {
         // mes = mes + '{"title":"'+item.casa+'","start":"'+item.fecha_llegada+'","end":"'+item.fecha_salida+'","backgroundColor":"'+item.background+'"},' 
         
         mesAnual.push(meses[item.mes-1])
         estadosAnual.push(item.num_reservas)
-        if (item.estado == 0){
+
+        mesAnualIngresos.push(meses[item.mes-1])
+        ingresoAnual.push(item.renta_global)
+
+        if (item.estado == 0){ //RESERVAS PENDIENTES
           grafica = "barChartAnualPendientes"
-          if(item.ok=="ok"){
-            tituloEstado = "Pendientes"
+          graficaIngresos = "barChartAnualPendientesIngresos"
+          if(ingreso_o_reserva == 1 ){ //1=grafica por reservas
             
-            $("#barChartAnualPendientes").show()
-            $("#chartPendientes").show()
-            $("#chartAutorizados").hide()
-            $("#chartNoAutorizados").hide()
-          }else{
-            $("#barChartAnualPendientes").hide()
+            if(item.ok=="ok"){
+              tituloEstado = "Pendientes"
+              $("#divSinDatosAnual").hide()
+              $("#barChartAnualPendientes").show()
+              $("#chartPendientes").show()
+              $("#chartAutorizados").hide()
+              $("#chartNoAutorizados").hide()
+              $("#barChartAnualPendientesIngresos").hide()
+
+            }else{
+              $("#barChartAnualPendientes").hide()
+              $("#barChartAnualPendientesIngresos").hide()
+              $("#divSinDatosAnual").show()
+            }
+
+          }else if (ingreso_o_reserva == 2){ //grafica por ingresos
+            
+            if(item.ok=="ok"){
+              tituloEstado = "Pendientes"
+              $("#divSinDatosAnual").hide()
+              $("#barChartAnualPendientes").hide()
+              $("#barChartAnualPendientesIngresos").show()
+              $("#chartPendientes").show()
+              $("#chartAutorizados").hide()
+              $("#chartNoAutorizados").hide()
+
+            }else{
+              $("#barChartAnualPendientesIngresos").hide()
+              $("#divSinDatosAnual").show()
+            }
           }
           
-        }else if (item.estado == 1){
+          
+        }else if (item.estado == 1){ //RESERVAS AUTORIZADAS
           grafica = "barChartAnualAutorizados"
-          if(item.ok == "ok"){
-            tituloEstado = "Autorizados"
+          graficaIngresos = "barChartAnualAutorizadosIngresos"
+          if(ingreso_o_reserva == 1 ){ //1=grafica por reservas
             
-            $("#barChartAnualAutorizados").show()
-            $("#chartPendientes").hide()
-            $("#chartAutorizados").show()
-            $("#chartNoAutorizados").hide()
-          }else{
-            $("#barChartAnualAutorizados").hide()
+            if(item.ok == "ok"){
+              tituloEstado = "Autorizados"
+              $("#divSinDatosAnual").hide()
+              $("#barChartAnualAutorizados").show()
+              $("#barChartAnualAutorizadosIngresos").hide()
+              $("#chartPendientes").hide()
+              $("#chartAutorizados").show()
+              $("#chartNoAutorizados").hide()
+            }else{
+              $("#barChartAnualAutorizados").hide()
+              $("#divSinDatosAnual").show()
+            }
+          
+          }else if (ingreso_o_reserva == 2){ //grafica por ingresos
+            
+            if(item.ok == "ok"){
+              tituloEstado = "Autorizados"
+              $("#divSinDatosAnual").hide()
+              $("#barChartAnualAutorizados").hide()
+              $("#barChartAnualAutorizadosIngresos").show()
+              $("#chartPendientes").hide()
+              $("#chartAutorizados").show()
+              $("#chartNoAutorizados").hide()
+            }else{
+              $("#barChartAnualAutorizadosIngresos").hide()
+              $("#divSinDatosAnual").show()
+            }
           }
+          
           
 
-        }else if (item.estado == 2){
+        }else if (item.estado == 2){ //NO AUTORIZADOS
           grafica = "barChartAnualNoAutorizados"
-          if(item.ok == "ok"){
-            tituloEstado = "No Autorizados"
+          graficaIngresos = "barChartAnualNoAutorizadosIngresos"
+          if(ingreso_o_reserva == 1 ){ //1=grafica por reservas
             
-            $("#barChartAnualNoAutorizados").show()
-            $("#chartPendientes").hide()
-            $("#chartAutorizados").hide()
-            $("#chartNoAutorizados").show()
-          }else{
-            $("#barChartAnualNoAutorizados").hide()
+            if(item.ok == "ok"){
+              tituloEstado = "No Autorizados"
+              $("#divSinDatosAnual").hide()
+              $("#barChartAnualNoAutorizados").show()
+              $("#barChartAnualNoAutorizadosIngresos").hide()
+              $("#chartPendientes").hide()
+              $("#chartAutorizados").hide()
+              $("#chartNoAutorizados").show()
+            }else{
+              $("#barChartAnualNoAutorizados").hide()
+              $("#divSinDatosAnual").show()
+            }
+
+          }else if (ingreso_o_reserva == 2){ //grafica por ingresos
+            
+            if(item.ok == "ok"){
+              tituloEstado = "No Autorizados"
+              $("#divSinDatosAnual").hide()
+              $("#barChartAnualNoAutorizados").hide()
+              $("#barChartAnualNoAutorizadosIngresos").show()
+              $("#chartPendientes").hide()
+              $("#chartAutorizados").hide()
+              $("#chartNoAutorizados").show()
+            }else{
+              $("#barChartAnualNoAutorizadosIngresos").hide()
+              $("#divSinDatosAnual").show()
+            }
+
           }
+          
           
         }
        
         
    })
   
-   datasets = []
-   areaChartDataAnual = ""
   
+   // ****** GRAFICA PARA NUMERO DE RESERVAS *****
     var areaChartDataAnual = {
         labels  : mesAnual, //['January', 'February', 'March', 'April', 'May', 'June', 'July'],
         datasets: [
@@ -500,29 +605,14 @@ function graficaAnualporEstados(){
             pointStrokeColor    : 'rgba(215,147,42,1)',
             pointHighlightFill  : '#fff',
             pointHighlightStroke: 'rgba(60,141,188,1)',
-            data                : estadosAnual, //[28, 48, 40, 19, 86, 27, 90]
-            
-            marker: {
-              dataLabel: {
-            //Set text alignment to datalabel text	
-                  visible: true,
-                  horizontalTextAlignment: "center",
-                  verticalTextAlignment: "far"
-              }
-          }
-          },
-          
+            data                : estadosAnual, //[0:28, 48, 40, 19, 86, 27, 90]
+          }, 
         ]
-        
       }
   
       //-------------
       //- BAR CHART -
       //-------------
-      barChartCanvas1 = ""
-      barChartData1 = ""
-      temp0 =""
-
       var barChartCanvas1 = $("#"+grafica).get(0).getContext('2d')
       var barChartData1 = $.extend(true, {}, areaChartDataAnual)
       var temp0 = areaChartDataAnual.datasets[0]
@@ -531,16 +621,11 @@ function graficaAnualporEstados(){
       barChartData1.datasets[0] = temp0
       // barChartData.datasets[1] = temp1
       // barChartData.datasets[2] = temp2
-      
-      barChartOptions1 = ""
 
       var barChartOptions1 = {
         responsive              : true,
         maintainAspectRatio     : false,
         datasetFill             : false,
-        labels: {
-
-        }
       }
   
       new Chart(barChartCanvas1, {
@@ -548,10 +633,51 @@ function graficaAnualporEstados(){
         data: barChartData1,
         options: barChartOptions1
 
-      })
+      })  
 
-      console.log(barChartData1)
-  
+
+      // ****** GRAFICA PARA INGRESOS POR MES *****
+    var areaChartDataAnual_INGRESOS = {
+      labels  : mesAnualIngresos, //['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      datasets: [
+        {
+          label               : tituloEstado,
+          backgroundColor     : 'rgba(215,147,42,0.9)',
+          borderColor         : 'rgba(215,147,42,0.8)',
+          pointRadius          : false,
+          pointColor          : '#3b8bba',
+          pointStrokeColor    : 'rgba(215,147,42,1)',
+          pointHighlightFill  : '#fff',
+          pointHighlightStroke: 'rgba(60,141,188,1)',
+          data                : ingresoAnual, //[0:28, 48, 40, 19, 86, 27, 90]
+        }, 
+      ]
+    }
+
+    //-------------
+    //- BAR CHART -
+    //-------------
+    var barChartCanvas1_INGRESOSO = $("#"+graficaIngresos).get(0).getContext('2d')
+    var barChartData1_INGRESOS = $.extend(true, {}, areaChartDataAnual_INGRESOS)
+    var temp0_INGRESOS = areaChartDataAnual_INGRESOS.datasets[0]
+    // var temp1 = areaChartData.datasets[1]
+    // var temp2 = areaChartData.datasets[2]
+    barChartData1_INGRESOS.datasets[0] = temp0_INGRESOS
+    // barChartData.datasets[1] = temp1
+    // barChartData.datasets[2] = temp2
+
+    var barChartOptions1_INGRESOS = {
+      responsive              : true,
+      maintainAspectRatio     : false,
+      datasetFill             : false,
+    }
+
+    new Chart(barChartCanvas1_INGRESOSO, {
+      type: 'bar',
+      data: barChartData1_INGRESOS,
+      options: barChartOptions1_INGRESOS
+
+    })  
   
   })
 
@@ -572,4 +698,13 @@ $("#cboEstado").change(function(){
   console.log($("#cboEstado").val())
 
   graficaAnualporEstados()
+})
+
+
+$("#cboReservacionIngresos").change(function(){
+  if ( $(this).val() == 1){
+   graficaAnualporEstados()
+  }else if ( $(this).val() == 2){
+    graficaAnualporEstados()
+  }
 })

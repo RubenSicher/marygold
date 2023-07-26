@@ -34,7 +34,11 @@
                     <div class="card-header" style="background-color: #d5b583;">
                         <h3 class="card-title">Semi-annual report</h3>
                         
-                        <div class="card-tools">
+                        <div class="card-tools" style="display: flex;">
+                        <select class="form-control" id="cboTipoGrafica" name="cboTipoGrafica">
+                            <option value="1">RESERVACIONES</option>
+                            <option value="2">INGRESOS</option>
+                        </select>
                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
                             <i class="fas fa-minus"></i>
                         </button>
@@ -70,6 +74,7 @@
                         <h3 class="card-title">Most rented houses | TOP 10</h3>
 
                         <div class="card-tools" style="display: flex;">
+                        
                         <select class="form-control" id="cboAnio" name="cboAnio">
                             <option value="0">ALL</option>    
                             <?php 
@@ -90,8 +95,11 @@
                         </button> -->
                         </div>
                     </div>
-                    <div class="card-body" >
+                    <div class="card-body" style="height: 290px;" >
                         <canvas id="donutChartTopTen" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                        <div id="divSinDatos" style="display: none; padding-top:100px">
+                            <p style="color:gray; text-align:center;">SIN DATOS</p>
+                        </div>
                     </div>
                     <!-- /.card-body -->
                     </div>
@@ -102,11 +110,15 @@
                 <div class="col-md-6">
                    
                      <!-- BAR CHART -->
-                    <div class="card card-success">
+                    <div class="card card-success" id="div_chartPorReservaciones">
                     <div class="card-header" style="background-color: #d5b583;">
                         <h3 class="card-title">Annual report by type</h3>
                         
                         <div class="card-tools" style="display: flex;">
+                        <select class="form-control" id="cboReservacionIngresos" name="cboReservacionIngresos">
+                            <option value="1">RESERVACIONES</option>
+                            <option value="2">INGRESOS</option>
+                        </select>
                         <select class="form-control" id="cboAnioTipoEstado" name="cboAnioTipoEstado">
                             <!-- <option value="0">CURRENT</option>     -->
                             <?php 
@@ -132,22 +144,32 @@
                         </button> -->
                         </div>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" style="height: 290px;">
                         <div class="chart" id="chartPendientes">
-                        <canvas id="barChartAnualPendientes" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                        <canvas id="barChartAnualPendientes" style="display:none; min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                        <canvas id="barChartAnualPendientesIngresos" style="display:none; min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                         </div>
 
                         <div class="chart" id="chartAutorizados" style="display: none;">
                         <canvas id="barChartAnualAutorizados" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                        <canvas id="barChartAnualAutorizadosIngresos" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
                         </div>
 
                         <div class="chart" id="chartNoAutorizados" style="display: none;">
                         <canvas id="barChartAnualNoAutorizados" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                        <canvas id="barChartAnualNoAutorizadosIngresos" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                        </div>
+
+                        <div id="divSinDatosAnual" style="display: none; padding-top:100px">
+                            <p style="color:gray; text-align:center;">SIN DATOS</p>
                         </div>
                     </div>
                     <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
+
+
+                   
 
                 </div>
             </div>

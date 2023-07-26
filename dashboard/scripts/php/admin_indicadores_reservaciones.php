@@ -92,7 +92,7 @@ if ($comm=='listarReservacionesPorTipoAnual'){
     try{
         //insert form data in the database
         include_once "conectar.php";
-        $datos = $conn->query("SELECT COUNT(estado) as num_reservas, month(fecha_llegada) as mes, YEAR(fecha_llegada) as anio 
+        $datos = $conn->query("SELECT COUNT(estado) as num_reservas, month(fecha_llegada) as mes, YEAR(fecha_llegada) as anio, SUM(renta_global) as renta_global
                                 FROM admin_rentaCasas 
                                 WHERE YEAR(fecha_llegada) = $anio_autoroizadas and estado = $estado_reserva
                                 GROUP BY MONTH(fecha_llegada)
@@ -105,12 +105,12 @@ if ($comm=='listarReservacionesPorTipoAnual'){
             
             while ($fila = mysqli_fetch_array($datos)){
                               
-                $data[] = array('ok'=>'ok','num_reservas'=>$fila['num_reservas'],'mes'=>$fila['mes'],'estado'=>$estado_reserva);
+                $data[] = array('ok'=>'ok','num_reservas'=>$fila['num_reservas'],'mes'=>$fila['mes'],'estado'=>$estado_reserva,'renta_global'=>$fila['renta_global']);
                 
            }     
 
         }else{
-            $data[] = array('ok'=>'nook','num_reservas'=>$fila['num_reservas'],'mes'=>$fila['mes'],'estado'=>$estado_reserva);
+            $data[] = array('ok'=>'nook','num_reservas'=>$fila['num_reservas'],'mes'=>$fila['mes'],'estado'=>$estado_reserva,'renta_global'=>$fila['renta_global']);
         }
 
         echo '{"data": '.(json_encode($data)).'}';
