@@ -13,6 +13,10 @@ $fi = $_POST["fi"];
 $ff = $_POST["ff"];
 $idCliente = $_POST["idCliente"];
 
+$dias = $_POST["dias"];
+$renta_por_dia = $_POST["renta_por_dia"];
+$renta_global = $_POST["renta_global"];
+
 $idReg = $_POST["idReg"];
 
 if ($comm == 'listarCasas'){
@@ -284,7 +288,7 @@ if ($comm == 'guardaReservacion'){
         //insert form data in the database
         include_once "../../../dashboard/scripts/php/conectar.php";
 
-        $insert = $conn->query("INSERT INTO admin_rentaCasas(id_casa, fecha_llegada, fecha_salida, id_cliente, estado, fecha_captura) VALUES ('".$idCasa."', '".$fi."', '".$ff."', '".$idCliente."', 0, now() )");
+        $insert = $conn->query("INSERT INTO admin_rentaCasas(id_casa, fecha_llegada, fecha_salida, id_cliente, estado, fecha_captura, dias, renta_por_dia, renta_global) VALUES ('".$idCasa."', '".$fi."', '".$ff."', '".$idCliente."', 0, now(), '".$dias."', '".$renta_por_dia."', '".$renta_global."' )");
         
         if ($insert){
             $data[]= array('ok'=>'ok');

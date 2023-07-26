@@ -523,6 +523,12 @@ function guardarReservacion(){
     cadena_f = f2.split("/")
     ff = cadena_f[2]+"/"+cadena_f[1]+"/"+cadena_f[0]
     
+    precio_por_dia = $("#txt_precio_renta").text().split(" ")
+    ppd = precio_por_dia[0]
+
+    precio_gloabl = $("#txt_total_renta").text().split(" ")
+    pg = precio_gloabl[0]
+
     $.ajax({
         url:"scripts/php/listar_casas.php",
         cache: false,
@@ -530,7 +536,10 @@ function guardarReservacion(){
                 idCliente: $("#idCliente").val(),
                 idCasa: idCasaGlobal,
                 fi: fi,
-                ff: ff
+                ff: ff,
+                dias: $("#txt_dias_renta").text() ,
+                renta_por_dia: ppd,
+                renta_global: pg 
             },
         dataType: "json",
         method: "POST"
