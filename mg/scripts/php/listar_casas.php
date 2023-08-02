@@ -54,6 +54,43 @@ if ($comm == 'listarCasas'){
 }
 
 
+if ($comm == 'getGallery'){
+
+    include_once "../../../dashboard/scripts/php/conectar.php";
+        $datos = $conn->query("SELECT id, image1, image2, image3, image4, image5, image6 FROM admin_casas WHERE id='".$idReg."' ");
+        
+        if($datos->num_rows >= 0){
+            $data = array();
+            while ($fila = mysqli_fetch_array($datos)){
+                // if (!empty($fila['image1'])){
+                //     $src_image1 = "imagenes/galeria/".$fila['image1'];    
+                // }else{
+                //     $src_image1="";
+                // }
+
+                $src_image1 = $fila['image1'] <> "" ? "../../../dashboard/imagenes/galeria/".$fila['image1'] :  "" ;
+                $src_image2 = $fila['image2'] <> "" ? "../../../dashboard/imagenes/galeria/".$fila['image2'] :  "" ;
+                $src_image3 = $fila['image3'] <> "" ? "../../../dashboard/imagenes/galeria/".$fila['image3'] :  "" ;
+                $src_image4 = $fila['image4'] <> "" ? "../../../dashboard/imagenes/galeria/".$fila['image4'] :  "" ;
+                $src_image5 = $fila['image5'] <> "" ? "../../../dashboard/imagenes/galeria/".$fila['image5'] :  "" ;
+                $src_image6 = $fila['image6'] <> "" ? "../../../dashboard/imagenes/galeria/".$fila['image6'] :  "" ;
+
+                $data[] = array('ok'=>'ok', 'id' => $fila['id'], 'image1' => $src_image1, 'image2' => $src_image2, 'image3' => $src_image3,
+                'image4' => $src_image4, 'image5' => $src_image5, 'image6' => $src_image6, 'name_image1'=>$fila['image1'], 'name_image2'=>$fila['image2'],
+                 'name_image3'=>$fila['image3'], 'name_image4'=>$fila['image4'], 'name_image5'=>$fila['image5'], 'name_image6'=>$fila['image6'] );
+            }
+           
+        }else{
+            $data[] = array('ok'=>'noOk');
+        }
+
+        echo '{"data": '.(json_encode($data)).'}';
+        mysqli_free_result($datos);
+        mysqli_close($conn);
+
+}
+
+
 if ($comm == 'fechasNOdisponibles'){
 
     try{

@@ -55,6 +55,7 @@ function listarCasas(idMod){
                                         <div class="project-content">\
                                             <h3 class="title">New Central Garden</h3>\
                                             <span><a href="javascript:openDate('+item.id+')">view date</a></span>\
+                                            <span><a href="javascript:openGallery('+item.id+')">gallery</a></span>\
                                             <h5 id="price'+item.id+'" data-price='+item.price+'>'+item.price+' USD <p>night</p></h5>\
                                         </div>\
                                     </div>\
@@ -127,6 +128,59 @@ function crear_inputFechas(idC){
     $("#bodymodal_fechas").html(txtfechas)       
 }
 
+
+// ***********************************************************************
+// **********************  ver galeria ***********************************
+function openGallery(idCasa){
+    $("#imagen_galeria1,#imagen_galeria2,#imagen_galeria3,#imagen_galeria4,#imagen_galeria5,#imagen_galeria6").attr("src", "../../../dashboard/imagenes/galeria/no-image.png")  
+    $.ajax({
+        method: "POST",
+        url:"scripts/php/listar_casas.php",
+        cache: false,
+        dataType: "json",
+        data: {comm:"getGallery", idReg:idCasa}
+    }).done(function(rest){
+
+      $.each(rest.data, function (i, item) {
+        
+        if(item.image1 != ""){
+            $("#imagen_galeria1").attr("src", item.image1)  
+        }
+
+        if(item.image2 != ""){
+            $("#imagen_galeria2").attr("src", item.image2)
+        }
+
+        if(item.image3 != ""){
+            $("#imagen_galeria3").attr("src", item.image3)
+        }
+
+        if(item.image4 != ""){
+            $("#imagen_galeria4").attr("src", item.image4)
+        }
+
+        if(item.image5 != ""){
+            $("#imagen_galeria5").attr("src", item.image5)
+        }
+        
+        if(item.image6 != ""){
+            $("#imagen_galeria6").attr("src", item.image6)
+        }
+
+
+      });
+
+      $("#modalGallery").modal("show")
+    })
+}
+
+$("#btnCerrarModalGallery").click(function(){
+    $("#modalGallery").modal("hide")
+})
+
+
+// ************************************************************************
+// ******************  reservar casa **************************************
 var fechasNOdisponibles = []
 var idCasaGlobal
 
