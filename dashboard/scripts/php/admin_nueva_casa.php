@@ -220,6 +220,7 @@ if ($com=='listarCasas'){
                 
                 $btnEditar = '<a class="btn btn-app" id="btnEditHouse" data-id="'.$id.'" style="margin-left:0px"><i class="fas fa-edit"></i> Edit</a>';
                 $btnEliminar = '<a class="btn btn-app" id="btnDeleteHouse" data-id="'.$id.'"><i class="fas fa-trash"></i> Delete</a>';
+                $btnGaleria = '<a class="btn btn-app" id="btnGalleryHouse" data-id="'.$id.'"><i class="fas fa-folder"></i> Gallery</a>';
 
                 $data_house =
                 '<div class="card">
@@ -240,7 +241,7 @@ if ($com=='listarCasas'){
                         <p style="margin-bottom:0px"><b>Flat size: </b>' . $flat_size . '</p>
                         <p style="margin-bottom:0px"><b>Status: </b>' . $status_house . '</p>
                         <p style="margin-bottom:0px"><b>Model: </b>' . $model_house . '</p>
-                        <p>'.$btnEditar.$btnEliminar.'</p>
+                        <p>'.$btnEditar.$btnEliminar.$btnGaleria.'</p>
                         </dl>
                     </div>
                 </div>';
@@ -341,6 +342,197 @@ if ($comm == 'eliminaDataHouse'){
     }
 
     $data[]= array('ok'=>$ok_bd, 'ok_img'=>$ok_img, 'msg_server'=>$msg, 'msg_bd'=>$status_imagen);    
+    
+    echo '{"data": '.(json_encode($data)).'}';
+}
+
+$cual_imagen = $_POST["cual_imagen"];
+
+if ($com=="guardaGaleria"){
+
+    if(!empty($idReg) ){
+        if($cual_imagen == 1){
+            $type_imagen = $_FILES["fileTypeImage1"]["type"];
+            $name_imagen = $_FILES['fileTypeImage1']['name'];
+            $temp_imagen = $_FILES['fileTypeImage1']['tmp_name'];
+        }
+        else if($cual_imagen == 2){
+            $type_imagen = $_FILES["fileTypeImage2"]["type"];
+            $name_imagen = $_FILES['fileTypeImage2']['name'];
+            $temp_imagen = $_FILES['fileTypeImage2']['tmp_name'];
+        }else if($cual_imagen == 3){
+            $type_imagen = $_FILES["fileTypeImage3"]["type"];
+            $name_imagen = $_FILES['fileTypeImage3']['name'];
+            $temp_imagen = $_FILES['fileTypeImage3']['tmp_name'];
+        }else if($cual_imagen == 4){
+            $type_imagen = $_FILES["fileTypeImage4"]["type"];
+            $name_imagen = $_FILES['fileTypeImage4']['name'];
+            $temp_imagen = $_FILES['fileTypeImage4']['tmp_name'];
+        }else if($cual_imagen == 5){
+            $type_imagen = $_FILES["fileTypeImage5"]["type"];
+            $name_imagen = $_FILES['fileTypeImage5']['name'];
+            $temp_imagen = $_FILES['fileTypeImage5']['tmp_name'];
+        }else if($cual_imagen == 6){
+            $type_imagen = $_FILES["fileTypeImage6"]["type"];
+            $name_imagen = $_FILES['fileTypeImage6']['name'];
+            $temp_imagen = $_FILES['fileTypeImage6']['tmp_name'];
+        } 
+
+        $uploadedFile = '';
+        if(!empty($type_imagen) || !empty($name_imagen) ){
+            $fileName = time().'_'.$name_imagen;
+            $valid_extensions = array("jpeg", "jpg", "png", "PNG", "JPEG", "JPG");
+            $temporary = explode(".", $name_imagen);
+            $file_extension = end($temporary);
+            
+            if((($type_imagen == "image/png") || ($type_imagen == "image/PNG") || ($type_imagen == "image/jpg") || ($type_imagen == "image/JPG") || ($type_imagen == "image/jpeg") || ($type_imagen == "image/JPEG") ) && in_array($file_extension, $valid_extensions)){
+                $sourcePath = $temp_imagen;
+                $targetPath = "../../imagenes/galeria/".$fileName;
+               
+                if(move_uploaded_file($sourcePath,$targetPath)){
+                    $uploadedFile = $fileName;
+                    $status_imagen = "si hay imagen";
+                }
+            }
+          
+        }else{
+            // En caso de que no suba ninguna imagen
+            $status_imagen = "no hay imagen";
+            $uploadedFile = "";
+        }
+        
+            
+        try{
+            
+            include_once "conectar.php";
+
+            if($cual_imagen == 1){
+                $insert = $conn->query("UPDATE admin_casas SET image1='".$uploadedFile."' WHERE id='".$idReg."' ");
+            }else if($cual_imagen == 2){
+                $insert = $conn->query("UPDATE admin_casas SET image2='".$uploadedFile."' WHERE id='".$idReg."' ");
+            }else if($cual_imagen == 3){
+                $insert = $conn->query("UPDATE admin_casas SET image3='".$uploadedFile."' WHERE id='".$idReg."' ");
+            }else if($cual_imagen == 4){
+                $insert = $conn->query("UPDATE admin_casas SET image4='".$uploadedFile."' WHERE id='".$idReg."' ");
+            }else if($cual_imagen == 5){
+                $insert = $conn->query("UPDATE admin_casas SET image5='".$uploadedFile."' WHERE id='".$idReg."' ");
+            }else if($cual_imagen == 6){
+                $insert = $conn->query("UPDATE admin_casas SET image6='".$uploadedFile."' WHERE id='".$idReg."' ");
+            }
+
+            
+           
+            
+            if ($insert){
+                $data[]= array('ok'=>'ok', 'status_imagen' => $status_imagen, 'file_imagen' => $fileName, 'type_imagen' =>$type_imagen, 'si_subio' =>$uploadedFile);
+            }else{
+                $data[]= array('ok'=>'err', 'status_imagen' => $status_imagen, 'file_imagen' => $fileName, 'type_imagen' =>$type_imagen, 'si_subio' =>$uploadedFile);
+            }
+            
+        } catch(Exception $e){
+            echo $e->getMessage();
+        }
+        
+        
+    }else{
+        $data[]= array('ok'=>'noData');
+    }
+    echo '{"data": '.(json_encode($data)).'}';
+    // mysqli_free_result($datos);
+    // mysqli_close($conn);
+}
+
+
+if ($comm == 'getGallery'){
+
+    include_once "conectar.php";
+        $datos = $conn->query("SELECT id, image1, image2, image3, image4, image5, image6 FROM admin_casas WHERE id='".$idReg."' ");
+        
+        if($datos->num_rows >= 0){
+            $data = array();
+            while ($fila = mysqli_fetch_array($datos)){
+                // if (!empty($fila['image1'])){
+                //     $src_image1 = "imagenes/galeria/".$fila['image1'];    
+                // }else{
+                //     $src_image1="";
+                // }
+
+                $src_image1 = $fila['image1'] <> "" ? "imagenes/galeria/".$fila['image1'] :  "" ;
+                $src_image2 = $fila['image2'] <> "" ? "imagenes/galeria/".$fila['image2'] :  "" ;
+                $src_image3 = $fila['image3'] <> "" ? "imagenes/galeria/".$fila['image3'] :  "" ;
+                $src_image4 = $fila['image4'] <> "" ? "imagenes/galeria/".$fila['image4'] :  "" ;
+                $src_image5 = $fila['image5'] <> "" ? "imagenes/galeria/".$fila['image5'] :  "" ;
+                $src_image6 = $fila['image6'] <> "" ? "imagenes/galeria/".$fila['image6'] :  "" ;
+
+                $data[] = array('ok'=>'ok', 'id' => $fila['id'], 'image1' => $src_image1, 'image2' => $src_image2, 'image3' => $src_image3,
+                'image4' => $src_image4, 'image5' => $src_image5, 'image6' => $src_image6, 'name_image1'=>$fila['image1'], 'name_image2'=>$fila['image2'],
+                 'name_image3'=>$fila['image3'], 'name_image4'=>$fila['image4'], 'name_image5'=>$fila['image5'], 'name_image6'=>$fila['image6'] );
+            }
+           
+        }else{
+            $data[] = array('ok'=>'noOk');
+        }
+
+        echo '{"data": '.(json_encode($data)).'}';
+        mysqli_free_result($datos);
+        mysqli_close($conn);
+
+}
+
+
+function actualizar_nombre_imagen_gallery($idReg, $idImagen){
+    include_once "conectar.php";
+    
+    if($idImagen==1){
+        $insert = $conn->query("UPDATE admin_casas SET image1='' WHERE id=$idReg");
+    }else if($idImagen==2){
+        $insert = $conn->query("UPDATE admin_casas SET image2='' WHERE id=$idReg");
+    }else if($idImagen==3){
+        $insert = $conn->query("UPDATE admin_casas SET image3='' WHERE id=$idReg"); 
+    }else if($idImagen==4){
+        $insert = $conn->query("UPDATE admin_casas SET image4='' WHERE id=$idReg"); 
+    }else if($idImagen==5){
+        $insert = $conn->query("UPDATE admin_casas SET image5='' WHERE id=$idReg"); 
+    }else if($idImagen==6){
+        $insert = $conn->query("UPDATE admin_casas SET image6='' WHERE id=$idReg"); 
+    }
+       
+    if ($insert){
+        $ok='ok';
+    }else{
+        $ok='noOk';
+    } 
+    return $ok;
+}
+
+$id_imagen = $_POST['id_imagen'];
+
+if ($comm == 'DeleteImageGallery'){
+    $name_image_gallery = $_POST['name_image_gallery'];
+    if (is_writable("../../imagenes/galeria/".$name_image_gallery)){
+        $output =  unlink("../../imagenes/galeria/".$name_image_gallery);
+        if ($output){
+            $msg = "Si eliminó imagen del server";
+            $ook = actualizar_nombre_imagen_gallery($idReg, $id_imagen);
+           
+            if ($ook == "ok"){
+                $status_imagen = "Si actualizo imagen en bd";
+            }else if ($ook == "noOk"){
+                $status_imagen = "No actualizo imagen en bd";
+            }
+
+            $data[]= array('ok'=>'ok', 'msg'=>$msg, 'status_imagen'=>$status_imagen, 'idReg'=>$idReg, 'ook'=>$ook, 'id_imagen'=>$id_imagen);
+
+        }else{
+            $msg = "No eliminó imagen del server";
+            $status_imagen = "No actualizo imagen en _bd_";
+            $data[]= array('ok'=>'noOk', 'msg'=>$msg, 'status_imagen'=>$status_imagen);
+        }
+        
+    }else{
+        $msg = "No existe la imagen o no tiene permisos";
+        $data[]= array('ok'=>'noOk', 'msg'=>$msg);
+    }
     
     echo '{"data": '.(json_encode($data)).'}';
 }
