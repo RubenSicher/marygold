@@ -3,6 +3,21 @@
     .datepicker td.disabled{
         text-decoration: line-through;
     }
+
+    .imgGallery{
+        height: 150px;
+        width: 240px;
+        border-radius: 10px;
+        background-color: #fff0d9;
+        margin: auto;
+        text-align: center;
+        align-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        color: gray;
+        position: relative;
+        justify-content: center;
+    } 
     
 </style>
 <!doctype html>
@@ -37,6 +52,65 @@
         <link rel="stylesheet" href="assets/css/responsive.css">
     </head>
     <body>
+
+        <div class="modal fade" id="modalGallery">
+            <div class="modal-dialog modal-md">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Gallery</h4>
+                  <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button> -->
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6" style="margin: 0; padding: 0;">
+                            <div id="div_imagen_galeria1" class="imgGallery">
+                                <img id="imagen_galeria1" width="100%" height="150px" src="" >
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin: 0; padding: 0;">
+                            <div id="div_imagen_galeria2" class="imgGallery" >
+                                <img id="imagen_galeria2" width="100%" height="150px" src="" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 10px;">
+                        <div class="col-md-6 " style="margin: 0; padding: 0;">
+                            <div id="div_imagen_galeria3" class="imgGallery">
+                                <img id="imagen_galeria3" width="100%" height="150px" src="" >
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin: 0; padding: 0;">
+                            <div id="div_imagen_galeria4" class="imgGallery" >
+                                <img id="imagen_galeria4" width="100%" height="150px" src="" >
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <div class="row" style="margin-top: 10px;">
+                        <div class="col-md-6" style="margin: 0; padding: 0;">
+                            <div id="div_imagen_galeria5" class="imgGallery" >
+                                <img id="imagen_galeria5" width="100%" height="150px" src="" >
+                            </div>
+                        </div>
+                        <div class="col-md-6" style="margin: 0; padding: 0;">
+                            <div id="div_imagen_galeria6" class="imgGallery" >
+                                <img id="imagen_galeria6" width="100%" height="150px" src="" >
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                <div class="modal-footer ">
+                  <button type="button" class="btn btn-default" id="btnCerrarModalGallery">Close</button>
+                  <!-- <button type="button" class="btn btn-primary">Save</button> -->
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+          <!-- /.modal -->
 
         <div class="modal" tabindex="-1" role="dialog" id="modal_fechasDisponibles">
             <div class="modal-dialog" role="document">

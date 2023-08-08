@@ -31,7 +31,9 @@
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
   <link rel="stylesheet" href="./plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
   <link rel="shortcut icon" type="image/x-icon" href="/mg/assets/img/iconmg.svg">
-
+  
+  
+  
 <link rel="stylesheet" href="./plugins/toastr/toastr.min.css">
 <script src="https://kit.fontawesome.com/e82751842d.js" crossorigin="anonymous"></script>
 </head>
