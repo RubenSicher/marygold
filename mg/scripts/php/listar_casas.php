@@ -23,7 +23,7 @@ if ($comm == 'listarCasas'){
 
     try{
 
-        include_once "../../../dashboard/scripts/php/conectar.php";
+        include_once "../../dashboard/scripts/php/conectar.php";
         $datos = $conn->query("SELECT id, name_house, address_house, description_house, property_size, price, type_house, flat_size, status_house, estado, image_house FROM admin_casas WHERE estado='1' and modelo='$modelo' ");
         
         if($datos->num_rows >= 0){
@@ -56,7 +56,7 @@ if ($comm == 'listarCasas'){
 
 if ($comm == 'getGallery'){
 
-    include_once "../../../dashboard/scripts/php/conectar.php";
+    include_once "../../dashboard/scripts/php/conectar.php";
         $datos = $conn->query("SELECT id, image1, image2, image3, image4, image5, image6 FROM admin_casas WHERE id='".$idReg."' ");
         
         if($datos->num_rows >= 0){
@@ -95,7 +95,7 @@ if ($comm == 'fechasNOdisponibles'){
 
     try{
 
-        include_once "../../../dashboard/scripts/php/conectar.php";
+        include_once "../../dashboard/scripts/php/conectar.php";
         $datos = $conn->query("SET time_zone = '-06:00'");
         $datos = $conn->query("SELECT id, id_casa, fecha_llegada, fecha_salida, now() FROM admin_rentaCasas WHERE estado='1' and ( fecha_llegada >= DATE(NOW()) or fecha_salida >= DATE(NOW()) ) and id_casa='$idCasa' ");
         
@@ -124,7 +124,7 @@ if ($comm == 'fechasNOdisponibles'){
 if ($comm == 'guardarCliente'){
     try{
         //insert form data in the database
-        include_once "../../../dashboard/scripts/php/conectar.php";
+        include_once "../../dashboard/scripts/php/conectar.php";
 
         // primero revisamos que no exista ese correo 
         $datos = $conn->query("SELECT id, email FROM admin_clientes WHERE email='$email' ");
@@ -197,7 +197,7 @@ if ($comm == "activaCliente"){
 
     try{
         //insert form data in the database
-        include_once "../../../dashboard/scripts/php/conectar.php";
+        include_once "../../dashboard/scripts/php/conectar.php";
         $insert = $conn->query("UPDATE admin_clientes SET activo='1' WHERE id='$idReg' ");
         // echo $insert?'ok':'err'; 
         if ($insert){
@@ -219,7 +219,7 @@ if ($comm == "activaCliente"){
 if ($comm == "buscarCliente"){
     try{
         //insert form data in the database
-        include_once "../../../dashboard/scripts/php/conectar.php";
+        include_once "../../dashboard/scripts/php/conectar.php";
 
         // primero revisamos que no exista ese correo 
         $datos = $conn->query("SELECT id, nombre, email, celular FROM admin_clientes WHERE email='$email' and clave='$clave' ");
@@ -262,7 +262,7 @@ if ($comm == "buscarCliente"){
 if ($comm == "buscarCorreo"){
     try{
         //insert form data in the database
-        include_once "../../../dashboard/scripts/php/conectar.php";
+        include_once "../../dashboard/scripts/php/conectar.php";
 
         // primero revisamos que no exista ese correo 
         $datos = $conn->query("SELECT id, nombre, email, celular, clave FROM admin_clientes WHERE email='$email' ");
@@ -323,7 +323,7 @@ if($comm == "enviarCorreoReservacion") {
 if ($comm == 'guardaReservacion'){
     try{
         //insert form data in the database
-        include_once "../../../dashboard/scripts/php/conectar.php";
+        include_once "../../dashboard/scripts/php/conectar.php";
 
         $insert = $conn->query("INSERT INTO admin_rentaCasas(id_casa, fecha_llegada, fecha_salida, id_cliente, estado, fecha_captura, dias, renta_por_dia, renta_global) VALUES ('".$idCasa."', '".$fi."', '".$ff."', '".$idCliente."', 0, now(), '".$dias."', '".$renta_por_dia."', '".$renta_global."' )");
         
