@@ -56,7 +56,7 @@ function listarCasas(idMod){
                                             <h3 class="title">New Central Garden</h3>\
                                             <span><a href="javascript:openDate('+item.id+')">view date</a></span>\
                                             <span><a href="javascript:openGallery('+item.id+')">gallery</a></span>\
-                                            <h5 id="price'+item.id+'" data-price='+item.price+'>'+item.price+' USD <p>night</p></h5>\
+                                            <h5 id="price'+item.id+'" data-price='+item.price+'>'+item.price+' USD <p>Per night</p></h5>\
                                         </div>\
                                     </div>\
                                 </div>'
@@ -107,22 +107,35 @@ $("#backModelos").click(function(){
 
 })
 
+var texto1, texto2, texto3
 
 function crear_inputFechas(idC){
+    console.log(idioma)
+
+    if(idioma == 1){
+        texto1 = "Llegada"
+        texto2 = "Salida"
+        texto3 = "Enviar reservación por email"
+    }else if (idioma == 2){
+        texto1 = "Arrival time"
+        texto2 = "Departure time"
+        texto3 = "Send reservation by mail"
+    }
+    
     txtfechas = ""
 
     txtfechas = '<div style="display:flex; justify-content: space-between;">\
                     <div style="padding: 10px 20px 10px; border: 1px solid #bd9a68; border-radius: 10px; width: 49%">\
-                        <label style="position:absolut; top:20px; left:25px; font-size:13px; cursor:auto; color:#bd9a68 ">Arrival time</label>\
+                        <label style="position:absolut; top:20px; left:25px; font-size:13px; cursor:auto; color:#bd9a68 ">'+texto1+'</label>\
                         <input class="form-control" style="border:0px; background: #fff7eb; text-align:center;"  type="text" id="fecha_llegada'+idC+'" data-provide="datepicker" autocomplete="off"/>\
                     </div>\
                     <div style="padding: 10px 20px 10px; border: 1px solid #bd9a68; border-radius: 10px; width: 49%">\
-                        <label style="position:absolut; top:20px; left:25px; font-size:13px; cursor:auto; color:#bd9a68 ">Departure time</label>\
+                        <label style="position:absolut; top:20px; left:25px; font-size:13px; cursor:auto; color:#bd9a68 ">'+texto2+'</label>\
                         <input class="form-control" style="border:0px; background: #fff7eb; text-align:center;" id="fecha_salida'+idC+'" type="text" data-provide="datepicker" autocomplete="off"/>\
                     </div>\
                 </div>\
                 <div style="text-align: center;" class="mb-3 mt-4">\
-                    <button class="btn btn-primary" id="btnEnviarReservacion" style="width: 100%; justify-content: center;">Send reservation by mail</button>\
+                    <button class="btn btn-primary" id="btnEnviarReservacion" style="width: 100%; justify-content: center;">'+texto3+'</button>\
                 </div>'
 
     $("#bodymodal_fechas").html(txtfechas)       

@@ -26,7 +26,7 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Marygold homes</title>
-        <meta name="description" content="Reland - Real Estate Group HTML Template">
+        <meta name="description" content="MARYGOLD Renta de casas">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
@@ -36,7 +36,7 @@
         <link rel="stylesheet" href="./assets/datepicker-bootstrap/bootstrap-datepicker.min.css">
         <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"/> -->
 
-		<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="assets/img/iconmg.svg">
         <!-- Place favicon.ico in the root directory -->
         <!-- CSS here -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -57,7 +57,7 @@
             <div class="modal-dialog modal-md">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h4 class="modal-title">Gallery</h4>
+                  <h4 class="modal-title" id="pGallery">Gallery</h4>
                   <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button> -->
@@ -116,30 +116,30 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" style="color: #bd9a68;">Reservation</h5>
+                  <h5 class="modal-title" style="color: #bd9a68;" id="pReservacion">Reservation</h5>
                   <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button> -->
                 </div>
                 <div class="modal-body" id="div_datosCliente" style="display: none; text-align: center;">
-                    <h4>WELCOME!</h4>
+                    <h4 id="pBienvenido">WELCOME!</h4>
                     <input type="hidden" id="idCliente">
                     <input type="hidden" id="emailCliente">
                     <input type="hidden" id="celCliente">
                     <label id="nombreCliente"></label><br>
-                    <span style="font-size: 12px;">click the button "Send reservation by mail"</span>
+                    <span style="font-size: 12px;" id="pIndicacion_reservacion">Click the button "Send reservation by mail"</span>
                 </div>
                 <div class="modal-body" id="div_reservacionExistosa" style="display: none; text-align: center;">
-                    <p>mail sent successfully.!</p>
-                    <p>Thank you very much for the reservation, in a moment one of our advisors will contact you.!</p>
+                    <p id="pIndicacion1_mail">Mail sent successfully!</p>
+                    <p id="pIndicacion2_mail">Thank you very much for the reservation, in a moment one of our advisors will contact you!</p>
                 </div>
                 <div class="modal-body" id="bodymodal_fechas">
                     <div style="display: flex;">
-                        <label style="position: absolute;">Arrival time</label>
+                        <label style="position: absolute;" id="pFechaInicio">Arrival time</label>
                         <input class="form-control" id="fecha_llegada" type="text" data-provide="datepicker" autocomplete="off"/>
                     </div>
                     <div>
-                        <label>Departure time</label>
+                        <label id="pFechaFin">Departure time</label>
                         <input class="form-control" id="fecha_salida" type="text" data-provide="datepicker" autocomplete="off"/>
                     </div>
                     
@@ -149,11 +149,11 @@
                 </div>
                 <div class="modal-body" id="div_costorenta" style="display: grid; justify-content: center;">
                     <div style="display: flex; background-color: #fff7eb; margin-bottom: 5px;">
-                        <p style="padding: 10px; width: 130px; margin: 0px; color: #bd9a68;">Nights</p>
+                        <p style="padding: 10px; width: 130px; margin: 0px; color: #bd9a68;" id="pNochesCosto">Nights</p>
                         <b style="padding: 10px; width: 130px; margin: 0px; text-align: right; color: #bd9a68;" id="txt_dias_renta">0</b>
                     </div>
                     <div style="display: flex; background-color: #fff7eb; margin-bottom: 5px;">
-                        <p style="padding: 10px; width: 130px; margin: 0px; color: #bd9a68;">Rent per night</p>
+                        <p style="padding: 10px; width: 130px; margin: 0px; color: #bd9a68;" id="pNochesRenta">Rent per night</p>
                         <b style="padding: 10px; width: 130px; margin: 0px; text-align: right; color: #bd9a68;" id="txt_precio_renta">0 USD</b> 
                     </div>
                     <div style="display: flex; background-color: #fff7eb; border-top: 1px solid #bd9a68; margin-bottom: 10px;">
@@ -164,18 +164,18 @@
                 
                 <div class="modal-body" id="div_registronuevousuario" style="display: none;">
                     <form action="javascript:registrarCliente()">
-                        <label style="font-size: 12px; text-align: justify;">Thank you very much for contacting us, we will be happy to help you reserve the residence of your choice</label>
-                        <label style="font-size: 12px; text-align: justify;">Please enter the information we request to activate your account</label>
+                        <label style="font-size: 12px; text-align: justify;" id="pIndicacion1_nuevoUsuario">Thank you very much for contacting us, we will be happy to help you reserve the residence of your choice</label>
+                        <label style="font-size: 12px; text-align: justify;" id="pIndicacion2_nuevoUsuario">Please enter the information we request to activate your account</label>
                         <div class="form-group mb-3">
-                            <label for="txtNombre">Name</label>
+                            <label for="txtNombre" id="pNombreUsuario">Name</label>
                             <input type="text" class="form-control" id="txtNombre" placeholder="Nombre" maxlength="50" required>
                         </div>
                         <div class="form-group mb-3">
-                            <label for="txtTelefono">Phone (Whatsapp)</label>
-                            <input type="text" class="form-control" id="txtTelefono" placeholder="Celular (10 dígitos)" maxlength="10">
+                            <label for="txtTelefono" id="pCelular">Phone (Whatsapp)</label>
+                            <input type="text" class="form-control" id="txtTelefono" placeholder="Phone (10 digit)" maxlength="10">
                         </div>
                         <div class="form-group mb-3">
-                        <label for="txtEmail">Email</label>
+                        <label for="txtEmail" id="pEmail">Mail</label>
                         <input type="email" class="form-control mb-2" id="txtEmail" placeholder="Email" maxlength="50" required>
                         <label style="color: red; display: none; font-size: 12px; text-align: justify;" id="spanEmail">ERROR! This email has already been registered before, add another email or click on the option I AM ALREADY A CUSTOMER and then click on SEND ACCESS CODE</label>
                         </div>
@@ -189,8 +189,8 @@
 
                 <div class="modal-body" id="div_clave_activacion" style="display: none;">
                     <div class="form-group mb-3">
-                        <label for="txtClave" style="font-size: 12px;"">Enter the key sent to your email</label>
-                        <input type="password" class="form-control" id="txtClave" placeholder="Clave" maxlength="10">
+                        <label for="txtClave" style="font-size: 12px;" id="pIndicacionActivacion">Enter the key sent to your mail</label>
+                        <input type="password" class="form-control" id="txtClave" placeholder="Key" maxlength="10">
                         <label style="color: red; display: none; font-size: 12px; text-align: justify;" id="spanClave">You must capture the key sent to your mail!</label>
                     </div>
                     <input type="hidden" id="idTempCliente" value="0">
@@ -206,14 +206,14 @@
 
                 <div class="modal-body" id="div_yasoycliente" style="display: none;">
                     <form action="javascript:iniciarSesion()">
-                        <label style="font-size: 12px; text-align: justify;">Please enter your email and activation key</label>
+                        <label style="font-size: 12px; text-align: justify;" id="pIndicacionesInicioSesion">Please enter your email and activation key</label>
                         <div class="form-group mb-3">
-                          <label for="txtEmailLogeo">Email</label>
-                          <input type="email" class="form-control" id="txtEmailLogeo" placeholder="Email" maxlength="50" required autocomplete="off">
+                          <label for="txtEmailLogeo" id="pEmailSesion">Mail</label>
+                          <input type="email" class="form-control" id="txtEmailLogeo" placeholder="Mail" maxlength="50" required autocomplete="off">
                         </div>
                         <div class="form-group mb-3">
-                            <label for="txtClaveLogeo">Clave</label>
-                            <input type="password" class="form-control" id="txtClaveLogeo" placeholder="Clave" maxlength="10" required>
+                            <label for="txtClaveLogeo" id="pClaveSesion">Key</label>
+                            <input type="password" class="form-control" id="txtClaveLogeo" placeholder="Key" maxlength="10" required>
                         </div>
                         <div style="text-align: center;" class="mb-5">
                             <button class="btn btn-primary" id="btnIniciarSesion">LOG IN</button>
@@ -268,8 +268,8 @@
                                         <ul class="list-wrap">
                                             <li class="header-contact">
                                                 <ul class="list-wrap">
-                                                    <li><a href="mailto:relandgroup@mail.com">relandgroup@mail.com</a></li>
-                                                    <li><a href="tel:0123456789">+7 495 127 5451</a></li>
+                                                    <!-- <li><a href="mailto:relandgroup@mail.com">relandgroup@mail.com</a></li>
+                                                    <li><a href="tel:0123456789">+7 495 127 5451</a></li> -->
                                                 </ul>
                                             </li>
                                             <li class="icon burger-menu">
@@ -293,9 +293,9 @@
         <div class="side-menu-wrapper tgCanvas-menu">
             <div class="side-menu-inner">
                 <ul class="navigation">
-                    <li class="active menu-item-has-children"><a href="#">Home</a>
+                    <li class="active menu-item-has-children"><a href="#" id="pMenuHome">Home</a>
                         <ul class="sub-menu">
-                            <li><a href="index.html">Go back</a></li>
+                            <li><a href="index.html" id="pMenuRegresar">Go back</a></li>
                             <!-- <li><a href="index-2.html">Home Two</a></li>
                             <li><a href="index-3.html">Home Three</a></li>
                             <li><a href="index-4.html">Home Four</a></li>
@@ -304,6 +304,10 @@
                             <li><a href="index-7.html">Home Seven</a></li>
                             <li class="active"><a href="index-8.html">Home Eight</a></li> -->
                         </ul>
+                    </li>
+                    <li class="bandera">
+                        <a class="efect idioma" id="1" ><img class="imag" src="./assets/img/mexico.png" alt=""></a> 
+                        <a class="efect idioma" id="2"><img class="imag" src="./assets/img/usa.png" alt=""></a> 
                     </li>
                     <!-- <li class="menu-item-has-children"><a href="#">About</a>
                         <ul class="sub-menu">
@@ -354,12 +358,12 @@
                     </a>
                 </div>
                 <ul class="list-wrap">
-                    <li><a href="mailto:relandgroup@mail.com">relandgroup@mail.com</a></li>
-                    <li><a href="tel:0123456789">+7 495 127 5451</a></li>
+                    <!-- <li><a href="mailto:relandgroup@mail.com">relandgroup@mail.com</a></li>
+                    <li><a href="tel:0123456789">+7 495 127 5451</a></li> -->
                 </ul>
             </div>
             <div class="sidebar-logo">
-                <a href="index.html"><img src="assets/img/logo/logo02.png" alt=""></a>
+                <!-- <a href="index.html"><img src="assets/img/logo/logo02.png" alt=""></a> -->
             </div>
         </div>
         <!-- sidebar-menu-bar-end -->
@@ -368,8 +372,13 @@
 
         <main>
             <!-- inicia la seccion de los modelos de casas -->
-            <section class="project-area-five section-pt-140 section-pb-lg-40" style="width: 85%; margin: auto;" id="divModelos">
+            <section class="project-area-five section-pb-lg-40" style="width: 85%; margin: auto; padding-top: 50px;" id="divModelos">
                 <div class="container">
+                    <div class="breadcrumb-content">
+                        <h2 class="title" id="pTituloModelos">MODELS</h2>
+                    </div>
+                    <p style="padding: 20px 20px 0px 20px; text-align: center;" id="pIndicacion1Modelos">Below are the models of houses that make up the subdivision MaryGold, the photos are only a reference of the houses that exist in the selected model</p>
+                    <h5 style="text-align: center; margin-bottom: 70px;" id="pIndicacion2Modelos">To view and rent a home, click 'View Houses'</h5>
                     <div class="project-item-wrap">
                         <div class="project-item-two">
                             <div class="row align-items-center">
@@ -396,7 +405,7 @@
                                                 </li>
                                                 <li>
                                                     <div class="icon"><i class="flaticon-008-money-bag"></i></div>
-                                                    <div class="content"><p>Price Range <br>$10K - $50K</p></div>
+                                                    <div class="content"><p>Price Range <br>$10K - $50K Per night</p></div>
                                                 </li>
                                                 <li>
                                                     <div class="icon"><i class="flaticon-017-apartment"></i></div>
@@ -443,7 +452,7 @@
                                                 </li>
                                                 <li>
                                                     <div class="icon"><i class="flaticon-008-money-bag"></i></div>
-                                                    <div class="content"><p>Price Range <br>$10K - $50K</p></div>
+                                                    <div class="content"><p>Price Range <br>$10K - $50K Per night</p></div>
                                                 </li>
                                                 <li>
                                                     <div class="icon"><i class="flaticon-017-apartment"></i></div>
@@ -490,7 +499,7 @@
                                                 </li>
                                                 <li>
                                                     <div class="icon"><i class="flaticon-008-money-bag"></i></div>
-                                                    <div class="content"><p>Price Range <br>$10K - $50K</p></div>
+                                                    <div class="content"><p>Price Range <br>$10K - $50K Per night</p></div>
                                                 </li>
                                                 <li>
                                                     <div class="icon"><i class="flaticon-017-apartment"></i></div>
@@ -526,11 +535,13 @@
                                 <h2 class="title titulo_tipoModelo">Projects</h2>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a id="backModelos" style="cursor: pointer;">MODELOS</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">CASAS</li>
+                                        <li class="breadcrumb-item"><a id="backModelos" style="cursor: pointer;">MODEL</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page" id="pHouses">HOUSES</li>
                                     </ol>
                                 </nav>
                             </div>
+                            <p style="padding: 20px 20px 0px 20px; text-align: center;" id="pInidicacion1Casas">The list of houses that are shown below are for rent, the photos are only a reference of the houses that exist in the selected model</p>
+                            <h5 style="text-align: center;" id="pInidicacion2Casas">To rent a house click on 'View dates'</h5>
                         </div>
                     </div>
                 </div>
@@ -773,7 +784,8 @@
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
         <!-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> -->
-
+        <script src="./scripts/js/lenguaje_reservas.js"></script>
         <script src="./scripts/js/listar_casas.js"></script>
+        
     </body>
 </html>

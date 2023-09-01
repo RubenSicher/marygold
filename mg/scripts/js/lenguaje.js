@@ -61,6 +61,7 @@ var inputname = document.getElementById("inputname");
 var inputNum = document.getElementById("inputNum");
 var mensaje = document.getElementById("mensaje");
 var btnSolicita = document.getElementById("btnSolicita");
+var btnRentarAhora = document.getElementById("btnRentarAhora")
 
 var ftContact = document.getElementById("ftContact");
 
@@ -150,8 +151,9 @@ inputNum.placeholder = "your phone number"
 mensaje.placeholder = "your message"
 
 btnSolicita.innerText = "Send Message"
+btnRentarAhora.innerText = "I want to rent now"
 ftContact.innerText = "Contact"
-projects.innerText = "see Projects"
+projects.innerText = "Rent House"
 
 
 
@@ -222,8 +224,9 @@ inputname.placeholder = "Tu nombre"
 inputNum.placeholder = "Tu telefono"
 mensaje.placeholder = "Tu mensaje"
 btnSolicita.innerText = "Envíar Mensaje"
+btnRentarAhora.innerText = "Quiero rentar ahora"
 ftContact.innerText = "Contacto"
-projects.innerText = "Ver Proyectos"
+projects.innerText = "Rentar Casa"
 
 
     }
